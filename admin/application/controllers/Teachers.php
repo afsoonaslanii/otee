@@ -191,4 +191,3 @@ class Teachers extends CI_Controller{
     }
 }
 ?>
-
