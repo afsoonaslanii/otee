@@ -78,4 +78,3 @@ class Results extends CI_Controller{
     }
 }
 ?>
-
