@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 
 $myavatar = (count($query)>0 ? $query[0]->student_picture : NULL);
 $myfname = (count($query)>0 ? $query[0]->student_fname : " ");
@@ -58,9 +58,9 @@ $description = $description;
         <div class="profile">
             <?php
             if ($myavatar == NULL) {
-                print'<img width="60" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
             }else{
-                print '<img width="60" height="60" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
             }
 
             ?>
@@ -94,9 +94,9 @@ $description = $description;
                                 <span class="user-name"><?php echo "$myfname"; ?> <?php echo "$mylname"; ?><i class="fa fa-angle-down"></i></span>
                                 <?php
                                 if ($myavatar == NULL) {
-                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                                 }else{
-                                    print '<img width="40" height="40" class="img-circle avatar" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                                    print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
                                 }
 
                                 ?>
@@ -127,9 +127,9 @@ $description = $description;
                         <div class="sidebar-profile-image">
                             <?php
                             if ($myavatar == NULL) {
-                                print' <img class="img-circle img-responsive" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                print' <img class="img-circle img-responsive" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                             }else{
-                                print '<img  src="http://localhost/iQuiz/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
+                                print '<img  src="http://otee.ir/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
                             }
 
                             ?>
@@ -199,7 +199,7 @@ $description = $description;
                                                 $status = $row->exam_status;
                                                 if ($status == '1') {
                                                     $st = '<p class="text-success">ACTIVE</p>';
-                                                    $stl = '<a class="btn btn-success" href="http://localhost/iQuiz/student/index.php/exam/Take_Assessment/'.$row->exam_id.'/'.$student_id.'">Take Assessment</a>';
+                                                    $stl = '<a class="btn btn-success" href="http://otee.ir/student/index.php/exam/Take_Assessment/'.$row->exam_id.'/'.$student_id.'">Take Assessment</a>';
                                                 }else{
                                                     $st = '<p class="text-danger">INACTIVE</p>';
                                                     $stl = '<a class="btn btn-danger disabled" href="#">Take Assessment</a>';

@@ -1,4 +1,4 @@
-<?php $url = 'http://localhost/iQuiz'; ?>
+<?php $url = 'http://otee.ir'; ?>
 
 <!doctype html>
 <html lang="en">
@@ -54,7 +54,7 @@
                 </div>
                 <?php echo form_close();?>
 
-                <p>have an account? <a href="http://localhost/iQuiz/student/index.php/login">Login</a></p>
+                <p>have an account? <a href="http://otee.ir/student/index.php/login">Login</a></p>
             </div>
         </div>
     </div>

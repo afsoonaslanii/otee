@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
@@ -65,9 +65,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
         <div class="profile">
             <?php
             if ($myavatar == NULL) {
-                print'<img width="60" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
             }else{
-                print '<img width="60" height="60" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
             }
 
             ?>
@@ -113,9 +113,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                 <span class="user-name"><?php echo "$myfname"; ?> <?php echo "$mylname"; ?><i class="fa fa-angle-down"></i></span>
                                 <?php
                                 if ($myavatar == NULL) {
-                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                                 }else{
-                                    print '<img width="40" height="40" class="img-circle avatar" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                                    print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
                                 }
 
                                 ?>
@@ -146,9 +146,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                         <div class="sidebar-profile-image">
                             <?php
                             if ($myavatar == NULL) {
-                                print' <img class="img-circle img-responsive" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                print' <img class="img-circle img-responsive" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                             }else{
-                                print '<img  src="http://localhost/iQuiz/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
+                                print '<img  src="http://otee.ir/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
                             }
 
                             ?>
@@ -230,10 +230,10 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                             $status = $row->acc_stat;
                                                             if ($status == "1") {
                                                                 $st = '<p class="text-success">ACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/teachers/inactive_te/'.$row->user_id.'">Make Inactive</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/teachers/inactive_te/'.$row->user_id.'">Make Inactive</a>';
                                                             }else{
                                                                 $st = '<p class="text-danger">INACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/teachers/active_te/'.$row->user_id.'">Make Active</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/teachers/active_te/'.$row->user_id.'">Make Active</a>';
                                                             }
                                                             print '
 										       <tr>
@@ -248,9 +248,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>'.$stl.'</li>
-													<li><a href="http://localhost/iQuiz/admin/index.php/teachers/edit_teacher/'.$row->user_id.'">Edit Teacher</a></li>
-													<li><a href="http://localhost/iQuiz/admin/index.php/teachers/view_teacher/'.$row->user_id.'/'.$row->teacher_id.'">View Teacher</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="http://localhost/iQuiz/admin/index.php/teachers/drop_t/'.$row->user_id.'">Drop Teacher</a></li>
+													<li><a href="http://otee.ir/admin/index.php/teachers/edit_teacher/'.$row->user_id.'">Edit Teacher</a></li>
+													<li><a href="http://otee.ir/admin/index.php/teachers/view_teacher/'.$row->user_id.'/'.$row->teacher_id.'">View Teacher</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/teachers/drop_t/'.$row->user_id.'">Drop Teacher</a></li>
                                                 </ul>
                                             </div></td>
           

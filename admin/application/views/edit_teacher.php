@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
@@ -83,9 +83,9 @@ else{
         <div class="profile">
             <?php
             if ($myavatar == NULL) {
-                print'<img width="60" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
             }else{
-                print '<img width="60" height="60" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
             }
             ?>
             <span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?></span></div>
@@ -130,9 +130,9 @@ else{
                                 <span class="user-name"><?php echo "$myfname"; ?> <?php echo "$mylname"; ?><i class="fa fa-angle-down"></i></span>
                                 <?php
                                 if ($myavatar == NULL) {
-                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                                 }else{
-                                    print '<img width="40" height="40" class="img-circle avatar" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                                    print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
                                 }
 
                                 ?>
@@ -163,9 +163,9 @@ else{
                         <div class="sidebar-profile-image">
                             <?php
                             if ($myavatar == NULL) {
-                                print' <img class="img-circle img-responsive" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                print' <img class="img-circle img-responsive" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                             }else{
-                                print '<img  src="http://localhost/iQuiz/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
+                                print '<img  src="http://otee.ir/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
                             }
 
                             ?>

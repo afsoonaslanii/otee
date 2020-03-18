@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 
 $myavatar = (count($query)>0 ? $query[0]->teacher_picture : NULL);
 $myfname = (count($query)>0 ? $query[0]->teacher_fname : "");

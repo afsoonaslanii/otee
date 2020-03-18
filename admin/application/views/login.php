@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 ?>
@@ -56,7 +56,7 @@ $description = $description;
                     </div>
                 <?php echo form_close();?>
                 <a href="">forgot password?</a>
-                <p>dont have an account? <a href="http://localhost/iQuiz/student/">sign up</a></p>
+                <p>dont have an account? <a href="http://otee.ir/student/">sign up</a></p>
             </div>
         </div>
     </div>

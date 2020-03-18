@@ -1,6 +1,6 @@
 
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 
 $ms = $ms;
 $description = $description;

@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/iQuiz';
+$url = 'http://otee.ir';
 
 $ms = $ms;
 $description = $description;
@@ -67,9 +67,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
         <div class="profile">
             <?php
             if ($myavatar == NULL) {
-                print'<img width="60" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
             }else{
-                print '<img width="60" height="60" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
             }
 
             ?>
@@ -115,9 +115,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                 <span class="user-name"><?php echo "$myfname"; ?> <?php echo "$mylname"; ?><i class="fa fa-angle-down"></i></span>
                                 <?php
                                 if ($myavatar == NULL) {
-                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                    print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                                 }else{
-                                    print '<img width="40" height="40" class="img-circle avatar" src="http://localhost/iQuiz/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
+                                    print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
                                 }
 
                                 ?>
@@ -148,9 +148,9 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                         <div class="sidebar-profile-image">
                             <?php
                             if ($myavatar == NULL) {
-                                print' <img class="img-circle img-responsive" src="http://localhost/iQuiz/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                print' <img class="img-circle img-responsive" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                             }else{
-                                print '<img  src="http://localhost/iQuiz/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
+                                print '<img  src="http://otee.ir/assets/images/'.$myavatar.'" class="img-circle img-responsive"  alt="'.$myfname.'"/>';
                             }
 
                             ?>
@@ -232,10 +232,10 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                             $status = $row->course_status;
                                                             if ($status == "1") {
                                                                 $st = '<p class="text-success">ACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/exam/inactive_crs/'.$row->course_id.'">Make Inactive</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/exam/inactive_crs/'.$row->course_id.'">Make Inactive</a>';
                                                             }else{
                                                                 $st = '<p class="text-danger">INACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/exam/active_crs/'.$row->course_id.'">Make Active</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/exam/active_crs/'.$row->course_id.'">Make Active</a>';
                                                             }
                                                             print '
 										       <tr>
@@ -251,7 +251,7 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>'.$stl.'</li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->course_name; ?> ?')" <?php print ' href="http://localhost/iQuiz/admin/index.php/exam/drop_course/'.$row->course_code.'">Drop course</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->course_name; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/exam/drop_course/'.$row->course_code.'">Drop course</a></li>
                                                 </ul>
                                             </div></td>
           
@@ -345,10 +345,10 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                             $status = $row->exam_status;
                                                             if ($status == "1") {
                                                                 $st = '<p class="text-success">ACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/exam/inactive_ex/'.$row->exam_id.'">Make Inactive</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/exam/inactive_ex/'.$row->exam_id.'">Make Inactive</a>';
                                                             }else{
                                                                 $st = '<p class="text-danger">INACTIVE</p>';
-                                                                $stl = '<a href="http://localhost/iQuiz/admin/index.php/exam/active_ex/'.$row->exam_id.'">Make Active</a>';
+                                                                $stl = '<a href="http://otee.ir/admin/index.php/exam/active_ex/'.$row->exam_id.'">Make Active</a>';
                                                             }
                                                             print '
 										       <tr>
@@ -365,10 +365,10 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>'.$stl.'</li>
-													<li><a href="http://localhost/iQuiz/admin/index.php/exam/edit_exam/'.$row->exam_id.'">Edit Exam</a></li>
-													<li><a href="http://localhost/iQuiz/admin/index.php/question/view_question/'.$row->exam_id.'">View Questions</a></li>
-													<li><a href="http://localhost/iQuiz/admin/index.php/exam/question/'.$row->exam_id.'">Add Questions</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="http://localhost/iQuiz/admin/index.php/exam/drop_exam/'.$row->exam_id.'">Drop Exam</a></li>
+													<li><a href="http://otee.ir/admin/index.php/exam/edit_exam/'.$row->exam_id.'">Edit Exam</a></li>
+													<li><a href="http://otee.ir/admin/index.php/question/view_question/'.$row->exam_id.'">View Questions</a></li>
+													<li><a href="http://otee.ir/admin/index.php/exam/question/'.$row->exam_id.'">Add Questions</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/exam/drop_exam/'.$row->exam_id.'">Drop Exam</a></li>
                                                 </ul>
                                             </div></td>
           
