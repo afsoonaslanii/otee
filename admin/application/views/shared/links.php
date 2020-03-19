@@ -12,5 +12,7 @@
 <link href="<?php echo $url; ?>/assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $url; ?>/assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $url; ?>/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
+
 <script src="<?php echo $url; ?>/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>

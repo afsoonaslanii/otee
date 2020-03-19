@@ -36,7 +36,7 @@ if (count($result) > 0) {
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
 		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
+
 
 
 </head>
