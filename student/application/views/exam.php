@@ -67,7 +67,7 @@ $description = $description;
             <span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?></span></div>
         <div class="profile-menu-list">
             <a href="<?php echo base_url(); ?>index.php/profile"><i class="fa fa-user"></i><span>Profile</span></a>
-            <a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+            <a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out"></i><span>خروج</span></a>
         </div>
     </nav>
     <button class="close-button" id="close-button">Close Menu</button>
@@ -103,12 +103,12 @@ $description = $description;
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
                                 <li role="presentation"><a href="<?php echo base_url(); ?>index.php/profile"><i class="fa fa-user"></i>Profile</a></li>
-                                <li role="presentation"><a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                <li role="presentation"><a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out m-r-xs"></i>خروج</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>index.php/logout" class="log-out waves-effect waves-button waves-classic">
-                                <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
+                                <span><i class="fa fa-sign-out m-r-xs"></i>خروج</span>
                             </a>
                         </li>
                         <li>
