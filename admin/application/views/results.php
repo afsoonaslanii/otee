@@ -1,10 +1,10 @@
 <?php
 $url = 'http://otee.ir';
 
-$myavatar = (count($query)>0 ? $query[0]->admin_picture : NULL);
-$myfname = (count($query)>0 ? $query[0]->admin_fname : "");
-$mylname = (count($query)>0 ? $query[0]->admin_lname : "");
-$mygender = (count($query)>0 ? $query[0]->gender : NULL);
+$myavatar = (count($query) > 0 ? $query[0]->admin_picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->admin_fname : "");
+$mylname = (count($query) > 0 ? $query[0]->admin_lname : "");
+$mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
 $ms = $ms;
 $description = $description;
@@ -14,47 +14,34 @@ $description = $description;
 
 <head>
 
-    <title>OES | Manage Results</title>
+	<title>OES | Manage Results</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
 	<?php require('shared/links.php') ?>
 
-    <link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
+		  type="text/css"/>
 
-    <link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
 
-    <?php require('shared/plugins.php') ?>
+	<?php require('shared/plugins.php') ?>
 
 </head>
-<body <?php if ($ms == "1") { print 'onload="myFunction()"'; } ?>  class="page-header-fixed">
-<div class="overlay"></div>
-<div class="menu-wrap">
-    <nav class="profile-menu">
-        <div class="profile">
-            <?php
-            if ($myavatar == NULL) {
-                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
-            }else{
-                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
-            }
+<body <?php if ($ms == "1") {
+	print 'onload="myFunction()"';
+} ?> class="page-header-fixed">
 
-            ?>
-            <span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?></span></div>
-        <div class="profile-menu-list">
-            <a href="profile.php"><i class="fa fa-user"></i><span>Profile</span></a>
-            <a href="logout.php"><i class="fa fa-sign-out"></i><span>خروج</span></a>
-        </div>
-    </nav>
-    <button class="close-button" id="close-button">Close Menu</button>
-</div>
+<?php require('layout/profile-menu.php') ?>
+
 <form class="search-form" action="search.php" method="GET">
-    <div class="input-group">
-        <input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-        <span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic" type="button"><i class="fa fa-times"></i></button>
+	<div class="input-group">
+		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
+		<span class="input-group-btn">
+                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
+							type="button"><i class="fa fa-times"></i></button>
                 </span>
-    </div>
+	</div>
 </form>
 <main class="page-content content-wrap">
 
@@ -65,26 +52,25 @@ $description = $description;
 	require('layout/sidebar.php');
 	?>
 
-    <div class="page-inner">
-        <div class="page-title">
-            <h3>Manage Results</h3>
+	<div class="page-inner">
+		<div class="page-title">
+			<h3>Manage Results</h3>
 
 
+		</div>
+		<div id="main-wrapper">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
 
-        </div>
-        <div id="main-wrapper">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="panel panel-white">
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <?php
-                                        $result = $query1;
-                                        if (count($result) > 0) {
-                                            print '
+							<div class="panel panel-white">
+								<div class="panel-body">
+									<div class="table-responsive">
+										<?php
+										$result = $query1;
+										if (count($result) > 0) {
+											print '
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
@@ -112,24 +98,24 @@ $description = $description;
                                         </tfoot>
                                         <tbody>';
 
-                                            foreach ($result as $row) {
-                                                $status = $row->exam_status;
-                                                if ($status == '1') {
-                                                    $st = '<p class="text-success">ACTIVE</p>';
-                                                    $stl = '<a href="pages/make_ex_in.php?id='.$row->exam_id.'">Make Inactive</a>';
-                                                }else{
-                                                    $st = '<p class="text-danger">INACTIVE</p>';
-                                                    $stl = '<a href="pages/make_ex_ac.php?id='.$row->exam_id.'">Make Active</a>';
-                                                }
-                                                print '
+											foreach ($result as $row) {
+												$status = $row->exam_status;
+												if ($status == '1') {
+													$st = '<p class="text-success">ACTIVE</p>';
+													$stl = '<a href="pages/make_ex_in.php?id=' . $row->exam_id . '">Make Inactive</a>';
+												} else {
+													$st = '<p class="text-danger">INACTIVE</p>';
+													$stl = '<a href="pages/make_ex_ac.php?id=' . $row->exam_id . '">Make Active</a>';
+												}
+												print '
 										       <tr>
-                                                <td>'.$row->exam_title.'</td>
-												<td>'.$row->class_id.'</td>
-                                                <td>'.$row->exam_date.'</td>
-												<td>'.$row->exam_duration.'<b> min.</b></td>
-												<td>'.$row->passmark.'<b>%</b></td>
-												<td>'.$row->re_exam.'<b> day(s)</b></td>
-												<td>'.$st.'</td>
+                                                <td>' . $row->exam_title . '</td>
+												<td>' . $row->class_id . '</td>
+                                                <td>' . $row->exam_date . '</td>
+												<td>' . $row->exam_duration . '<b> min.</b></td>
+												<td>' . $row->passmark . '<b>%</b></td>
+												<td>' . $row->re_exam . '<b> day(s)</b></td>
+												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     Select Action
@@ -137,45 +123,47 @@ $description = $description;
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                   
-													<li><a href="http://otee.ir/admin/index.php/results/view_results/'.$row->exam_id.'">View Results</a></li>
-									                <li><a href="http://otee.ir/admin/index.php/results/summary/'.$row->exam_id.'">Short Summary</a></li>
+													<li><a href="http://otee.ir/admin/index.php/results/view_results/' . $row->exam_id . '">View Results</a></li>
+									                <li><a href="http://otee.ir/admin/index.php/results/summary/' . $row->exam_id . '">Short Summary</a></li>
 													
                                                 </ul>
                                             </div></td>
           
                                             </tr>';
-                                            }
+											}
 
-                                            print '
+											print '
 									   </tbody>
                                        </table>  ';
-                                        } else {
-                                            print '
+										} else {
+											print '
 												<div class="alert alert-info" role="alert">
                                         Nothing was found in database.
                                     </div>';
 
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
+										}
+										?>
+									</div>
+								</div>
+							</div>
 
-                        </div>
-                    </div>
+						</div>
+					</div>
 
 
-                </div>
-            </div>
-        </div>
-        <div class="page-footer">
-            <p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+		<div class="page-footer">
+			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
+					href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+		</div>
+	</div>
 </main>
 <?php if ($ms == "1") {
-    ?> <div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-}else{
+	?>
+	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
+} else {
 
 }
 ?>
@@ -213,7 +201,9 @@ $description = $description;
     function myFunction() {
         var x = document.getElementById("snackbar");
         x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
     }
 </script>
 </body>

@@ -32,33 +32,18 @@ $std_fails = $fail_st;
 
 	<?php require('shared/links.php') ?>
 
-	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
+		  type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet"
+		  type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/metrojs/MetroJs.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body class="page-header-fixed">
-<div class="overlay"></div>
-<div class="menu-wrap">
-	<nav class="profile-menu">
-		<div class="profile">
-			<?php
-			if ($myavatar == NULL) {
-				print'<img width="60" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
-			} else {
-				print '<img width="60" height="60" src="http://otee.ir/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
-			}
 
-			?>
-			<span><?php echo "$myfname"; ?><?php echo "$mylname"; ?></span></div>
-		<div class="profile-menu-list">
-			<a href='<?php echo base_url(); ?>index.php/profile'><i class="fa fa-user"></i><span>Profile</span></a>
-			<a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out"></i><span>خروج</span></a>
-		</div>
-	</nav>
-	<button class="close-button" id="close-button">خروج</button>
-</div>
+<?php require('layout/profile-menu.php') ?>
+
 <form class="search-form" action="search.php" method="GET">
 	<div class="input-group">
 		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>

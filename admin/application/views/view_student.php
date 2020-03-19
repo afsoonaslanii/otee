@@ -3,30 +3,29 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1)>0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1)>0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1)>0 ? $query1[0]->admin_lname : "");
-$mygender = (count($query1)>0 ? $query1[0]->gender : null);
+$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
-    $result = $query;
+$result = $query;
 
-    if (count($result)> 0) {
+if (count($result) > 0) {
 
-        foreach ($result as $row) {
-            $student_id = $row->student_id;
-            $sdfname = $row->student_fname;
-            $sdlname = $row->student_lname;
-            $sdgender = $row->gender;
-            $sdemail = $row->email;
-            $sdphone = $row->phone;
-            $sdavatar = $row->student_picture;
-            $sdstat = $row->acc_stat;
-          // $qrcodetxt = 'ID:'.$student_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
+	foreach ($result as $row) {
+		$student_id = $row->student_id;
+		$sdfname = $row->student_fname;
+		$sdlname = $row->student_lname;
+		$sdgender = $row->gender;
+		$sdemail = $row->email;
+		$sdphone = $row->phone;
+		$sdavatar = $row->student_picture;
+		$sdstat = $row->acc_stat;
+		// $qrcodetxt = 'ID:'.$student_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
 
-        }
-    }
-else{
-    header("location:./");
+	}
+} else {
+	header("location:./");
 }
 ?>
 <!DOCTYPE html>
@@ -34,48 +33,35 @@ else{
 
 <head>
 
-    <title>OES | View Student</title>
+	<title>OES | View Student</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
 	<?php require('shared/links.php') ?>
 
-    <link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
+		  type="text/css"/>
 
-    <link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
 
-    <?php require('shared/plugins.php') ?>
+	<?php require('shared/plugins.php') ?>
 
 </head>
-<body <?php if ($ms == "1") { print 'onload="myFunction()"'; } ?>  class="page-header-fixed">
+<body <?php if ($ms == "1") {
+	print 'onload="myFunction()"';
+} ?> class="page-header-fixed">
 <body>
-<div class="overlay"></div>
-<div class="menu-wrap">
-    <nav class="profile-menu">
-        <div class="profile">
-            <?php
-            if ($myavatar == NULL) {
-                print'<img width="60" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
-            }else{
-                print '<img width="60" height="60" src="http://otee.ir/assets/images/'.$myavatar.'" alt="'.$myfname.'">';
-            }
 
-            ?>
-            <span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?></span></div>
-        <div class="profile-menu-list">
-            <a href="<?php echo base_url();?>index.php/profile"><i class="fa fa-user"></i><span>Profile</span></a>
-            <a href="<?php echo base_url();?>index.php/logout"><i class="fa fa-sign-out"></i><span>خروج</span></a>
-        </div>
-    </nav>
-    <button class="close-button" id="close-button">Close Menu</button>
-</div>
+<?php require('layout/profile-menu.php') ?>
+
 <form class="search-form" action="search.php" method="GET">
-    <div class="input-group">
-        <input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-        <span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic" type="button"><i class="fa fa-times"></i></button>
+	<div class="input-group">
+		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
+		<span class="input-group-btn">
+                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
+							type="button"><i class="fa fa-times"></i></button>
                 </span>
-    </div>
+	</div>
 </form>
 <main class="page-content content-wrap">
 
@@ -86,90 +72,89 @@ else{
 	require('layout/sidebar.php');
 	?>
 
-    <div class="page-inner">
-        <div class="page-title">
-            <h3>View Student - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
+	<div class="page-inner">
+		<div class="page-title">
+			<h3>View Student - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
 
 
+		</div>
+		<div id="main-wrapper">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-5">
 
-        </div>
-        <div id="main-wrapper">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-5">
+							<div class="panel panel-white">
+								<div class="panel-body">
+									<div class="col-md-6">
+										<?php
+										if ($sdavatar == NULL) {
+											print' <img class="img-responsive" src="http://otee.ir/assets/images/' . $sdgender . '.png" alt="' . $sdfname . '">';
+										} else {
+											print '<img src="http://otee.ir/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
+										}
 
-                            <div class="panel panel-white">
-                                <div class="panel-body">
-                                    <div class="col-md-6">
-                                        <?php
-                                        if ($sdavatar == NULL) {
-                                            print' <img class="img-responsive" src="http://otee.ir/assets/images/'.$sdgender.'.png" alt="'.$sdfname.'">';
-                                        }else{
-                                            print '<img src="http://otee.ir/assets/images/'.$myavatar.'" class="img-responsive"  alt="'.$myfname.'"/>';
-                                        }
+										?></div>
+									<!--                                    <div class="col-md-6">-->
+									<!--                                        --><?php //print '<img width="150" src="../assets/qrcode/qr_img.php?d='.$qrcodetxt.'">'; ?>
+									<!--                                    </div>-->
 
-                                        ?></div>
-<!--                                    <div class="col-md-6">-->
-<!--                                        --><?php //print '<img width="150" src="../assets/qrcode/qr_img.php?d='.$qrcodetxt.'">'; ?>
-<!--                                    </div>-->
+								</div>
+								<table class="table">
+									<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>Registration Number</td>
+										<td><b><?php echo "$student_id"; ?></b></td>
 
-                                </div>
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Registration Number</td>
-                                        <td><b><?php echo "$student_id"; ?></b></td>
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>First Name</td>
+										<td><b><?php echo "$sdfname"; ?></b></td>
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>First Name</td>
-                                        <td><b><?php echo "$sdfname"; ?></b></td>
+									</tr>
+									<tr>
+										<th scope="row">3</th>
+										<td>Last Name</td>
+										<td><b><?php echo "$sdlname"; ?></b></td>
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Last Name</td>
-                                        <td><b><?php echo "$sdlname"; ?></b></td>
+									</tr>
+									<tr>
+										<th scope="row">4</th>
+										<td>Gender</td>
+										<td><b><?php echo "$sdgender"; ?></b></td>
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Gender</td>
-                                        <td><b><?php echo "$sdgender"; ?></b></td>
+									</tr>
+									<tr>
+										<th scope="row">5</th>
+										<td>Email Address</td>
+										<td><b><?php echo "$sdemail"; ?></b></td>
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Email Address</td>
-                                        <td><b><?php echo "$sdemail"; ?></b></td>
+									</tr>
+									<tr>
+										<th scope="row">6</th>
+										<td>Phone Number</td>
+										<td><b><?php echo "$sdphone"; ?></b></td>
 
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>Phone Number</td>
-                                        <td><b><?php echo "$sdphone"; ?></b></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
 
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+						</div>
 
-                        </div>
+						<div class="col-md-7">
 
-                        <div class="col-md-7">
+							<div class="panel panel-white">
+								<div class="panel-body">
+									<h3><?php echo "$sdfname"; ?> دروس اخذ شده توسط </h3>
+									<div class="table-responsive">
+										<?php
+										$result = $class;
 
-                            <div class="panel panel-white">
-                                <div class="panel-body">
-                                    <h3><?php echo "$sdfname"; ?> دروس اخذ شده توسط </h3>
-                                    <div class="table-responsive">
-                                        <?php
-                                        $result = $class;
-
-                                        if (count($result) > 0) {
-                                            print '
+										if (count($result) > 0) {
+											print '
 									   <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
@@ -189,44 +174,48 @@ else{
                                         </tfoot>
                                         <tbody>';
 
-                                            foreach ($result as $row) {
-                                                print '
+											foreach ($result as $row) {
+												print '
 									        <tr>
-							                    <td>'.$row->course_code.'</td>
-									            <td>'.$row->course_name.'</td>
-                                                <td>'.$row->score.'٪</td>
-                                                <td>'.$row->status_student.'</td>
+							                    <td>' . $row->course_code . '</td>
+									            <td>' . $row->course_name . '</td>
+                                                <td>' . $row->score . '٪</td>
+                                                <td>' . $row->status_student . '</td>
                                             </tr>';
-                                            }
-                                            print '
+											}
+											print '
 									   </tbody>
                                        </table>  ';
-                                        } else {
-                                            print '
+										} else {
+											print '
 												<div class="alert alert-info" role="alert">
                                         Nothing was found in database.
                                     </div>';
-                                        }
-                                        ?>
-                                    </div>
+										}
+										?>
+									</div>
 
-                                </div></div></div>
+								</div>
+							</div>
+						</div>
 
 
-                    </div>
+					</div>
 
 
-                </div>
-            </div>
-        </div>
-        <div class="page-footer">
-            <p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+		<div class="page-footer">
+			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
+					href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+		</div>
+	</div>
 </main>
 <?php if ($ms == "1") {
-    ?> <div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-}else{
+	?>
+	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
+} else {
 
 }
 ?>
@@ -264,7 +253,9 @@ else{
     function myFunction() {
         var x = document.getElementById("snackbar");
         x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
     }
 </script>
 </body>

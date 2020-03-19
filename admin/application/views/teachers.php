@@ -20,8 +20,9 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<?php require('shared/links.php') ?>
 
-	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
-
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
+		  type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
 
 	<?php require('shared/plugins.php') ?>
@@ -31,26 +32,9 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 	print 'onload="myFunction()"';
 } ?> class="page-header-fixed">
 <body>
-<div class="overlay"></div>
-<div class="menu-wrap">
-	<nav class="profile-menu">
-		<div class="profile">
-			<?php
-			if ($myavatar == NULL) {
-				print'<img width="60" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
-			} else {
-				print '<img width="60" height="60" src="http://otee.ir/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
-			}
 
-			?>
-			<span><?php echo "$myfname"; ?><?php echo "$mylname"; ?></span></div>
-		<div class="profile-menu-list">
-			<a href="<?php echo base_url(); ?>index.php/profile"><i class="fa fa-user"></i><span>Profile</span></a>
-			<a href="logout"><i class="fa fa-sign-out"></i><span>خروج</span></a>
-		</div>
-	</nav>
-	<button class="close-button" id="close-button">Close Menu</button>
-</div>
+<?php require('layout/profile-menu.php') ?>
+
 <form class="search-form" action="search.php" method="GET">
 	<div class="input-group">
 		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
