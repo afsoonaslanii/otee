@@ -95,7 +95,8 @@ else {
 											print '<img src="http://otee.ir/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
 										}
 
-										?></div>
+										?>
+									</div>
 									<!--                                    <div class="col-md-6">-->
 									<!--                                        --><?php //print '<img width="150" src="../assets/qrcode/qr_img.php?d='.$qrcodetxt.'">'; ?>
 									<!--                                    </div>-->

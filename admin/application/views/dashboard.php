@@ -48,9 +48,10 @@ $std_fails = $fail_st;
 	<div class="input-group">
 		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
 		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
+			<button class="btn btn-default close-search waves-effect waves-button waves-classic" type="button">
+				<i class="fa fa-times"></i>
+			</button>
+        </span>
 	</div>
 </form>
 <main class="page-content content-wrap">
@@ -64,11 +65,11 @@ $std_fails = $fail_st;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Admin Dashboard</h3>
+			<h3>داشبورد ادمین</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="<?php echo base_url(); ?>index.php/dashboard">home</a></li>
-					<li class="active">Admin dashboard</li>
+					<li><a href="<?php echo base_url(); ?>index.php/dashboard">خانه</a></li>
+					<li class="active">داشبورد ادمین</li>
 				</ol>
 			</div>
 		</div>
@@ -79,7 +80,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($teacher); ?></p>
-								<span class="info-box-title">TEACHERS</span>
+								<span class="info-box-title">آموزگاران</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-user"></i>
@@ -92,7 +93,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($students); ?></p>
-								<span class="info-box-title">STUDENTS</span>
+								<span class="info-box-title">دانش آموزان</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-graduation"></i>
@@ -106,7 +107,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p><span class="counter"><?php echo number_format($examination); ?></span></p>
-								<span class="info-box-title">EXAMINATIONS</span>
+								<span class="info-box-title">امتحانات</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-book-open"></i>
@@ -120,7 +121,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($active_teacher); ?></p>
-								<span class="info-box-title">ACTIVE TEACHER</span>
+								<span class="info-box-title">آموزگاران فعال</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-docs"></i>
@@ -134,7 +135,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($inactive_teacher); ?></p>
-								<span class="info-box-title">INACTIVE TEACHER</span>
+								<span class="info-box-title">آموزگاران غیرفعال</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-tag"></i>
@@ -147,7 +148,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($notice); ?></p>
-								<span class="info-box-title">NOTICE</span>
+								<span class="info-box-title">اعلان</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-list"></i>
@@ -161,7 +162,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p><span class="counter"><?php echo number_format($questions); ?></span></p>
-								<span class="info-box-title">QUESTIONS</span>
+								<span class="info-box-title">سوالات</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-question"></i>
@@ -175,7 +176,7 @@ $std_fails = $fail_st;
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p class="counter"><?php echo number_format($banned_students); ?></p>
-								<span class="info-box-title">BANNED STUDENTS</span>
+								<span class="info-box-title">دانش آموزان ممنوع شده</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-lock"></i>

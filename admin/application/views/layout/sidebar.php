@@ -12,7 +12,6 @@
 						}
 
 						?>
-
 					</div>
 					<div class="sidebar-profile-details">
 						<span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?>
@@ -34,7 +33,7 @@
 			<li class="<?php echo $active_sidebar_item === 'teachers' ? 'active' : 'not-active' ?>">
 				<a href="<?php echo base_url(); ?>index.php/teachers" class="waves-effect waves-button"><span
 						class="menu-icon glyphicon glyphicon-user"></span>
-					<p>معلمان</p>
+					<p>آموزگاران</p>
 				</a>
 			</li>
 			<li class="<?php echo $active_sidebar_item === 'students' ? 'active' : 'not-active' ?>">

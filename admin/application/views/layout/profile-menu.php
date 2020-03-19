@@ -12,7 +12,7 @@
 			?>
 			<span><?php echo "$myfname"; ?><?php echo "$mylname"; ?></span></div>
 		<div class="profile-menu-list">
-			<a href='<?php echo base_url(); ?>index.php/profile'><i class="fa fa-user"></i><span>Profile</span></a>
+			<a href='<?php echo base_url(); ?>index.php/profile'><i class="fa fa-user"></i><span>پروفایل</span></a>
 			<a href="<?php echo base_url(); ?>index.php/logout"><i class="fa fa-sign-out"></i><span>خروج</span></a>
 		</div>
 	</nav>
