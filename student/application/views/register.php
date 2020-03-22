@@ -8,13 +8,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+	<title>iQuiz | register </title>
+
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/plugins/pace-master/themes/blue/pace-theme-flash.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/modern.css">
     <link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/index.css">
 
-    <title>iQuiz | register </title>
 </head>
 <!--<body --><?php //if ($ms == "1") { print 'onload="myFunction()"'; } ?><!--  class="page-login">-->
 <body>
