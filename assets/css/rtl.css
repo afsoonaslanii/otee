@@ -1,3 +1,68 @@
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-FD-WOL.ttf') format('truetype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-Bold-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-Bold-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-Bold-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-Bold-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-Bold-FD-WOL.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-Light-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-Light-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-Light-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-Light-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-Light-FD-WOL.ttf') format('truetype');
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-Medium-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-Medium-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-Medium-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-Medium-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-Medium-FD-WOL.ttf') format('truetype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-Thin-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-Thin-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-Thin-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-Thin-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-Thin-FD-WOL.ttf') format('truetype');
+	font-weight: 100;
+}
+
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazirFD/Vazir-Black-FD-WOL.eot');
+	src: url('../fonts/vazirFD/Vazir-Black-FD-WOL.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazirFD/Vazir-Black-FD-WOL.woff2') format('woff2'),
+	url('../fonts/vazirFD/Vazir-Black-FD-WOL.woff') format('woff'),
+	url('../fonts/vazirFD/Vazir-Black-FD-WOL.ttf') format('truetype');
+	font-weight: 900;
+}
+
+body {
+	font-family: Vazir, Arial, sans-serif;
+	font-size: 15px;
+}
+
 .page-sidebar {
 	float: right;
 }
