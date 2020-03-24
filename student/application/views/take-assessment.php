@@ -1,4 +1,5 @@
 <?php
+require_once 'shared/convert_date.php';
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -121,8 +122,8 @@ if (count($result) > 0) {
 
 										<tr>
 											<th scope="row">2</th>
-											<td>زمان</td>
-											<td><?php echo "$deadline"; ?></td>
+											<td>تاریخ</td>
+											<td><?php echo convert_date($deadline); ?></td>
 										</tr>
 
 										<tr>
@@ -136,9 +137,9 @@ if (count($result) > 0) {
 											<td>زمان آزمون مجدد</td>
 											<td><?php
 												if ($record_found == "1") {
-													echo "$retake_date";
+													echo convert_date($retake_date);
 												} else {
-													echo "$next_retake";
+													echo convert_date($next_retake);
 												}
 
 												?></td>
@@ -215,7 +216,7 @@ if (count($result) > 0) {
 									print '
 								<div class="alert alert-warning" role="alert">
                                 تاریخ امتحان مجدد:  
-                                ' . $retake_date . '
+                                ' . convert_date($retake_date) . '
                                 </div>';
 								}
 
@@ -223,14 +224,21 @@ if (count($result) > 0) {
 								$_SESSION['current_examid'] = $exam_id;
 								$_SESSION['student_retake'] = 0;
 								print '
-                                 <div class="alert alert-success" role="alert">
+                                 <div 
+                                 class="alert alert-success" 
+                                 role="alert"
+                                 >
                                   موفق باشید
                                     </div>
-
-									'; ?>
-								<a onclick="return confirm('برای شروع آزمون اماده اید؟')" class="btn btn-success"
-								   href="<?php echo base_url() ?>index.php/exam/Assessment/<?php echo $row->exam_id ?>">شروع
-									آزمون</a>
+									';
+								?>
+								<a
+									onclick="return confirm('برای شروع آزمون اماده اید؟')"
+									class="btn btn-success"
+									href="<?php echo base_url() ?>index.php/exam/Assessment/<?php echo $row->exam_id ?>"
+								>
+									شروع آزمون
+								</a>
 								<?php
 							}
 							?>
@@ -249,7 +257,7 @@ if (count($result) > 0) {
 								print '
                                 <div class="alert alert-info" role="alert">
 							    	شما این امتحان را در تاریخ
-                                    <strong>' . $take_date . '</strong>
+                                    <strong>' . convert_date($take_date) . '</strong>
                                     با امتیاز 
                                     <strong>' . $score . '%</strong>
                                     گذرانده اید.

@@ -1,4 +1,5 @@
 <?php
+require_once 'shared/convert_date.php';
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -93,7 +94,7 @@ $description = $description;
 												$status = $row->exam_status;
 												if ($status == '1') {
 													$st = '<p class="text-success">فعال</p>';
-													$stl = '<a class="btn btn-success" href="' .  base_url() . 'index.php/exam/Take_Assessment/' . $row->exam_id . '/' . $student_id . '">شروع آزمون</a>';
+													$stl = '<a class="btn btn-success" href="' . base_url() . 'index.php/exam/Take_Assessment/' . $row->exam_id . '/' . $student_id . '">شروع آزمون</a>';
 												} else {
 													$st = '<p class="text-danger">غیرفعال</p>';
 													$stl = '<a class="btn btn-danger disabled" href="#">شروع آزمون</a>';
@@ -103,7 +104,7 @@ $description = $description;
 										        <td>' . $row->course_code . '</td>
                                                 <td>' . $row->exam_title . '</td>
 												<td>' . $row->teacher_fname . ' ' . $row->teacher_lname . '</td>
-                                                <td>' . $row->exam_date . '</td>
+                                                <td>' . convert_date($row->exam_date) . '</td>
                                                 <td>' . $st . '</td>
 												<td>' . $stl . '</td>
 
