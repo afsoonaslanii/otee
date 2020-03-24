@@ -1,0 +1,32 @@
+.page-sidebar {
+	float: right;
+}
+
+.show-menu .content-wrap {
+	-webkit-transform: translate3d(-80px, 80px, 0);
+	transform: translate3d(-80px, 80px, 0);
+}
+
+.menu-wrap {
+	-webkit-transform: translate3d(320px, -320px, 0);
+	transform: translate3d(320px, -320px, 0);
+}
+
+.navbar .logo-box {
+	float: right;
+}
+
+.topmenu-outer {
+	margin-right: 160px;
+	margin-left: 0;
+}
+
+/* step section */
+.breadcrumb{
+	width: 100%;
+}
+
+/* headers */
+.panel-title{
+	width: 100%;
+}
