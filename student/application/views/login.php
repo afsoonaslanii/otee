@@ -12,7 +12,7 @@ $description = $description;
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>iQuiz | Login </title>
+	<title>او-تی | ورود</title>
 
     <link href="<?php echo $url; ?>/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
     <link href="<?php echo $url; ?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +27,7 @@ $description = $description;
         <div id="main-wrapper">
             <div class="row">
                 <div class="col-md-4 center">
-                    <h2>آی کوییز</h2>
+                    <h2>او - تی</h2>
                     <h5>آزمون انلاین</h5>
 
                     <?php
