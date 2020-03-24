@@ -1,4 +1,5 @@
 <?php
+require_once 'shared/convert_date.php';
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -93,7 +94,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">4</th>
 											<td>زمان آزمون مجدد</td>
-											<td><?php echo "$next_retake"; ?></td>
+											<td><?php echo convert_date($next_retake); ?></td>
 										</tr>
 
 										</tbody>

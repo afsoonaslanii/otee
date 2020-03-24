@@ -52,7 +52,6 @@ if (count($exam) > 0) {
 <?php require('layout/profile-menu.php') ?>
 
 <main class="page-content content-wrap container">
-
 	<?php require('layout/navbar.php'); ?>
 
 	<div class="horizontal-bar sidebar">

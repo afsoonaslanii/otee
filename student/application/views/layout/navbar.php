@@ -6,7 +6,7 @@
 			</a>
 		</div>
 		<div class="logo-box">
-			<a href="./" class="logo-text"><span>او تی</span></a>
+			<a href="./" class="logo-text"><span id="quiz-time-left">او تی</span></a>
 		</div>
 		<div class="search-button">
 			<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">
