@@ -43,6 +43,7 @@ $description = $description;
 
 	<?php
 	$active_sidebar_item = 'exam';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

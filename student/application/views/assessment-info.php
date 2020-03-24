@@ -47,6 +47,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = '';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

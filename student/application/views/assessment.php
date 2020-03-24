@@ -54,57 +54,12 @@ if (count($exam) > 0) {
 <main class="page-content content-wrap container">
 	<?php require('layout/navbar.php'); ?>
 
-	<div class="horizontal-bar sidebar">
-		<div class="page-sidebar-inner slimscroll">
-			<div class="sidebar-header">
-				<div class="sidebar-profile">
-					<a href="javascript:void(0);" id="profile-menu-link">
-						<div class="sidebar-profile-image">
-							<?php
-							if ($myavatar == NULL) {
-								print' <img class="img-circle img-responsive" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
-							} else {
-								print '<img  src="' . $url . '/assets/images/' . $myavatar . '" class="img-circle img-responsive"  alt="' . $myfname . '"/>';
-							}
+	<?php
+	$active_sidebar_item = '';
+	$horizontal = true;
+	require('layout/sidebar.php');
+	?>
 
-							?>
-						</div>
-						<div class="sidebar-profile-details">
-							<span>
-								<?php echo "$myfname"; ?> <?php echo "$mylname"; ?>
-								<br>
-								<small>اوتی | دانش آموز</small>
-							</span>
-						</div>
-					</a>
-				</div>
-			</div>
-			<ul class="menu accordion-menu">
-				<li>
-					<a href="<?php echo base_url(); ?>index.php/dashboard" class="waves-effect waves-button">
-						<span class="menu-icon glyphicon glyphicon-home">
-						</span>
-						<p>داشبورد</p>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url(); ?>index.php/examinations" class="waves-effect waves-button">
-						<span class="menu-icon glyphicon glyphicon-book">
-						</span>
-						<p>امتحانات</p>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url(); ?>index.php/result" class="waves-effect waves-button">
-						<span class="menu-icon glyphicon glyphicon-certificate">
-						</span>
-						<p>نتایج امتحانات</p>
-					</a>
-				</li>
-
-			</ul>
-		</div>
-	</div>
 	<div class="page-inner">
 		<div class="page-title">
 			<h3>امتحانات</h3>

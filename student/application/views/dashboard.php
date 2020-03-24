@@ -38,6 +38,7 @@ $notice = '44';
 
 	<?php
 	$active_sidebar_item = 'dashboard';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

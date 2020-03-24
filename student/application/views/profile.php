@@ -38,6 +38,7 @@ $description = $description;
 
 	<?php
 	$active_sidebar_item = '';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 
