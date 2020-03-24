@@ -114,10 +114,10 @@ $description = $description;
 															$status = $row->acc_stat;
 															if ($status == "1") {
 																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/students/inactive_st/' . $row->user_id . '">Make Inactive</a>';
+																$stl = '<a href="' . base_url() . 'index.php/students/inactive_st/' . $row->user_id . '">Make Inactive</a>';
 															} else {
 																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/students/active_st/' . $row->user_id . '">Make Active</a>';
+																$stl = '<a href="' . base_url() . 'index.php/students/active_st/' . $row->user_id . '">Make Active</a>';
 															}
 															print '
 										       <tr>
@@ -132,9 +132,9 @@ $description = $description;
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="http://otee.ir/admin/index.php/students/edit_student/' . $row->user_id . '">Edit Student</a></li>
-													<li><a href="http://otee.ir/admin/index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">View Student</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->student_fname; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/students/drop_sd/' . $row->user_id . '">Drop Student</a></li>
+													<li><a href="' . base_url() . 'index.php/students/edit_student/' . $row->user_id . '">Edit Student</a></li>
+													<li><a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">View Student</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->student_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">Drop Student</a></li>
                                                 </ul>
                                             </div></td>
           

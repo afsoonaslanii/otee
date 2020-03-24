@@ -133,7 +133,7 @@ if (count($result) > 0) {
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op4 . '> ' . $op4 . '</p>
 											 <hr>
 											 <a  class="btn btn-twitter m-b-xs"href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="http://otee.ir/admin/index.php/question/drop_question/' . $row->question_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $row->question_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											} else {

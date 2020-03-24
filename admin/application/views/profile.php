@@ -80,14 +80,14 @@ $description = $description;
 									<div class="col-md-6">
 										<?php
 										if ($myavatar == NULL) {
-											print' <img class="img-responsive" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+											print' <img class="img-responsive" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 										} else {
-											print '<img src="http://otee.ir/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
+											print '<img src="' . $url . '/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
 										}
 
 										?></div>
 									<div class="col-md-6">
-										<?php print '<img width="150" src="http://otee.ir/assets/qrcode/qr_img.php?d=' . $qrcodetxt . '">'; ?>
+										<?php print '<img width="150" src="' . $url . '/assets/qrcode/qr_img.php?d=' . $qrcodetxt . '">'; ?>
 									</div>
 
 								</div>

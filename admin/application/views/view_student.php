@@ -89,9 +89,9 @@ if (count($result) > 0) {
 									<div class="col-md-6">
 										<?php
 										if ($sdavatar == NULL) {
-											print' <img class="img-responsive" src="http://otee.ir/assets/images/' . $sdgender . '.png" alt="' . $sdfname . '">';
+											print' <img class="img-responsive" src="' . $url . '/assets/images/' . $sdgender . '.png" alt="' . $sdfname . '">';
 										} else {
-											print '<img src="http://otee.ir/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
+											print '<img src="' . $url . '/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
 										}
 
 										?></div>

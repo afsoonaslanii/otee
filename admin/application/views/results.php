@@ -123,8 +123,8 @@ $description = $description;
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                   
-													<li><a href="http://otee.ir/admin/index.php/results/view_results/' . $row->exam_id . '">View Results</a></li>
-									                <li><a href="http://otee.ir/admin/index.php/results/summary/' . $row->exam_id . '">Short Summary</a></li>
+													<li><a href="' . base_url() . 'index.php/results/view_results/' . $row->exam_id . '">View Results</a></li>
+									                <li><a href="' . base_url() . 'index.php/results/summary/' . $row->exam_id . '">Short Summary</a></li>
 													
                                                 </ul>
                                             </div></td>

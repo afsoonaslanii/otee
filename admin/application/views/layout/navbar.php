@@ -31,9 +31,9 @@
 							</span>
 							<?php
 							if ($myavatar == NULL) {
-								print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+								print' <img class="img-circle avatar"  width="40" height="40" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 							} else {
-								print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
+								print '<img width="40" height="40" class="img-circle avatar" src="' . $url . '/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
 							}
 
 							?>

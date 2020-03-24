@@ -58,7 +58,6 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 		<div class="page-title">
 			<h3>Manage Examinations</h3>
 
-
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -73,13 +72,22 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										<ul class="nav nav-tabs" role="tablist">
 											<li role="presentation" class="active"><a href="#tab1" role="tab"
 																					  data-toggle="tab">course</a></li>
-											<li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Add
-													course</a></li>
-
-											<li role="presentation"><a href="#tab5" role="tab" data-toggle="tab">Examinations</a>
+											<li role="presentation">
+												<a href="#tab2" role="tab" data-toggle="tab">
+													Add course
+												</a>
 											</li>
-											<li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Add
-													Exam</a></li>
+
+											<li role="presentation">
+												<a href="#tab5" role="tab" data-toggle="tab">
+													Examinations
+												</a>
+											</li>
+											<li role="presentation">
+												<a href="#tab6" role="tab" data-toggle="tab">
+													Add Exam
+												</a>
+											</li>
 										</ul>
 
 										<div class="tab-content">
@@ -117,10 +125,10 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															$status = $row->course_status;
 															if ($status == "1") {
 																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/exam/inactive_crs/' . $row->course_id . '">Make Inactive</a>';
+																$stl = '<a href="' . base_url() . 'index.php/exam/inactive_crs/' . $row->course_id . '">Make Inactive</a>';
 															} else {
 																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/exam/active_crs/' . $row->course_id . '">Make Active</a>';
+																$stl = '<a href="' . base_url() . 'index.php/exam/active_crs/' . $row->course_id . '">Make Active</a>';
 															}
 															print '
 										       <tr>
@@ -136,7 +144,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->course_name; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/exam/drop_course/' . $row->course_code . '">Drop course</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->course_name; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_course/' . $row->course_code . '">Drop course</a></li>
                                                 </ul>
                                             </div></td>
           
@@ -165,19 +173,31 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													  method="POST">
 													<div class="form-group">
 														<label for="exampleInputEmail1">Course Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter course name" name="coursename"
-															   required autocomplete="off">
+														<input
+															type="text"
+															class="form-control"
+															placeholder="Enter course name"
+															name="coursename"
+															required autocomplete="off"
+														>
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Course Code</label>
-														<input type="number" class="form-control"
-															   placeholder="Enter course code" name="coursecode"
-															   required autocomplete="off">
+														<input
+															type="number"
+															class="form-control"
+															placeholder="Enter course code"
+															name="coursecode"
+															required autocomplete="off"
+														>
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Select Teacher</label>
-														<select class="form-control" name="teacherid" required>
+														<select
+															class="form-control"
+															name="teacherid"
+															required
+														>
 															<option value="" selected disabled>-Select Teacher</option>
 															<?php
 
@@ -230,13 +250,14 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                         <tbody>';
 
 														foreach ($result as $row) {
+
 															$status = $row->exam_status;
 															if ($status == "1") {
 																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/exam/inactive_ex/' . $row->exam_id . '">Make Inactive</a>';
+																$stl = '<a href="' . base_url() . 'index.php/exam/inactive_ex/' . $row->exam_id . '">Make Inactive</a>';
 															} else {
 																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="http://otee.ir/admin/index.php/exam/active_ex/' . $row->exam_id . '">Make Active</a>';
+																$stl = '<a href="' . base_url() . 'index.php/exam/active_ex/' . $row->exam_id . '">Make Active</a>';
 															}
 															print '
 										       <tr>
@@ -253,10 +274,10 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="http://otee.ir/admin/index.php/exam/edit_exam/' . $row->exam_id . '">Edit Exam</a></li>
-													<li><a href="http://otee.ir/admin/index.php/question/view_question/' . $row->exam_id . '">View Questions</a></li>
-													<li><a href="http://otee.ir/admin/index.php/exam/question/' . $row->exam_id . '">Add Questions</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="http://otee.ir/admin/index.php/exam/drop_exam/' . $row->exam_id . '">Drop Exam</a></li>
+													<li><a href="' . base_url() . 'index.php/exam/edit_exam/' . $row->exam_id . '">Edit Exam</a></li>
+													<li><a href="' . base_url() . 'index.php/question/view_question/' . $row->exam_id . '">View Questions</a></li>
+													<li><a href="' . base_url() . 'index.php/exam/question/' . $row->exam_id . '">Add Questions</a></li>
+                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_exam/' . $row->exam_id . '">Drop Exam</a></li>
                                                 </ul>
                                             </div></td>
           
