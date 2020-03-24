@@ -12,6 +12,7 @@ class User_model extends CI_Model
         $this->db->select('*');
         $this->db->where('username',"$username");
         $this->db->where('password',"$password");
+        $this->db->where('user_type',"admin");
         $this->db->from('tbl_user');
 
         $query = $this->db->get();
