@@ -61,7 +61,8 @@ class Students extends CI_Controller{
                     'username' => $_POST['username'],
                     'firstname' => $_POST['fname'],
                     'lastname' => $_POST['lname'],
-                    'password' => '0000',
+                    'password' => $_POST['phone'],
+					'phone' => $_POST['phone'],
                     'user_type' => 'student',
                     'pointer' => $pointer,
                 );
