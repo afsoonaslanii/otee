@@ -76,10 +76,12 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									<div role="tabpanel">
 
 										<ul class="nav nav-tabs" role="tablist">
-											<li role="presentation" class="active"><a href="#tab5" role="tab"
-																					  data-toggle="tab">Multiple
-													Choice</a></li>
-											<!--                                            <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Filling Blanks</a></li>-->
+											<li role="presentation" class="active">
+												<a href="#tab5" role="tab" data-toggle="tab">
+													چند گزینه ای
+												</a>
+											</li>
+											<!--  <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Filling Blanks</a></li>-->
 										</ul>
 
 										<div class="tab-content">
@@ -87,36 +89,43 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 												<form action="<?php echo base_url(); ?>index.php/question/add_question"
 													  method="POST">
 													<div class="form-group">
-														<label for="exampleInputEmail1">Exam Name</label>
-														<select class="form-control" name="exam" required>
-															<option value="" selected disabled>-Select exam</option>
+														<label for="exampleInputEmail1">نام آزمون</label>
+														<select class="form-control" name="exam" id="exam" required>
+															<option value="" selected disabled>-انتخاب آزمون</option>
 															<?php
 
 															$result = $exam;
 															if (count($result) > 0) {
 
 																foreach ($result as $row) {
-																	print '<option value="' . $row->exam_id . '">' . $row->exam_title . '</option>';
+																	print '
+																	<option value="' . $row->exam_id . '">
+																	' . $row->exam_title . '
+																	</option>';
 																}
-															} else {
-
 															}
 															?>
 														</select>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Question</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter question" name="question" required
-															   autocomplete="off">
+														<label for="question">سوال</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="سوال مورد نظر خود را وارد کنید"
+															id="question"
+															name="question"
+															required
+															autocomplete="off"
+														/>
 													</div>
 
 													<table class="table table-bordered">
 														<thead>
 														<tr>
-															<th width="100">Option No.</th>
-															<th>Option</th>
-															<th width="100">Answer</th>
+															<th width="100">شماره</th>
+															<th>گزینه</th>
+															<th  width="100" >جواب</th>
 														</tr>
 														</thead>
 														<tbody>
@@ -130,36 +139,66 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 																		   required autocomplete="off">
 																</div>
 															</td>
-															<td><input type="radio" name="answer" value="option1"
-																	   required></td>
 
+															<td>
+																<input
+																	type="radio"
+																	name="answer"
+																	value="option1"
+																	required
+																/>
+															</td>
 														</tr>
 														<tr>
 															<th scope="row">2</th>
 															<td>
 																<div class="form-group">
-																	<label for="exampleInputEmail1">Option 2</label>
-																	<input type="text" class="form-control"
-																		   placeholder="Enter option 2" name="opt2"
-																		   required autocomplete="off">
+																	<label for="opt2">گزینه 2</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		placeholder="گزینه دوم را وارد کنید"
+																		id="opt2"
+																		name="opt2"
+																		required
+																		autocomplete="off"
+																	/>
 																</div>
 															</td>
-															<td><input type="radio" name="answer" value="option2"
-																	   required></td>
+															<td>
+																<input
+																	type="radio"
+																	name="answer"
+																	value="option2"
+																	required
+																/>
+															</td>
 
 														</tr>
 														<tr>
 															<th scope="row">3</th>
 															<td>
 																<div class="form-group">
-																	<label for="exampleInputEmail1">Option 3</label>
-																	<input type="text" class="form-control"
-																		   placeholder="Enter option 3" name="opt3"
-																		   required autocomplete="off">
+																	<label for="opt3">گزینه 3</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		placeholder="گزینه سوم را وارد کنید"
+																		id="opt3"
+																		name="opt3"
+																		required
+																		autocomplete="off"
+																	/>
 																</div>
 															</td>
-															<td><input type="radio" name="answer" value="option3"
-																	   required></td>
+															<td>
+																<input
+																	type="radio"
+																	name="answer"
+																	value="option3"
+																	required
+																/>
+															</td>
 
 														</tr>
 
@@ -167,20 +206,32 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															<th scope="row">3</th>
 															<td>
 																<div class="form-group">
-																	<label for="exampleInputEmail1">Option 4</label>
-																	<input type="text" class="form-control"
-																		   placeholder="Enter option 4" name="opt4"
-																		   required autocomplete="off">
+																	<label for="opt4">گزینه 4</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		placeholder="گزینه چهارم را وارد کنید"
+																		id="opt4"
+																		name="opt4"
+																		required
+																		autocomplete="off"
+																	/>
 																</div>
 															</td>
-															<td><input type="radio" name="answer" value="option4"
-																	   required></td>
+															<td>
+																<input
+																	type="radio"
+																	name="answer"
+																	value="option4"
+																	required
+																/>
+															</td>
 
 														</tr>
 														</tbody>
 													</table>
 
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت سوال</button>
 
 
 												</form>
@@ -225,11 +276,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -244,8 +292,6 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 

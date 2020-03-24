@@ -152,7 +152,7 @@ $description = $description;
                                     <h3>تغییر پسورد</h3>
                                     <form action="pages/new_pw.php" method="POST">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">پسورد جدید را وارد کنید</label>
+                                            <label for="password">پسورد جدید را وارد کنید</label>
                                             <input
 												type="password"
 												id="password"
@@ -164,7 +164,7 @@ $description = $description;
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">تایید پسورد جدید</label>
+                                            <label for="confirm_password">تایید پسورد جدید</label>
                                             <input
 												type="password"
 												id="confirm_password"

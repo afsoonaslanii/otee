@@ -116,7 +116,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($notice); ?></p>
-                                <span class="info-box-title">اطلاع</span>
+                                <span class="info-box-title">اطلاعیه ها</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-list"></i>

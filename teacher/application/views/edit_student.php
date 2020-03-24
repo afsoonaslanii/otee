@@ -3,25 +3,31 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
-$mygender = (count($query1) > 0 ? $query1[0]->gender : null);
+$myavatar = (count($query1) > 0 ? $query1[0]->teacher_picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->teacher_fname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->teacher_lname : "");
+$mygender = (count($query1) > 0 ? $query1[0]->gender : NULL);
 
 $result = $query;
 
 if (count($result) > 0) {
 
 	foreach ($result as $row) {
-		$teacher_id = $row->teacher_id;
 		$user_id = $row->user_id;
-		$sdfname = $row->teacher_fname;
-		$sdlname = $row->teacher_lname;
+		$student_id = $row->student_id;
+		$sdfname = $row->student_fname;
+		$sdlname = $row->student_lname;
 		$sdgender = $row->gender;
+
+		//$sddob = $row['dob'];
+		$sdaddress = "";
 		$sdemail = $row->email;
 		$sdphone = $row->phone;
-		$sdavatar = $row->teacher_picture;
+		$sddepartment = "";
+		$sdcategory = "";
+		$sdavatar = $row->student_picture;
 		$sdstat = $row->acc_stat;
+
 	}
 } else {
 	header("location:./");
@@ -32,9 +38,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Edit teacher</title>
-
-	<?php require('shared/meta-tag.php') ?>
+	<title>او تی | ویرایش دانش آموز</title>
 
 	<?php require('shared/links.php') ?>
 
@@ -52,29 +56,21 @@ if (count($result) > 0) {
 
 <?php require('layout/profile-menu.php') ?>
 
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search teacher..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
 
 	<?php
-	$active_sidebar_item = 'teachers';
+	$active_sidebar_item = 'students';
 	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Edit teacher - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
+			<h3>ویرایش اطلاعات - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
 
 
 		</div>
@@ -86,46 +82,89 @@ if (count($result) > 0) {
 
 							<div class="panel panel-white">
 								<div class="panel-body">
-									<form action="<?php echo base_url(); ?>index.php/teachers/update_teacher"
-										  method="POST">
-
+									<form
+										action="<?php echo base_url(); ?>index.php/students/update_student"
+										method="POST"
+									>
 										<div class="form-group">
-											<label for="exampleInputEmail1">First Name</label>
-											<input type="text" value="<?php echo "$sdfname"; ?>" class="form-control"
-												   placeholder="Enter first name" name="fname" required
-												   autocomplete="off">
+											<label for="fname">نام</label>
+											<input
+												type="text"
+												value="<?php echo "$sdfname"; ?>"
+												class="form-control"
+												placeholder="نام خود را وارد کنید"
+												id="fname"
+												name="fname"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Last Name</label>
-											<input type="text" value="<?php echo "$sdlname"; ?>" class="form-control"
-												   placeholder="Enter last name" name="lname" required
-												   autocomplete="off">
+											<label for="lname">نام خانوادگی</label>
+											<input
+												type="text"
+												value="<?php echo "$sdlname"; ?>"
+												class="form-control"
+												placeholder="نام خانوادگی خودرا وارد کنید"
+												id="lname"
+												name="lname"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Male</label>
-											<input type="radio" <?php if ($sdgender == "Male") {
+											<label for="male">مرد</label>
+											<input
+												type="radio" <?php if ($sdgender == "Male") {
 												print ' checked ';
-											} ?> name="gender" value="Male" required>
-											<label for="exampleInputEmail1">Female</label>
-											<input type="radio" <?php if ($sdgender == "Female") {
+											} ?>
+												id="male"
+												name="gender"
+												value="Male"
+												required
+											/>
+											<label for="Female">زن</label>
+											<input
+												type="radio" <?php if ($sdgender == "Female") {
 												print ' checked ';
-											} ?> name="gender" value="Female" required>
+											} ?>
+												name="gender"
+												id="Female"
+												value="Female"
+												required
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Email Address</label>
-											<input type="email" value="<?php echo "$sdemail"; ?>" class="form-control"
-												   placeholder="Enter email address" name="email"
-												   autocomplete="off">
+											<label for="email">آدرس ایمیل</label>
+											<input
+												type="email"
+												value="<?php echo "$sdemail"; ?>"
+												class="form-control"
+												placeholder="ایمیل خودرا وارد کنید"
+												id="email"
+												name="email"
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Phone</label>
-											<input type="text" value="<?php echo "$sdphone"; ?>" class="form-control"
-												   placeholder="Enter phone" name="phone" required autocomplete="off">
+											<label for="phone">نلفن همراه</label>
+											<input
+												type="text"
+												value="<?php echo "$sdphone"; ?>"
+												class="form-control"
+												placeholder="تلفن همراه خودرا وارد کنید"
+												id="phone"
+												name="phone"
+												required
+												autocomplete="off"
+											/>
 										</div>
-										<input type="hidden" name="teacher_id" value="<?php echo "$teacher_id"; ?>">
+										<!--                                        <input type="hidden" name="student_id" value="-->
+										<?php //echo "$student_id"; ?><!--">-->
 										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<button type="submit" class="btn btn-primary">
-											Update <?php echo "$sdfname"; ?></button>
+											به روزرسانی <?php echo "$sdfname"; ?>
+										</button>
 									</form>
 								</div>
 							</div>

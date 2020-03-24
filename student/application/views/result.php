@@ -70,7 +70,7 @@ $description = $description;
                                             <tr>
                                                 <th>کد آزمون</th>
                                                 <th>نام آزمون</th>
-												<th>نام معلم</th>
+												<th>نام آموزگار</th>
 												<th>نمره</th>
 												<th>تاریخ</th>
                                                 <th>وضعیت</th>
@@ -81,7 +81,7 @@ $description = $description;
                                             <tr>
                                                 <th>کد آزمون</th>
                                                 <th>نام آزمون</th>
-												<th>نام معلم</th>
+												<th>نام آموزگار</th>
 												<th>نمره</th>
 												<th>تاریخ</th>
                                                 <th>وضعیت</th>

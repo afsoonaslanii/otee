@@ -1,163 +1,196 @@
 <?php
-require_once 'shared/convert_date.php';
 $url = 'http://otee.ir';
-
-$myavatar = (count($query) > 0 ? $query[0]->teacher_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->teacher_fname : "");
-$mylname = (count($query) > 0 ? $query[0]->teacher_lname : "");
-$mygender = (count($query) > 0 ? $query[0]->gender : NULL);
-
 $ms = $ms;
 $description = $description;
 
-//$sql = "SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
-//    $result = $query1;
-//
-//    if (count($result) > 0) {
-//
-//        foreach ($result as $row) {
-//            $exam_name = $row->exam_title;
-//        }
-//    }
-$exam_name = "test"
+$myavatar = (count($query1) > 0 ? $query1[0]->teacher_picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->teacher_fname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->teacher_lname : "");
+$mygender = (count($query1) > 0 ? $query1[0]->gender : NULL);
+
+$result = $query;
+
+if (count($result) > 0) {
+
+	foreach ($result as $row) {
+		$student_id = $row->student_id;
+		$sdfname = $row->student_fname;
+		$sdlname = $row->student_lname;
+		$sdgender = $row->gender;
+		$sdemail = $row->email;
+		$sdphone = $row->phone;
+		$sdavatar = $row->student_picture;
+		$sdstat = $row->acc_stat;
+		// $qrcodetxt = 'ID:'.$student_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
+
+	}
+} else {
+	header("location:./");
+}
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
 
-	<title>او تی | <?php echo "$exam_name" ?> نتیجه</title>
+	<title>او تی | مشاهده اطلاعات دانش آموز</title>
 
-	<?php require_once 'shared/links.php' ?>
+	<?php require('shared/links.php') ?>
 
-	<link href="<?php echo $url; ?>/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet"
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
 		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet"
-		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css"
-		  rel="stylesheet" type="text/css">
-	<link href="<?php echo $url; ?>/assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
 
 	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet"
-		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet"
-		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet"
-		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
-		  rel="stylesheet" type="text/css"/>
+
+	<?php require('shared/plugins.php') ?>
 
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
 } ?> class="page-header-fixed">
+<body>
 
-<?php require_once 'layout/profile-menu.php' ?>
-<?php require_once 'layout/search-form.php' ?>
+<?php require('layout/profile-menu.php') ?>
+
+<?php require('layout/search-form.php') ?>
 
 <main class="page-content content-wrap">
 
-	<?php require_once 'layout/navbar.php' ?>
+	<?php require('layout/navbar.php'); ?>
 
 	<?php
-	$active_sidebar_item = '';
+	$active_sidebar_item = 'students';
 	$horizontal = false;
-	require_once('layout/sidebar.php');
+	require('layout/sidebar.php');
 	?>
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3><?php echo "$exam_name" ?> نتیجه</h3>
+			<h3>اطلاعات - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-5">
 
 							<div class="panel panel-white">
 								<div class="panel-body">
+									<div class="col-md-6">
+										<?php
+										if ($sdavatar == NULL) {
+											print' <img class="img-responsive" src="' . $url . '/assets/images/' . $sdgender . '.png" alt="' . $sdfname . '">';
+										} else {
+											print '<img src="' . $url . '/assets/images/' . $myavatar . '" class="img-responsive"  alt="' . $myfname . '"/>';
+										}
+
+										?></div>
+									<!--                                    <div class="col-md-6">-->
+									<!--                                        --><?php //print '<img width="150" src="../assets/qrcode/qr_img.php?d='.$qrcodetxt.'">'; ?>
+									<!--                                    </div>-->
+
+								</div>
+								<table class="table">
+									<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>شناسه</td>
+										<td><b><?php echo "$student_id"; ?></b></td>
+
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>نام</td>
+										<td><b><?php echo "$sdfname"; ?></b></td>
+
+									</tr>
+									<tr>
+										<th scope="row">3</th>
+										<td>نام خانوادگی</td>
+										<td><b><?php echo "$sdlname"; ?></b></td>
+
+									</tr>
+									<tr>
+										<th scope="row">4</th>
+										<td>جنسیت</td>
+										<td><b><?php echo "$sdgender"; ?></b></td>
+
+									</tr>
+									<tr>
+										<th scope="row">5</th>
+										<td>ایمیل</td>
+										<td><b><?php echo "$sdemail"; ?></b></td>
+
+									</tr>
+									<tr>
+										<th scope="row">6</th>
+										<td>تلفن همراه</td>
+										<td><b><?php echo "$sdphone"; ?></b></td>
+
+									</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+
+						<div class="col-md-7">
+
+							<div class="panel panel-white">
+								<div class="panel-body">
+									<h3><?php echo "$sdfname"; ?> دروس اخذ شده توسط </h3>
 									<div class="table-responsive">
 										<?php
-										$result = $query1;
+										$result = $class;
+
 										if (count($result) > 0) {
 											print '
-										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
+									   <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>نام دانش آموز</th>
-												<th>شناسه دانش آموز</th>
-												<th>نام آزمون</th>
+                                                <th>کد درس</th>
+                                                <th>نام درس</th>
                                                 <th>امتیاز</th>
                                                 <th>وضعیت</th>
-												<th>تاریخ</th>
-												<th>تاریخ آزمون مجدد</th>
-                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>نام دانش آموز</th>
-												<th>شناسه دانش آموز</th>
-												<th>نام آزمون</th>
+                                                <th>کد درس</th>
+                                                <th>نام درس</th>
                                                 <th>امتیاز</th>
                                                 <th>وضعیت</th>
-												<th>تاریخ</th>
-												<th>تاریخ آزمون مجدد</th>
-                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
 
 											foreach ($result as $row) {
 												print '
-										       <tr>
-                                                <td>' . $row->student_fname . '</td>
-												<td>' . $row->student_id . '</td>
-                                                <td>' . $row->exam_title . '</td>
-                                                <td><b>' . $row->score . '%</b></td>
-												<td>' . $row->status_student . '</td>
-												<td>' . convert_date($row->take_date) . '</td>
-												<td>' . convert_date($row->retake_date) . '</td>
-												<td><div class="btn-group" role="group">
-                                                <button 
-                                                type="button"
-                                                 class="btn btn-default dropdown-toggle" 
-                                                 data-toggle="dropdown"
-                                                  aria-expanded="false"
-                                                  >
-                                                    انتخاب
-                                                    <span class="caret"></span>
-                                                </button>
-                                               <ul class="dropdown-menu" role="menu">
-                                                  
-                          <li>
-                          <a onclick = "return confirm(\'فعال سازی مجدد آزمون برای ' . $row->student_fname . '?\')"  href="pages/re-activate.php/">فعال سازی مجدد</a></li>
-                                  
-                                                </ul>
-                                            </div></td>
-          
+									        <tr>
+							                    <td>' . $row->course_code . '</td>
+									            <td>' . $row->course_name . '</td>
+                                                <td>' . $row->score . '٪</td>
+                                                <td>' . $row->status_student . '</td>
                                             </tr>';
 											}
-
 											print '
 									   </tbody>
                                        </table>  ';
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        اطلاعاتی برای نمایش وجود ندارد.
+                                        اطلاعاتی برای نمایش پیدا نشد.
                                     </div>';
 										}
 										?>
 									</div>
+
 								</div>
 							</div>
-
 						</div>
+
 					</div>
+
 
 				</div>
 			</div>
@@ -173,6 +206,7 @@ $exam_name = "test"
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
 }
 ?>
+
 <div class="cd-overlay"></div>
 
 <script src="<?php echo $url; ?>/assets/plugins/jquery/jquery-2.1.4.min.js"></script>

@@ -15,7 +15,7 @@ $description = $description;
 
 <head>
 
-	<title>OES | Manage Students</title>
+	<title>او تی | مدیریت دانش آموزان</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -56,9 +56,7 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Manage Students</h3>
-
-
+			<h3>مدیریت دانش آموزان</h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -69,16 +67,17 @@ $description = $description;
 							<div class="panel panel-white">
 								<div class="panel-body">
 									<div role="tabpanel">
-
 										<ul class="nav nav-tabs" role="tablist">
-
-											<li role="presentation" class="active"><a href="#tab5" role="tab"
-																					  data-toggle="tab">Students</a>
+											<li role="presentation" class="active">
+												<a href="#tab5" role="tab" data-toggle="tab">
+													دانش آموزان
+												</a>
 											</li>
-											<li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Add
-													Students</a></li>
-
-
+											<li role="presentation">
+												<a href="#tab6" role="tab" data-toggle="tab">
+													افزودن دانش آموز جدید
+												</a>
+											</li>
 										</ul>
 
 										<div class="tab-content">
@@ -92,35 +91,40 @@ $description = $description;
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
+											foreach ($result as $row) {
 
-														foreach ($result as $row) {
-
-															$status = $row->acc_stat;
-															if ($status == "1") {
-																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/students/inactive_st/' . $row->user_id . '">Make Inactive</a>';
-															} else {
-																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/students/active_st/' . $row->user_id . '">Make Active</a>';
-															}
-															print '
+												$status = $row->acc_stat;
+												if ($status == "1") {
+													$st = '<p class="text-success">فعال</p>';
+													$stl = '
+													<a href="' . base_url() . 'index.php/students/inactive_st/' . $row->user_id . '">
+														غیرفعال کردن
+													</a>';
+												} else {
+													$st = '<p class="text-danger">غیرفعال</p>';
+													$stl = '
+													<a href="' . base_url() . 'index.php/students/active_st/' . $row->user_id . '">
+													فعال کردن
+													</a>';
+												}
+												print '
 										       <tr>
                                                 <td>' . $row->student_fname . ' ' . $row->student_lname . '</td>
 												<td>' . $row->gender . '</td>
@@ -131,11 +135,26 @@ $description = $description;
                                                     Select Action
                                                     <span class="caret"></span>
                                                 </button>
-                                                <ul class="dropdown-menu" role="menu">
+                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="' . base_url() . 'index.php/students/edit_student/' . $row->user_id . '">Edit Student</a></li>
-													<li><a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">View Student</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->student_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">Drop Student</a></li>
+                                                    
+													<li>
+													<a href="' . base_url() . 'index.php/students/edit_student/' . $row->user_id . '">
+													ویرایش دانش آموز
+													</a>
+													</li>
+													
+													<li>
+													<a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">
+													اطلاعات دانش آموز
+													</a>
+													</li>
+													
+                                                    <li>
+                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->student_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">
+ 													حذف دانش آموز
+ 													</a>
+													</li>
                                                 </ul>
                                             </div></td>
           
@@ -148,49 +167,82 @@ $description = $description;
 													} else {
 														print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی برای نمایش پیدا نشد.
                                     </div>';
-
 													}
-
-
 													?>
-
 												</div>
 
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab6">
-												<form action="<?php echo base_url(); ?>index.php/students/addStudent"
-													  method="POST">
+												<form
+													action="<?php echo base_url(); ?>index.php/students/addStudent"
+													method="POST"
+												>
 													<div class="form-group">
-														<label for="exampleInputEmail1">First Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter first name" name="fname" required
-															   autocomplete="off">
+														<label for="fname">نام</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خود را وارد کنید"
+															id="fname"
+															name="fname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Last Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter last name" name="lname" required
-															   autocomplete="off">
+														<label for="lname">نام خانوادگی</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خانوادگی خودرا وارد کنید"
+															id="lname"
+															name="lname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Male</label>
-														<input type="radio" name="gender" value="Male" required>
-														<label for="exampleInputEmail1">Female</label>
-														<input type="radio" name="gender" value="Female" required>
+														<label for="Male">مرد</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Male"
+															value="Male"
+															required
+														/>
+														<label for="Female">زن</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Female"
+															value="Female"
+															required
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Email Address</label>
-														<input type="email" class="form-control"
-															   placeholder="Enter email address" name="email" required
-															   autocomplete="off">
+														<label for="email">آدرس ایمیل</label>
+														<input
+															type="email"
+															class="form-control"
+															placeholder="ایمیل خودرا وارد کنید"
+															id="email"
+															name="email"
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Phone</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter phone" name="phone" required
-															   autocomplete="off">
+														<label for="phone">نلفن همراه</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="تلفن همراه خودرا وارد کنید"
+															id="phone"
+															name="phone"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Select Department</label>
@@ -239,13 +291,20 @@ $description = $description;
 													</div>
 
 													<div class="form-group">
-														<label>Username</label>
-														<input type="text" class="form-control " name="username"
-															   required autocomplete="off" placeholder="Set username">
+														<label for="username">نام کاربری</label>
+														<input
+															type="text"
+															class="form-control "
+															id="username"
+															name="username"
+															required
+															autocomplete="off"
+															placeholder="نام کاربری (یکتا)"
+														>
 													</div>
 
 
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت</button>
 												</form>
 											</div>
 

@@ -12,20 +12,13 @@ $description = $description;
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet"
-		  type="text/css"/>
-
-	<!--    <link rel="stylesheet" type="text/css" href="-->
-	<?php //echo $url; ?><!--assets/plugin/pace-master/themes/blue/pace-theme-flash.css">-->
 	<link href="<?php echo $url; ?>/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
-	<!--    <link rel="stylesheet" type="text/css" href="-->
-	<?php //echo $url; ?><!--assets/plugin/bootstrap/css/bootstrap.min.css">-->
 	<link href="<?php echo $url; ?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/modern.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/snack.css"/>
-	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/rtl.css"/>
 
-	<title>اوتی | ورود</title>
+	<title>او تی | صفحه ورود</title>
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
@@ -43,10 +36,10 @@ $description = $description;
 					$this->load->helper('form');
 
 					echo form_open('/login/auth');
-					$username = form_input(array('name' => 'username', 'placeholder' => 'نام کاربری', 'class' => 'form-control', 'required' => 'required'));
-					$password = form_password(array('name' => 'password', 'placeholder' => 'پسورد', 'class' => 'form-control', 'required' => 'required'));
+					$username = form_input(array('name' => 'username', 'placeholder' => 'نام کاربری یا تلفن همراه', 'class' => 'form-control', 'required' => 'required'));
+					$password = form_password(array('name' => 'password', 'placeholder' => 'رمز ورود', 'class' => 'form-control', 'required' => 'required'));
 
-					$submit = form_submit(array('name' => 'submit', 'value' => 'Login', 'class' => 'btn btn-success btn-block'));
+					$submit = form_submit(array('name' => 'submit', 'value' => 'ورود', 'class' => 'btn btn-success btn-block'));
 					?>
 					<p>لطفا وارد اکانت خود شوید</p>
 
@@ -62,8 +55,8 @@ $description = $description;
 						<p><?= $submit; ?></p>
 					</div>
 					<?php echo form_close(); ?>
-					<a href="">رمز عبور خود را فراموش کرده‌ام</a>
-					<p>کاربر جدید هستید؟ <a href="<?php echo base_url(); ?>/student/">ثبت نام کنید</a></p>
+<!--					<a href="">رمز عبور خود را فراموش کرده‌ام</a>-->
+<!--					<p>کاربر جدید هستید؟ <a href="--><?php //echo base_url(); ?><!--/student/">ثبت نام کنید</a></p>-->
 				</div>
 			</div>
 		</div>
@@ -74,8 +67,6 @@ $description = $description;
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 <script src="<?php echo $url; ?>/assets/plugins/pace-master/pace.min.js"></script>

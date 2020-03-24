@@ -16,7 +16,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 <head>
 
-	<title>OES | Manage Examinations</title>
+	<title>او تی | مدیریت آزمون</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -57,7 +57,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Manage Examinations</h3>
+			<h3>مدیریت امتحانات</h3>
 
 		</div>
 		<div id="main-wrapper">
@@ -71,22 +71,25 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									<div role="tabpanel">
 
 										<ul class="nav nav-tabs" role="tablist">
-											<li role="presentation" class="active"><a href="#tab1" role="tab"
-																					  data-toggle="tab">course</a></li>
+											<li role="presentation" class="active">
+												<a href="#tab1" role="tab" data-toggle="tab">
+													درس
+												</a>
+											</li>
 											<li role="presentation">
 												<a href="#tab2" role="tab" data-toggle="tab">
-													Add course
+													افزودن درس
 												</a>
 											</li>
 
 											<li role="presentation">
 												<a href="#tab5" role="tab" data-toggle="tab">
-													Examinations
+													امتحانات
 												</a>
 											</li>
 											<li role="presentation">
 												<a href="#tab6" role="tab" data-toggle="tab">
-													Add Exam
+													افزودن آزمون
 												</a>
 											</li>
 										</ul>
@@ -102,22 +105,22 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Course Name</th>
-												<th>Course Code</th>
-                                                <th>Teacher Name</th>
-                                                <th>Teacher id</th>
-                                                <th>status</th>
-                                                <th>action</th>
+                                                <th>نام درس</th>
+												<th>کد درس</th>
+                                                <th>نام آموزگار</th>
+                                                <th>شناسه آموزگار</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Course Name</th>
-												<th>Course Code</th>
-                                                <th>Teacher Name</th>
-                                                <th>Teacher id</th>
-                                                <th>status</th>
-                                                <th>action</th>
+                                                <th>نام درس</th>
+												<th>کد درس</th>
+                                                <th>نام آموزگار</th>
+                                                <th>شناسه آموزگار</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -126,10 +129,16 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															$status = $row->course_status;
 															if ($status == "1") {
 																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/exam/inactive_crs/' . $row->course_id . '">Make Inactive</a>';
+																$stl = '
+																<a href="' . base_url() . 'index.php/exam/inactive_crs/' . $row->course_id . '">
+																غیرفعال کردن
+															</a>';
 															} else {
 																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/exam/active_crs/' . $row->course_id . '">Make Active</a>';
+																$stl = '
+																<a href="' . base_url() . 'index.php/exam/active_crs/' . $row->course_id . '">
+																فعال کردن
+															</a>';
 															}
 															print '
 										       <tr>
@@ -139,67 +148,80 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                                 <td>' . $row->teacher_id . '</td>
 												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-default dropdown-toggle" 
+                                                data-toggle="dropdown" 
+                                                aria-expanded="false"
+                                                >
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->course_name; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_course/' . $row->course_code . '">Drop course</a></li>
+                                                    <li>
+                                                    	<a'; ?> onclick = "return confirm('حذف درس <?php echo $row->course_name; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_course/' . $row->course_code . '">
+ 															حذف درس
+ 														</a>
+ 													</li>
                                                 </ul>
-                                            </div></td>
-          
-                                            </tr>';
+                                            </div>
+                                            </td>
+                                            </tr>
+                                            ';
 														}
-
 														print '
 									   </tbody>
-                                       </table>  ';
+                                       </table>  
+                                       ';
+
 													} else {
 														print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
-                                    </div>';
-
+                                    			    اطلاعاتی یافت نشد.
+                                  				</div>';
 													}
-
 													?>
-
-
 												</div>
-
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab2">
 												<form action="<?php echo base_url(); ?>index.php/exam/add_course"
 													  method="POST">
 													<div class="form-group">
-														<label for="exampleInputEmail1">Course Name</label>
+														<label for="coursename">نام درس</label>
 														<input
 															type="text"
 															class="form-control"
-															placeholder="Enter course name"
+															placeholder="نام درس مورد نظر را وارد کنید"
+															id="coursename"
 															name="coursename"
-															required autocomplete="off"
-														>
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Course Code</label>
+														<label for="coursecode">کد درس</label>
 														<input
 															type="number"
 															class="form-control"
-															placeholder="Enter course code"
+															placeholder="کد درس مورد نظر را وارد کنید"
+															id="coursecode"
 															name="coursecode"
-															required autocomplete="off"
-														>
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Select Teacher</label>
+														<label for="teacherid">انتخاب آموزگار</label>
 														<select
 															class="form-control"
+															id="teacherid"
 															name="teacherid"
 															required
 														>
-															<option value="" selected disabled>-Select Teacher</option>
+															<option value="" selected disabled>
+																-انتخاب
+															</option>
 															<?php
 
 															$result = $teachers;
@@ -209,14 +231,12 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 																foreach ($result as $row) {
 																	print '<option value="' . $row->teacher_id . '">' . $row->teacher_fname . ' ' . $row->teacher_lname . '</option>';
 																}
-															} else {
-
 															}
 															?>
 
 														</select>
 													</div>
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت</button>
 												</form>
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab5">
@@ -228,24 +248,24 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                 <th>Name</th>
-												<th>Exam Date</th>
-												<th>Exam duration (min)</th>
-                                                <th>passmark</th>
-                                                <th>re exam (day)</th>
-												<th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>تاریخ آزمون</th>
+												<th>زمان آزمون (دقیقه)</th>
+                                                <th>نمره قبولی</th>
+                                                <th>امتحان مجدد (روز)</th>
+												<th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-												<th>Exam Date</th>
-												<th>Exam duration (min)</th>
-                                                <th>passmark</th>
-                                                <th>re exam (day)</th>
-												<th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>تاریخ آزمون</th>
+												<th>زمان آزمون (دقیقه)</th>
+                                                <th>نمره قبولی</th>
+                                                <th>امتحان مجدد (روز)</th>
+												<th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -254,31 +274,60 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 															$status = $row->exam_status;
 															if ($status == "1") {
-																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/exam/inactive_ex/' . $row->exam_id . '">Make Inactive</a>';
+																$st = '<p class="text-success">فعال</p>';
+																$stl = '
+																<a href="' . base_url() . 'index.php/exam/inactive_ex/' . $row->exam_id . '">
+																غیرفعال کردن
+																</a>';
 															} else {
-																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/exam/active_ex/' . $row->exam_id . '">Make Active</a>';
+																$st = '<p class="text-danger">غیرفعال</p>';
+																$stl = '
+																<a 
+																href="' . base_url() . 'index.php/exam/active_ex/' . $row->exam_id . '"
+																>
+																غعال کردن
+																</a>';
 															}
 															print '
 										       <tr>
                                                 <td>' . $row->exam_title . '</td>
 												<td>' . $row->exam_date . '</td>
-                                                <td>' . $row->exam_duration . ' min' . '</td>
+                                                <td>' . $row->exam_duration . ' دقیقه' . '</td>
                                                 <td>' . $row->passmark . '</td>
 												<td>' . $row->re_exam . '</td>
 												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-default dropdown-toggle"
+                                                 data-toggle="dropdown"
+                                                  aria-expanded="false"
+                                                  >
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="' . base_url() . 'index.php/exam/edit_exam/' . $row->exam_id . '">Edit Exam</a></li>
-													<li><a href="' . base_url() . 'index.php/question/view_question/' . $row->exam_id . '">View Questions</a></li>
-													<li><a href="' . base_url() . 'index.php/exam/question/' . $row->exam_id . '">Add Questions</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_exam/' . $row->exam_id . '">Drop Exam</a></li>
+													<li>
+													<a href="' . base_url() . 'index.php/exam/edit_exam/' . $row->exam_id . '">
+													ویرایش آزمون
+													</a>
+													</li>
+													<li>
+													<a href="' . base_url() . 'index.php/question/view_question/' . $row->exam_id . '">
+													نمایش سوالات
+													</a>
+													</li>
+													<li>
+													<a href="' . base_url() . 'index.php/exam/question/' . $row->exam_id . '">
+													افزودن سوال
+													</a>
+													</li>
+                                                    <li>
+                                                    <a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_exam/' . $row->exam_id . '">
+ 												    حذف آزمون
+ 													</a>
+ 													</li>
                                                 </ul>
                                             </div></td>
           
@@ -291,69 +340,119 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													} else {
 														print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی جهت نمایش پیدا نشد.
                                     </div>';
 													}
 													?>
 												</div>
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab6">
-												<form action="<?php echo base_url(); ?>index.php/exam/add_exam"
-													  method="POST">
+												<form
+													action="<?php echo base_url(); ?>index.php/exam/add_exam"
+													method="POST"
+												>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Select course</label>
-														<select class="form-control" name="class_name" required>
-															<option value="" selected disabled>-Select active cours
+														<label for="class_name">انتخاب درس</label>
+														<select
+															class="form-control"
+															name="class_name"
+															id="class_name"
+															required
+															>
+															<option value="" selected disabled>
+																-انتخاب درس فعال
 															</option>
 															<?php
 															$result = $showActiveClass;
 
 															if (count($result) > 0) {
 																foreach ($result as $row) {
-																	print '<option value="' . $row->class_id . '">' . $row->course_name . '</option>';
+																	print '
+																	<option value="' . $row->class_id . '">
+																	' . $row->course_name . '
+																	</option>';
 																}
 															}
 															?>
 														</select>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Exam Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter exam name" name="title" required
-															   autocomplete="off">
+														<label for="title">نام آزمون</label>
+														<input
+															id="title"
+															type="text"
+															class="form-control"
+															placeholder="نام آزمون را واررد کنید"
+															name="title"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Exam Duration (Minutes)</label>
-														<input type="number" class="form-control"
-															   placeholder="Enter exam duration" name="duration"
-															   required autocomplete="off">
+														<label for="duration">زمان آزمون (دقیقه)</label>
+														<input
+															id="duration"
+															type="number"
+															class="form-control"
+															placeholder="زمان آزمون را وارد کنید"
+															name="duration"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Passmark (%)</label>
-														<input type="number" class="form-control"
-															   placeholder="Enter passmark" name="passmark" required
-															   autocomplete="off">
+														<label for="passmark">امتیاز قبولی (%)</label>
+														<input
+															id="passmark"
+															type="number"
+															class="form-control"
+															placeholder="Enter passmark"
+															name="passmark"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">RE exam (if you take exam then
-															show it again after some days)</label>
-														<input type="number" class="form-control"
-															   placeholder="Enter days to attempt" name="reexam"
-															   required autocomplete="off">
+														<label for="reexam">
+															امتحان مجدد ( فعال شدن امتحان در روز های آینده)
+														</label>
+														<input
+															type="number"
+															class="form-control"
+															placeholder="امتحان مجدد پی از چند روز فعال شود؟"
+															id="reexam"
+															name="reexam"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label>Deadline</label>
-														<input type="text" class="form-control date-picker" name="date"
-															   required autocomplete="off"
-															   placeholder="Select deadline">
+														<label for="date">تاریخ پایان</label>
+														<input
+															type="text"
+															class="form-control date-picker"
+															id="date"
+															name="date"
+															required
+															autocomplete="off"
+															placeholder="تاریخ پایان را انتخاب کنید"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Terms and conditions</label>
-														<textarea style="resize: none;" rows="6" class="form-control"
-																  placeholder="Enter Terms and conditions" name="terms"
-																  required autocomplete="off"></textarea>
+														<label for="terms">قوانین و مقررات</label>
+														<textarea
+															style="resize: none;"
+															rows="6"
+															class="form-control"
+															placeholder="Enter Terms and conditions"
+															id="terms"
+															name="terms"
+															required
+															autocomplete="off"
+														>
+														</textarea>
 													</div>
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت</button>
 
 												</form>
 											</div>

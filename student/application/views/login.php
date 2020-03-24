@@ -12,12 +12,13 @@ $description = $description;
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>او-تی | ورود</title>
+	<title>او تی | صفحه ورود</title>
 
     <link href="<?php echo $url; ?>/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
     <link href="<?php echo $url; ?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/modern.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/snack.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/rtl.css"/>
 
 </head>
 <body <?php if ($ms == "1") { print 'onload="myFunction()"'; } ?>  class="page-login">
@@ -28,17 +29,18 @@ $description = $description;
             <div class="row">
                 <div class="col-md-4 center">
                     <h2>او - تی</h2>
-                    <h5>آزمون انلاین</h5>
+                    <h5>سیستم آزمون انلاین</h5>
 
                     <?php
                     $this->load->helper('form');
 
                     echo form_open('/login/auth');
-                    $username = form_input(array('name'=>'username','placeholder'=>'نام کاربری یا ایمیل','class'=>'form-control','required'=>'required'));
+                    $username = form_input(array('name'=>'username','placeholder'=>'نام کاربری یا تلفن همراه','class'=>'form-control','required'=>'required'));
                     $password = form_password(array('name'=>'password','placeholder'=>'رمز ورود','class'=>'form-control','required'=>'required'));
-                    $submit = form_submit(array('name'=>'submit','value'=>'وارد شو','class'=>'btn btn-success btn-block'));
+                    $submit = form_submit(array('name'=>'submit','value'=>'ورود','class'=>'btn btn-success btn-block'));
                     ?>
-                    <p>وارد اکانتت شو</p>
+
+					<p>لطفا وارد اکانت خود شوید</p>
 
                     <?php echo validation_errors(); ?>
                     <div class="form-group">

@@ -1,12 +1,13 @@
 <?php
 $url = 'http://otee.ir';
+
+$myavatar = (count($query1) > 0 ? $query1[0]->teacher_picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->teacher_fname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->teacher_lname : "");
+$mygender = (count($query1) > 0 ? $query1[0]->gender : NULL);
+
 $ms = $ms;
 $description = $description;
-
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
-$mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 ?>
 <!DOCTYPE html>
@@ -14,19 +15,16 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 <head>
 
-	<title>OES | Manage Teachers</title>
-
-	<?php require('shared/meta-tag.php') ?>
+	<title>او تی | مدیریت دانش آموزان</title>
 
 	<?php require('shared/links.php') ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
 		  type="text/css"/>
-	<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
+
 	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
 
 	<?php require('shared/plugins.php') ?>
-
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
@@ -35,30 +33,21 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 <?php require('layout/profile-menu.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
+<?php require('layout/search-form.php') ?>
+
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
 
 	<?php
-	$active_sidebar_item = 'teachers';
+	$active_sidebar_item = 'students';
 	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Manage teachers</h3>
-
-
+			<h3>مدیریت دانش آموزان</h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -71,14 +60,16 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									<div role="tabpanel">
 
 										<ul class="nav nav-tabs" role="tablist">
-
-											<li role="presentation" class="active"><a href="#tab5" role="tab"
-																					  data-toggle="tab">Teachers</a>
+											<li role="presentation" class="active">
+												<a href="#tab5" role="tab" data-toggle="tab">
+													دانش آموزان
+												</a>
 											</li>
-											<li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Add
-													Teachers</a></li>
-
-
+											<li role="presentation">
+												<a href="#tab6" role="tab" data-toggle="tab">
+													افزودن دانش آموز جدید
+												</a>
+											</li>
 										</ul>
 
 										<div class="tab-content">
@@ -86,56 +77,74 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 												<div class="table-responsive">
 													<?php
 													$result = $query2;
-
 													if (count($result) > 0) {
 														print '
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
-
-														foreach ($result as $row) {
-
-															$status = $row->acc_stat;
-															if ($status == "1") {
-																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/teachers/inactive_te/' . $row->user_id . '">Make Inactive</a>';
-															} else {
-																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/teachers/active_te/' . $row->user_id . '">Make Active</a>';
-															}
-															print '
+										foreach ($result as $row) {
+											$status = $row->acc_stat;
+											if ($status == "1") {
+												$st = '<p class="text-success">فعال</p>';
+												$stl = '
+												<a href="' . base_url() . 'index.php/students/inactive_st/' . $row->user_id . '">
+													غیرفعال کردن
+												</a>';
+											} else {
+												$st = '<p class="text-danger">غیرفعال</p>';
+												$stl = '
+												<a href="' . base_url() . 'index.php/students/active_st/' . $row->user_id . '">
+												فعال کردن
+												</a>';
+											}
+											print '
 										       <tr>
-                                                <td>' . $row->teacher_fname . ' ' . $row->teacher_lname . '</td>
+                                                <td>' . $row->student_fname . ' ' . $row->student_lname . '</td>
 												<td>' . $row->gender . '</td>
                                                 <td>' . $row->username . '</td>
                                                 <td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="' . base_url() . 'index.php/teachers/edit_teacher/' . $row->user_id . '">Edit Teacher</a></li>
-													<li><a href="' . base_url() . 'index.php/teachers/view_teacher/' . $row->user_id . '/' . $row->teacher_id . '">View Teacher</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/teachers/drop_t/' . $row->user_id . '">Drop Teacher</a></li>
+                                                    
+													<li>
+													<a href="' . base_url() . 'index.php/students/edit_student/' . $row->user_id . '">
+													ویرایش دانش آموز
+													</a>
+													</li>
+													
+													<li>
+													<a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">
+													اطلاعات دانش آموز
+													</a>
+													</li>
+													
+                                                    <li>
+                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->student_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">
+ 													حذف دانش آموز
+ 													</a>
+													</li>
                                                 </ul>
                                             </div></td>
           
@@ -148,7 +157,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													} else {
 														print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                       اطلاعاتی برای نمایش پیدا نشد.
                                     </div>';
 
 													}
@@ -160,37 +169,72 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab6">
-												<form action="<?php echo base_url(); ?>index.php/teachers/add_teacher"
+												<form action="<?php echo base_url(); ?>index.php/students/addStudent"
 													  method="POST">
 													<div class="form-group">
-														<label for="exampleInputEmail1">First Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter first name" name="fname" required
-															   autocomplete="off">
+														<label for="fname">نام</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خود را وارد کنید"
+															id="fname"
+															name="fname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Last Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter last name" name="lname" required
-															   autocomplete="off">
+														<label for="lname">نام خانوادگی</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خانوادگی خودرا وارد کنید"
+															id="lname"
+															name="lname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Male</label>
-														<input type="radio" name="gender" value="Male" required>
-														<label for="exampleInputEmail1">Female</label>
-														<input type="radio" name="gender" value="Female" required>
+														<label for="Male">مرد</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Male"
+															value="Male"
+															required
+														/>
+														<label for="Female">زن</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Female"
+															value="Female"
+															required
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Email Address</label>
-														<input type="email" class="form-control"
-															   placeholder="Enter email address" name="email"
-															   autocomplete="off">
+														<label for="email">آدرس ایمیل</label>
+														<input
+															type="email"
+															class="form-control"
+															placeholder="ایمیل خودرا وارد کنید"
+															id="email"
+															name="email"
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Phone</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter phone" name="phone" required
-															   autocomplete="off">
+														<label for="phone">نلفن همراه</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="تلفن همراه خودرا وارد کنید"
+															id="phone"
+															name="phone"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Select Department</label>
@@ -239,13 +283,20 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													</div>
 
 													<div class="form-group">
-														<label>Username</label>
-														<input type="text" class="form-control " name="username"
-															   required autocomplete="off" placeholder="Set username">
+														<label for="username">نام کاربری</label>
+														<input
+															type="text"
+															class="form-control "
+															id="username"
+															name="username"
+															required
+															autocomplete="off"
+															placeholder="نام کاربری (یکتا)"
+														>
 													</div>
 
 
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت</button>
 												</form>
 											</div>
 
@@ -306,7 +357,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 <script>
     function myFunction() {
-        var x = document.getElementById("snackbar")
+        var x = document.getElementById("snackbar");
         x.className = "show";
         setTimeout(function () {
             x.className = x.className.replace("show", "");

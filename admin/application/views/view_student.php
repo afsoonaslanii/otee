@@ -33,7 +33,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | View Student</title>
+	<title>او تی | مشاهده اطلاعات دانش آموز</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -75,9 +75,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>View Student - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
-
-
+			<h3>اطلاعات - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -105,37 +103,37 @@ if (count($result) > 0) {
 									<tbody>
 									<tr>
 										<th scope="row">1</th>
-										<td>Registration Number</td>
+										<td>شناسه</td>
 										<td><b><?php echo "$student_id"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">2</th>
-										<td>First Name</td>
+										<td>نام</td>
 										<td><b><?php echo "$sdfname"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">3</th>
-										<td>Last Name</td>
+										<td>نام خانوادگی</td>
 										<td><b><?php echo "$sdlname"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">4</th>
-										<td>Gender</td>
+										<td>جنسیت</td>
 										<td><b><?php echo "$sdgender"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">5</th>
-										<td>Email Address</td>
+										<td>ایمیل</td>
 										<td><b><?php echo "$sdemail"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">6</th>
-										<td>Phone Number</td>
+										<td>تلفن همراه</td>
 										<td><b><?php echo "$sdphone"; ?></b></td>
 
 									</tr>
@@ -159,18 +157,18 @@ if (count($result) > 0) {
 									   <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>course code</th>
-                                                <th>course name</th>
-                                                <th>Score</th>
-                                                <th>Status</th>
+                                                <th>کد درس</th>
+                                                <th>نام درس</th>
+                                                <th>امتیاز</th>
+                                                <th>وضعیت</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>course code</th>
-                                                <th>course name</th>
-                                                <th>Score</th>
-                                                <th>Status</th>
+                                                <th>کد درس</th>
+                                                <th>نام درس</th>
+                                                <th>امتیاز</th>
+                                                <th>وضعیت</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -190,7 +188,7 @@ if (count($result) > 0) {
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی برای نمایش پیدا نشد.
                                     </div>';
 										}
 										?>
@@ -199,11 +197,7 @@ if (count($result) > 0) {
 								</div>
 							</div>
 						</div>
-
-
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -216,8 +210,6 @@ if (count($result) > 0) {
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 
@@ -248,7 +240,6 @@ if (count($result) > 0) {
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
-
 
 <script>
     function myFunction() {
