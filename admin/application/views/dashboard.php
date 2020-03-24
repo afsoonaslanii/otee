@@ -192,8 +192,11 @@ $std_fails = $fail_st;
 							<div class="col-sm-12">
 								<div class="visitors-chart">
 									<div class="panel-body">
-										<div id="chartContainer"
-											 style="height: 370px; max-width: 920px; margin: 0 auto;"></div>
+										<div
+											id="chartContainer"
+											style="height: 370px; max-width: 920px; margin: 0 auto; direction: ltr"
+										>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -247,7 +250,7 @@ $std_fails = $fail_st;
             exportEnabled: true,
             animationEnabled: true,
             title: {
-                text: "Piechart presentation of students assessments in FAIL and PASS"
+                text: "نمودار دانش آموزان"
             },
             data: [{
                 type: "pie",
@@ -258,8 +261,8 @@ $std_fails = $fail_st;
                 indexLabelFontSize: 14,
                 indexLabel: "{label} - {y}",
                 dataPoints: [
-                    {y: <?php echo "$std_pass"; ?>, label: "Student Passing Exams"},
-                    {y: <?php echo "$std_fails"; ?>, label: "Student Failing Exams"}
+                    {y: <?php echo "$std_pass"; ?>, label: "دانش آموزان قبول شده"},
+                    {y: <?php echo "$std_fails"; ?>, label: "دانش آموزان مردود شده"}
 
                 ]
             }]
