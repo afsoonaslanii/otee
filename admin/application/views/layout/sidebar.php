@@ -1,4 +1,4 @@
-<div class="page-sidebar sidebar">
+<div class="<?php echo $horizontal === true ? 'horizontal-bar sidebar' : 'page-sidebar sidebar' ?>">
 	<div class="page-sidebar-inner slimscroll">
 		<div class="sidebar-header">
 			<div class="sidebar-profile">
@@ -63,3 +63,4 @@
 		</ul>
 	</div>
 </div>
+<?php $horizontal = false ?>

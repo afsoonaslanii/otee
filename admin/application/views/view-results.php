@@ -59,6 +59,7 @@ $exam_name = "test"
 
 	<?php
 	$active_sidebar_item = 'results';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

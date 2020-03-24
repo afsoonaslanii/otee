@@ -50,6 +50,7 @@ $description = $description;
 
 	<?php
 	$active_sidebar_item = 'students';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

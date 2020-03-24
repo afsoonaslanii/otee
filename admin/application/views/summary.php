@@ -89,6 +89,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = 'summery';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

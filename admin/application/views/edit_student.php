@@ -74,6 +74,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = 'students';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

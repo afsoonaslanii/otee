@@ -68,6 +68,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = 'teachers';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

@@ -60,6 +60,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = 'question';
+	$horizontal = true;
 	require('layout/sidebar.php');
 	?>
 

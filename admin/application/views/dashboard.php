@@ -60,6 +60,7 @@ $std_fails = $fail_st;
 
 	<?php
 	$active_sidebar_item = 'dashboard';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

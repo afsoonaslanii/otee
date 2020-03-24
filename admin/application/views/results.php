@@ -49,6 +49,7 @@ $description = $description;
 
 	<?php
 	$active_sidebar_item = 'results';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

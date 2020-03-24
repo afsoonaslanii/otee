@@ -66,6 +66,7 @@ if (count($result) > 0) {
 
 	<?php
 	$active_sidebar_item = 'exam';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

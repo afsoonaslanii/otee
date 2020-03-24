@@ -51,6 +51,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<?php
 	$active_sidebar_item = 'exam';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 

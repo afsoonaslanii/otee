@@ -71,6 +71,7 @@ else {
 
 	<?php
 	$active_sidebar_item = 'teachers';
+	$horizontal = false;
 	require('layout/sidebar.php');
 	?>
 
