@@ -51,8 +51,8 @@ $description = $description;
                         <p><?=$submit; ?></p>
                     </div>
                     <?php echo form_close();?>
-                    <a href="">پسوردتو فراموش کردی؟</a>
-                    <p>اکانت نداری؟ همین الان <a href="<?php echo base_url();?>index.php/register">عضو شو</a></p>
+<!--                    <a href="">پسوردتو فراموش کردی؟</a>-->
+<!--                    <p>اکانت نداری؟ همین الان <a href="--><?php //echo base_url();?><!--index.php/register">عضو شو</a></p>-->
                 </div>
             </div>
         </div>

@@ -43,11 +43,11 @@ $description = $description;
 
     <div class="page-inner">
         <div class="page-title">
-            <h3>Student Profile</h3>
+            <h3>پروفایل دانش آموز</h3>
             <div class="page-breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a href="./">Home</a></li>
-                    <li class="active">Student Profile</li>
+                    <li><a href="./">خانه</a></li>
+                    <li class="active">پروفایل دانش آموز</li>
                 </ol>
             </div>
         </div>
@@ -62,9 +62,9 @@ $description = $description;
                                     <div class="col-md-6">
                                         <?php
                                         if ($myavatar == NULL) {
-                                            print' <img class="img-responsive" src="http://otee.ir/assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
+                                            print' <img class="img-responsive" src="' . $url . 'assets/images/'.$mygender.'.png" alt="'.$myfname.'">';
                                         }else{
-                                            print '<img src="http://otee.ir/assets/images/'.$myavatar.'" class="img-responsive"  alt="'.$myfname.'"/>';
+                                            print '<img src="' . $url . 'assets/images/'.$myavatar.'" class="img-responsive"  alt="'.$myfname.'"/>';
                                         }
 
                                         ?></div>
@@ -77,38 +77,38 @@ $description = $description;
                                     <tbody>
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>Registration Number</td>
+                                        <td>شماره ثبت</td>
                                         <td><b><?php echo "$myid"; ?></b></td>
 
                                     </tr>
                                     <tr>
                                         <th scope="row">2</th>
-                                        <td>First Name</td>
+                                        <td>نام</td>
                                         <td><b><?php echo "$myfname"; ?></b></td>
 
                                     </tr>
                                     <tr>
                                         <th scope="row">3</th>
-                                        <td>Last Name</td>
+                                        <td>نام خانوادگی</td>
                                         <td><b><?php echo "$mylname"; ?></b></td>
 
                                     </tr>
                                     <tr>
                                         <th scope="row">4</th>
-                                        <td>Gender</td>
+                                        <td>جنسیت</td>
                                         <td><b><?php echo "$mygender"; ?></b></td>
 
                                     </tr>
 
                                     <tr>
                                         <th scope="row">7</th>
-                                        <td>Email Address</td>
+                                        <td>ایمیل</td>
                                         <td><b><?php echo "$myemail"; ?></b></td>
 
                                     </tr>
                                     <tr>
                                         <th scope="row">8</th>
-                                        <td>Phone Number</td>
+                                        <td>شماره موبایل</td>
                                         <td><b><?php echo "$myphone"; ?></b></td>
 
                                     </tr>
@@ -123,49 +123,64 @@ $description = $description;
 
                             <div class="panel panel-white">
                                 <div class="panel-body">
-                                    <h3>Update display picture</h3>
+                                    <h3>به روز رسانی عکس پروفایل</h3>
                                     <form action="pages/new_dp.php" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Select image to upload</label>
+                                            <label for="exampleInputEmail1">تصویر را برای بارگذاری انتخاب کنید</label>
                                             <input type="file" name="image" accept="image/*" required autocomplete="off">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                        <button type="submit" class="btn btn-primary">به روز رسانی</button>
                                         <?php
                                         if ($myavatar == NULL) {
 
                                         }else{
-                                            print '<a';?> onclick="return confirm('Delete image ?')" <?php print ' class="btn btn-danger" href="pages/drop_dp.php">Delete Image</a>';
+                                            print '<a';?> onclick="return confirm('از حذف عکس اطمینان دارید؟')" <?php print ' class="btn btn-danger" href="pages/drop_dp.php">حذف عکس</a>';
                                         }
 
                                         ?>
                                     </form>
 
-                                </div></div></div>
+                                </div>
+							</div>
+						</div>
 
 
                         <div class="col-md-7">
-
                             <div class="panel panel-white">
                                 <div class="panel-body">
-                                    <h3>Update login password</h3>
+                                    <h3>تغییر پسورد</h3>
                                     <form action="pages/new_pw.php" method="POST">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Enter new password</label>
-                                            <input type="password" id="password" class="form-control" name="pass1" required placeholder="Enter new password">
+                                            <label for="exampleInputEmail1">پسورد جدید را وارد کنید</label>
+                                            <input
+												type="password"
+												id="password"
+												class="form-control"
+												name="pass1"
+												required
+												placeholder="پسورد جدید"
+											>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Confirm new password</label>
-                                            <input type="password" id="confirm_password" class="form-control" name="pass2" required placeholder="Confirm new password">
+                                            <label for="exampleInputEmail1">تایید پسورد جدید</label>
+                                            <input
+												type="password"
+												id="confirm_password"
+												class="form-control"
+												name="pass2"
+												required
+												placeholder="تایید پسورد جدید"
+											>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Change Password</button>
+                                        <button type="submit" class="btn btn-primary">تغییر پسورد</button>
                                         <script>
                                             var password = document.getElementById("password")
                                                 , confirm_password = document.getElementById("confirm_password");
 
                                             function validatePassword(){
                                                 if(password.value != confirm_password.value) {
-                                                    confirm_password.setCustomValidity("Passwords Don't Match");
+                                                    confirm_password.setCustomValidity("کلمات عبور مطابقت ندارند");
                                                 } else {
                                                     confirm_password.setCustomValidity('');
                                                 }
@@ -176,7 +191,9 @@ $description = $description;
                                         </script>
                                     </form>
 
-                                </div></div></div>
+                                </div>
+							</div>
+						</div>
                     </div>
 
 
@@ -185,7 +202,11 @@ $description = $description;
 
         </div>
         <div class="page-footer">
-            <p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a href="https://www.instagram.com/beatsbybwire/" target="_blank">Bwire Charles Mashauri</a>.</p>
+            <p class="no-s">
+				<?php echo date('Y'); ?>
+				&copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon aslani</a>.
+			</p>
         </div>
     </div>
 </main>

@@ -16,11 +16,11 @@
 		<div class="topmenu-outer">
 			<div class="top-menu">
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">
-							<i class="fa fa-search"></i>
-						</a>
-					</li>
+<!--					<li>-->
+<!--						<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">-->
+<!--							<i class="fa fa-search"></i>-->
+<!--						</a>-->
+<!--					</li>-->
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle waves-effect waves-button waves-classic"
@@ -31,9 +31,9 @@
 							</span>
 							<?php
 							if ($myavatar == NULL) {
-								print' <img class="img-circle avatar"  width="40" height="40" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+								print' <img class="img-circle avatar"  width="40" height="40" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 							} else {
-								print '<img width="40" height="40" class="img-circle avatar" src="http://otee.ir/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
+								print '<img width="40" height="40" class="img-circle avatar" src="' . $url . '/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
 							}
 
 							?>
@@ -60,8 +60,6 @@
 						>
 							<span><i class="fa fa-sign-out m-r-xs"></i>خروج</span>
 						</a>
-					</li>
-					<li>
 					</li>
 				</ul>
 			</div>

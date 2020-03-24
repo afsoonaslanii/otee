@@ -1,6 +1,4 @@
 <?php
-
-
 date_default_timezone_set('Asia/Tehran');
 
 $url = 'http://otee.ir';
@@ -11,23 +9,8 @@ $mylname = (count($query) > 0 ? $query[0]->student_lname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 $student_id = $query[0]->student_id;
 
-//include '../includes/uniques.php';
-//if (isset($_SESSION['current_examid'])) {
-//
 $exam_id = $_SESSION['current_examid'];
 $retake_status = $_SESSION['student_retake'];
-//
-//if ($retake_status == "1") {
-//$sql = "DELETE FROM tbl_assessment_records WHERE student_id = '$myid' AND exam_id = '$exam_id'";
-//
-//if ($conn->query($sql) === TRUE) {
-//
-//} else {
-//
-//}
-//}
-
-//$sql = "SELECT * FROM tbl_examinations WHERE exam_id = '$exam_id' AND category = '$mycategory' AND status = 'Active'";
 $result = $exam;
 
 if (count($exam) > 0) {
@@ -49,49 +32,18 @@ if (count($exam) > 0) {
 } else {
 	header("location:./");
 }
-//}
-//else{
-//header("location:./");
-//}
-
-//$sql = "SELECT * FROM tbl_assessment_records WHERE student_id = '$myid'";
-//$result = $conn->query($sql);
-//
-//if ($result->num_rows > 0) {
-//
-//    while($row = $result->fetch_assoc()) {
-//    header("location:./take-assessment.php?id=$exam_id");
-//    }
-//} else {
-//$myname = "$myfname $mylname";
-//$recid = 'RS'.get_rand_numbers(14).'';
-//
-//$sql = "INSERT INTO tbl_assessment_records (record_id, student_id, student_name, exam_name, exam_id, score, status, next_retake, date)
-//VALUES ('$recid', '$myid', '$myname', '$exam_name', '$exam_id', '0', 'FAIL', '$next_retake', '$today_date')";
-//
-//if ($conn->query($sql) === TRUE) {
-//
-//} else {
-//
-//}
-//
-//}
-
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-
-
-	<title>OES | Examination</title>
+	<title>اوتی | امتحانات</title>
 
 	<?php require('shared/links.php'); ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
 		  type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/css/snack.css" rel="stylesheet" type="text/css"/>
-
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
@@ -111,40 +63,56 @@ if (count($exam) > 0) {
 						<div class="sidebar-profile-image">
 							<?php
 							if ($myavatar == NULL) {
-								print' <img class="img-circle img-responsive" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+								print' <img class="img-circle img-responsive" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 							} else {
-								print '<img  src="http://otee.ir/assets/images/' . $myavatar . '" class="img-circle img-responsive"  alt="' . $myfname . '"/>';
+								print '<img  src="' . $url . '/assets/images/' . $myavatar . '" class="img-circle img-responsive"  alt="' . $myfname . '"/>';
 							}
 
 							?>
 						</div>
 						<div class="sidebar-profile-details">
-							<span><?php echo "$myfname"; ?> <?php echo "$mylname"; ?><br><small>OES Student</small></span>
+							<span>
+								<?php echo "$myfname"; ?> <?php echo "$mylname"; ?>
+								<br>
+								<small>اوتی | دانش آموز</small>
+							</span>
 						</div>
 					</a>
 				</div>
 			</div>
 			<ul class="menu accordion-menu">
-				<li><a href="<?php echo base_url(); ?>index.php/dashboard" class="waves-effect waves-button"><span
-							class="menu-icon glyphicon glyphicon-home"></span>
-						<p>Dashboard</p></a></li>
-				<li><a href="<?php echo base_url(); ?>index.php/examinations" class="waves-effect waves-button"><span
-							class="menu-icon glyphicon glyphicon-book"></span>
-						<p>Examinations</p></a></li>
-				<li><a href="<?php echo base_url(); ?>index.php/result" class="waves-effect waves-button"><span
-							class="menu-icon glyphicon glyphicon-certificate"></span>
-						<p>Exam Results</p></a></li>
+				<li>
+					<a href="<?php echo base_url(); ?>index.php/dashboard" class="waves-effect waves-button">
+						<span class="menu-icon glyphicon glyphicon-home">
+						</span>
+						<p>داشبورد</p>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>index.php/examinations" class="waves-effect waves-button">
+						<span class="menu-icon glyphicon glyphicon-book">
+						</span>
+						<p>امتحانات</p>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>index.php/result" class="waves-effect waves-button">
+						<span class="menu-icon glyphicon glyphicon-certificate">
+						</span>
+						<p>نتایج امتحانات</p>
+					</a>
+				</li>
 
 			</ul>
 		</div>
 	</div>
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Examination</h3>
+			<h3>امتحانات</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="./">Home</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/exam">Examinations</a></li>
+					<li><a href="./">خانه</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحانات</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>
@@ -154,8 +122,12 @@ if (count($exam) > 0) {
 				<div class="panel panel-white">
 					<div class="panel-body">
 						<div class="tabs-below" role="tabpanel">
-							<form action="http://otee.ir/student/index.php/exam/submit_assessment" method="POST"
-								  name="quiz" id="quiz_form">
+							<form
+								action="<?php echo base_url() ?>index.php/exam/submit_assessment"
+								method="POST"
+								name="quiz"
+								id="quiz_form"
+							>
 								<div class="tab-content">
 									<?php
 									$result = $question;
@@ -177,7 +149,7 @@ if (count($exam) > 0) {
 													print '
 											<div role="tabpanel" class="tab-pane active fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
-											 <p><input type="text" name="an' . $qno . '"  class="form-control" placeholder="Enter your answer" autocomplete="off">
+											 <p><input type="text" name="an' . $qno . '"  class="form-control" placeholder="جواب خودرا وارد کنید" autocomplete="off">
 											 <input type="hidden" name="qst' . $qno . '" value="' . base64_encode($qs) . '">
 											 <input type="hidden" name="ran' . $qno . '" value="' . base64_encode($ans) . '">
                                              </div>
@@ -186,13 +158,12 @@ if (count($exam) > 0) {
 													print '
 											<div role="tabpanel" class="tab-pane fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
-											 <p><input type="text" name="an' . $qno . '"  class="form-control" placeholder="Enter your answer" autocomplete="off">
+											 <p><input type="text" name="an' . $qno . '"  class="form-control" placeholder="جواب خودرا وارد کنید" autocomplete="off">
 					                         <input type="hidden" name="qst' . $qno . '" value="' . base64_encode($qs) . '">
 											 <input type="hidden" name="ran' . $qno . '" value="' . base64_encode($ans) . '">
                                              </div>
 											';
 												}
-
 												$qno = $qno + 1;
 											} else {
 
@@ -224,10 +195,7 @@ if (count($exam) > 0) {
                                              </div>
 											';
 												}
-
 												$qno = $qno + 1;
-
-
 											}
 
 										}
@@ -236,13 +204,10 @@ if (count($exam) > 0) {
 									}
 
 									?>
-
 								</div>
-
 
 								<ul class="nav nav-tabs" role="tablist">
 									<?php
-									//$sql = "SELECT * FROM tbl_questions WHERE exam_id = '$exam_id'";
 									$result = $question;
 
 									if (count($result) > 0) {
@@ -273,16 +238,24 @@ if (count($exam) > 0) {
 
 
 						</div>
-						<br><input onclick="return confirm('Are you sure you want to submit your assessment ?')"
-								   class="btn btn-success" type="submit" value="Submit Assessment">
+						<br>
+						<input
+							onclick="return confirm('آیا مطمئن هستید که می خواهید آزمون خود را ثبت کنید؟')"
+							class="btn btn-success"
+							type="submit"
+							value="ثبت آزمون"
+						>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="page-footer">
-			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
-					href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+			<p class="no-s">
+				<?php echo date('Y'); ?> &copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>
+				.
+			</p>
 		</div>
 	</div>
 </main>

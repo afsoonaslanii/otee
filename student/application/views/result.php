@@ -15,7 +15,7 @@ $description = $description;
 
 <head>
 
-	<title>OES | My Results</title>
+	<title>او تی | نتایج امتحانات</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -47,8 +47,7 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>My Results</h3>
-
+			<h3>نتایج من</h3>
 
 		</div>
 		<div id="main-wrapper">
@@ -61,36 +60,30 @@ $description = $description;
 								<div class="panel-body">
 									<div class="table-responsive">
 										<?php
-
-										//$sql = "SELECT * FROM tbl_assessment_records WHERE student_id = '$myid'";
 										$result = $record;
-
 										if (count($result) > 0) {
 											print '
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Exam code</th>
-                                                <th>Exam name</th>
-												<th>teacher name</th>
-												<th>Score</th>
-												<th>Date</th>
-                                                <th>Status</th>
-												<th>Next Retake</th>
-
-
+                                                <th>کد آزمون</th>
+                                                <th>نام آزمون</th>
+												<th>نام معلم</th>
+												<th>نمره</th>
+												<th>تاریخ</th>
+                                                <th>وضعیت</th>
+												<th>آزمون مجدد</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Exam code</th>
-                                                <th>Exam name</th>
-												<th>teacher name</th>
-												<th>Score</th>
-												<th>Date</th>
-                                                <th>Status</th>
-												<th>Next Retake</th>
-
+                                                <th>کد آزمون</th>
+                                                <th>نام آزمون</th>
+												<th>نام معلم</th>
+												<th>نمره</th>
+												<th>تاریخ</th>
+                                                <th>وضعیت</th>
+												<th>آزمون مجدد</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -116,7 +109,7 @@ $description = $description;
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        نتیجه ای در پایگاه داده یافت نشد.
                                     </div>';
 
 										}
@@ -126,17 +119,16 @@ $description = $description;
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
 		<div class="page-footer">
-			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
-					href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+			<p class="no-s">
+				<?php echo date('Y'); ?> &copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.
+			</p>
 		</div>
 	</div>
 </main>
@@ -171,7 +163,6 @@ $description = $description;
 <script src="<?php echo $url; ?>/assets/js/pages/table-data.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/select2/js/select2.min.js"></script>
 
-
 <script>
     function myFunction() {
         var x = document.getElementById("snackbar");
@@ -182,5 +173,4 @@ $description = $description;
     }
 </script>
 </body>
-
 </html>

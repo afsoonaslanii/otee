@@ -15,7 +15,7 @@ $description = $description;
 <html>
 
 <head>
-	<title>OES | My Examinations</title>
+	<title>او تی | امتحانات من</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -47,7 +47,7 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>My Examinations</h3>
+			<h3>امتحانات من</h3>
 
 
 		</div>
@@ -68,24 +68,23 @@ $description = $description;
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Exam code</th>
-                                                <th>Exam Name</th>
-												<th>Teacher Name</th>
-												<th>Deadline</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>کد آزمون</th>
+                                                <th>نام آزمون</th>
+												<th>نام معلم</th>
+												<th>زمان پایان</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
 
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Exam code</th>
-                                                <th>Exam Name</th>
-												<th>Teacher Name</th>
-												<th>Deadline</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-
+                                                <th>کد آزمون</th>
+                                                <th>نام آزمون</th>
+												<th>نام معلم</th>
+												<th>زمان پایان</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -93,11 +92,11 @@ $description = $description;
 											foreach ($result as $row) {
 												$status = $row->exam_status;
 												if ($status == '1') {
-													$st = '<p class="text-success">ACTIVE</p>';
-													$stl = '<a class="btn btn-success" href="http://otee.ir/student/index.php/exam/Take_Assessment/' . $row->exam_id . '/' . $student_id . '">Take Assessment</a>';
+													$st = '<p class="text-success">فعال</p>';
+													$stl = '<a class="btn btn-success" href="' .  base_url() . 'index.php/exam/Take_Assessment/' . $row->exam_id . '/' . $student_id . '">شروع آزمون</a>';
 												} else {
-													$st = '<p class="text-danger">INACTIVE</p>';
-													$stl = '<a class="btn btn-danger disabled" href="#">Take Assessment</a>';
+													$st = '<p class="text-danger">غیرفعال</p>';
+													$stl = '<a class="btn btn-danger disabled" href="#">شروع آزمون</a>';
 												}
 												print '
 										       <tr>
@@ -117,7 +116,7 @@ $description = $description;
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                       هیچ چیزی در پایگاه داده یافت نشد.
                                     </div>';
 										}
 										?>
@@ -134,8 +133,10 @@ $description = $description;
 			</div>
 		</div>
 		<div class="page-footer">
-			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
-					href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+			<p class="no-s">
+				<?php echo date('Y'); ?> &copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.
+			</p>
 		</div>
 	</div>
 </main>

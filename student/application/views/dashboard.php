@@ -19,7 +19,7 @@ $notice = '44';
 <html>
 
 <head>
-    <title>OES | Student Dashboard</title>
+    <title>اوتی | پنل دانش آموز</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -43,11 +43,11 @@ $notice = '44';
 
     <div class="page-inner">
         <div class="page-title">
-            <h3>Student Dashboard</h3>
+            <h3>پنل دانش آموز</h3>
             <div class="page-breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a href="<?php echo base_url(); ?>index.php/dashboard">Home</a></li>
-                    <li class="active">Student Dashboard</li>
+                    <li><a href="<?php echo base_url(); ?>index.php/dashboard">خانه</a></li>
+                    <li class="active">پنل دانش آموز</li>
                 </ol>
             </div>
         </div>
@@ -57,8 +57,10 @@ $notice = '44';
                     <div class="panel info-box panel-white">
                         <div class="panel-body">
                             <div class="info-box-stats">
-                                <p class="counter"><?php echo number_format($students_in_my_class); ?></p>
-                                <span class="info-box-title">STUDENTS IN MY CLASS</span>
+                                <p class="counter">
+									<?php echo number_format($students_in_my_class); ?>
+								</p>
+                                <span class="info-box-title">هم کلاسی</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-user"></i>
@@ -72,7 +74,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p><span class="counter"><?php echo number_format($active_examinations); ?></span></p>
-                                <span class="info-box-title">ACTIVE EXAMINATIONS</span>
+                                <span class="info-box-title">آزمون های فعال</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-book-open"></i>
@@ -86,7 +88,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($my_subjects); ?></p>
-                                <span class="info-box-title">SUBJECTS</span>
+                                <span class="info-box-title">موضوعات</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-docs"></i>
@@ -100,7 +102,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($passed_exam); ?></p>
-                                <span class="info-box-title">PASSED EXAMS</span>
+                                <span class="info-box-title">امتحانات قبول شده</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-like"></i>
@@ -113,7 +115,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($notice); ?></p>
-                                <span class="info-box-title">NOTICE</span>
+                                <span class="info-box-title">اطلاع</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-list"></i>
@@ -127,7 +129,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p><span class="counter"><?php echo number_format($failed_exam); ?></span></p>
-                                <span class="info-box-title">FAILED EXAMS</span>
+                                <span class="info-box-title">امتحانت قبول نشده</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-dislike"></i>
@@ -141,7 +143,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($locked_exams); ?></p>
-                                <span class="info-box-title">LOCKED EXAMS</span>
+                                <span class="info-box-title">امتحانات قفل شده</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-lock"></i>
@@ -155,7 +157,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($attended_exams); ?></p>
-                                <span class="info-box-title">ATTENDED EXAMS</span>
+                                <span class="info-box-title">امتحانات مهم</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-check"></i>
@@ -167,7 +169,7 @@ $notice = '44';
                 <div class="col-lg-12 col-md-12">
                     <div class="panel panel-white">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Notice</h4>
+                            <h4 class="panel-title">اطلاعات</h4>
                         </div>
 <!--                        <div class="panel-body">-->
 <!--                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
@@ -218,7 +220,11 @@ $notice = '44';
 
         </div>
         <div class="page-footer">
-            <p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.</p>
+            <p class="no-s">
+				<?php echo date('Y'); ?>
+				&copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon Aslanii</a>.
+			</p>
         </div>
     </div>
 </main>
@@ -250,8 +256,6 @@ $notice = '44';
 <script src="<?php echo $url; ?>/assets/js/modern.js"></script>
 
 <script src="<?php echo $url; ?>/assets/js/canvasjs.min.js"></script>
-
-
 
 </body>
 

@@ -27,7 +27,7 @@ if (count($result) > 0) {
 <html>
 
 <head>
-	<title>OES | Take Assessment</title>
+	<title>او تی | نتایج امتحان</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -51,10 +51,10 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Assessment Results</h3>
+			<h3>نتایج امتحانات</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="<?php echo base_url(); ?>index.php/exam">Assessments</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحانات</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>
@@ -66,7 +66,7 @@ if (count($result) > 0) {
 					<div class="row">
 						<div class="panel panel-white">
 							<div class="panel-heading">
-								<h4 class="panel-title">Results Information</h4>
+								<h4 class="panel-title">اطلاعات آزمون</h4>
 							</div>
 							<div class="panel-body">
 								<div class="table-responsive project-stats">
@@ -75,27 +75,26 @@ if (count($result) > 0) {
 										<tbody>
 										<tr>
 											<th scope="row">1</th>
-											<td>Exam Name</td>
+											<td>نام آزمون</td>
 											<td><?php echo "$exam_name"; ?></td>
 										</tr>
 										<tr>
 											<th scope="row">2</th>
-											<td>Student_name</td>
+											<td>نام دانش آموز</td>
 											<td><?php echo "$myfname $mylname"; ?></td>
 										</tr>
 										<tr>
 											<th scope="row">3</th>
-											<td>Score</td>
+											<td>نمره</td>
 											<td><?php echo "$score"; ?>%</td>
 										</tr>
 
 
 										<tr>
 											<th scope="row">4</th>
-											<td>Next Re-take</td>
+											<td>زمان آزمون مجدد</td>
 											<td><?php echo "$next_retake"; ?></td>
 										</tr>
-
 
 										</tbody>
 									</table>
@@ -110,23 +109,22 @@ if (count($result) > 0) {
 				<div class="col-md-6">
 					<div class="panel panel-white">
 						<div class="panel-heading">
-							<h3 class="panel-title">Status</h3>
+							<h3 class="panel-title">وضعیت</h3>
 						</div>
 						<div class="panel-body">
 							<?php
 							if ($status == "PASS") {
 								print '
                                 <div class="alert alert-success" role="alert">
-                                        Well done! You have pass this examination.
-                                    </div>';
+                                   آفرین! شما این آزمون را گذرانده اید.
+                                </div>';
 							} else {
 								print '
                                 <div class="alert alert-danger" role="alert">
-                                       You have fail to pass this examination.
-                                    </div>';
+                                  شما نمره کافی برای قبولی نیاورده اید.
+                                </div>';
 
 							}
-
 							?>
 						</div>
 					</div>
@@ -137,8 +135,10 @@ if (count($result) > 0) {
 
 		</div>
 		<div class="page-footer">
-			<p class="no-s"><?php echo date('Y'); ?> &copy; Developed by <a
-					href="https://www.instagram.com/beatsbybwire/" target="_blank">Bwire Charles Mashauri</a>.</p>
+			<p class="no-s">
+				<?php echo date('Y'); ?> &copy; Developed by
+				<a href="https://www.instagram.com/afsoonaslanii/" target="_blank">Afsoon aslani</a>.
+			</p>
 		</div>
 	</div>
 </main>
@@ -171,8 +171,5 @@ if (count($result) > 0) {
 
 <script src="<?php echo $url; ?>/assets/js/canvasjs.min.js"></script>
 
-
 </body>
-
-
 </html>

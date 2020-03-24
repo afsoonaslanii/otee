@@ -4,9 +4,9 @@
 		<div class="profile">
 			<?php
 			if ($myavatar == NULL) {
-				print'<img width="60" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+				print'<img width="60" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 			} else {
-				print '<img width="60" height="60" src="http://otee.ir/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
+				print '<img width="60" height="60" src="' . $url . '/assets/images/' . $myavatar . '" alt="' . $myfname . '">';
 			}
 
 			?>

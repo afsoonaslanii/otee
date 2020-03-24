@@ -6,9 +6,9 @@
 					<div class="sidebar-profile-image">
 						<?php
 						if ($myavatar == NULL) {
-							print'<img class="img-circle img-responsive" src="http://otee.ir/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
+							print'<img class="img-circle img-responsive" src="' . $url . '/assets/images/' . $mygender . '.png" alt="' . $myfname . '">';
 						} else {
-							print '<img  src="http://otee.ir/assets/images/' . $myavatar . '" class="img-circle img-responsive"  alt="' . $myfname . '"/>';
+							print '<img  src="' . $url . '/assets/images/' . $myavatar . '" class="img-circle img-responsive"  alt="' . $myfname . '"/>';
 						}
 
 						?>
@@ -17,7 +17,7 @@
 						<span>
 							<?php echo "$myfname"; ?> <?php echo "$mylname"; ?>
 							<br>
-							<small> او-تی | ادمین</small>
+							<small> او-تی | دانش آموز</small>
 						</span>
 					</div>
 				</a>
