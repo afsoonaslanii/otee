@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $ms = $ms;
@@ -17,7 +18,7 @@ if (count($result) > 0) {
 	foreach ($result as $row) {
 		$exam_id = $row->exam_id;
 		$exname = $row->exam_title;
-		$exdate = $row->exam_date;
+		$exdate = convert_gregorian_to_jalali($row->exam_date);
 		$exduration = $row->exam_duration;
 		$passmark = $row->passmark;
 		$reexam = $row->re_exam;
@@ -54,6 +55,8 @@ if (count($result) > 0) {
 		  type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
 		  rel="stylesheet" type="text/css"/>
+
+	<link href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body <?php if ($ms == "1") {
@@ -143,7 +146,7 @@ if (count($result) > 0) {
 											<label for="date">تاریخ پایان</label>
 											<input
 												type="text"
-												class="form-control date-picker"
+												class="form-control persian-date-picker"
 												value="<?php echo "$exdate"; ?>"
 												id="date"
 												name="date"
@@ -207,6 +210,22 @@ if (count($result) > 0) {
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
+
+<script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".persian-date-picker").pDatepicker({
+            initialValue : false,
+            format : 'YYYY/M/D',
+            calendar:{
+                persian: {
+                    locale: 'en'
+                }
+            }
+        });
+    });
+</script>
 
 
 <script>

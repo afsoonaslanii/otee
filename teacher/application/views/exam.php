@@ -44,6 +44,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 	<link href="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
 		  rel="stylesheet" type="text/css"/>
 
+	<link href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
@@ -431,7 +433,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														<label for="date">تاریخ پایان</label>
 														<input
 															type="text"
-															class="form-control date-picker"
+															class="form-control persian-date-picker"
 															id="date"
 															name="date"
 															required
@@ -504,6 +506,22 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
+
+<script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".persian-date-picker").pDatepicker({
+            initialValue : false,
+            format : 'YYYY/M/D',
+            calendar:{
+                persian: {
+                    locale: 'en'
+                }
+            }
+        });
+    });
+</script>
 
 
 <script>
