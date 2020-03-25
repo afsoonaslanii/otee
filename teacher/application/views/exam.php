@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $ms = $ms;
@@ -291,7 +291,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															print '
 										       <tr>
                                                 <td>' . $row->exam_title . '</td>
-												<td>' . convert_date($row->exam_date) . '</td>
+												<td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
                                                 <td>' . $row->exam_duration . ' دقیقه' . '</td>
                                                 <td>' . $row->passmark . '</td>
 												<td>' . $row->re_exam . '</td>

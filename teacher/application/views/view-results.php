@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->teacher_picture : NULL);
@@ -119,8 +119,8 @@ $exam_name = "test"
                                                 <td>' . $row->exam_title . '</td>
                                                 <td><b>' . $row->score . '%</b></td>
 												<td>' . $row->status_student . '</td>
-												<td>' . convert_date($row->take_date) . '</td>
-												<td>' . convert_date($row->retake_date) . '</td>
+												<td>' . convert_gregorian_to_jalali($row->take_date) . '</td>
+												<td>' . convert_gregorian_to_jalali($row->retake_date) . '</td>
 												<td><div class="btn-group" role="group">
                                                 <button 
                                                 type="button"

@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->teacher_picture : NULL);
@@ -124,7 +124,7 @@ if (count($result) > 0) {
 											<tr>
 												<th scope="row">3</th>
 												<td>تاریخ پایان</td>
-												<td><?php echo convert_date($exdate); ?></td>
+												<td><?php echo convert_gregorian_to_jalali($exdate); ?></td>
 											</tr>
 
 											<tr>
