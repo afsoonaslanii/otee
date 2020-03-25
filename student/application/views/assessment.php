@@ -26,8 +26,8 @@ if (count($exam) > 0) {
 		$terms = '';
 		$status = $row->exam_status;
 		$today_date = date('Y/m/d');
-		$next_retake = date('m/d/Y', strtotime($today_date . ' + ' . $reexam . ' days'));
-		$today_date = date('m/d/Y');
+		$next_retake = date('Y/m/d', strtotime($today_date . ' + ' . $reexam . ' days'));
+		$today_date = date('Y/m/d');
 	}
 } else {
 	header("location:./");
@@ -98,6 +98,7 @@ if (count($exam) > 0) {
 											$op4 = $row->option4;
 											$ans = $row->answer;
 											$enan = $row->$ans;
+											$point = $row->point;
 											if ($type == "FB") {
 												if ($qno == "1") {
 													print '
@@ -122,10 +123,12 @@ if (count($exam) > 0) {
 											} else {
 
 												if ($qno == "1") {
-
 													print '
 											<div role="tabpanel" class="tab-pane active fade in" id="tab' . $qno . '">
-                                             <p><b>' . $qno . '.</b> ' . $qs . '</p>
+                                             <p><b>' . $qno . '.</b> ' . $qs . ' </p>
+                                             <p>نمره سوال: ' . $point . '
+                                             <input type="hidden" name="point' . $qno . '" value="' . $point . '"/>
+                                             </p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op1 . '"> ' . $op1 . '</p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op2 . '"> ' . $op2 . '</p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op3 . '"> ' . $op3 . '</p>
@@ -139,6 +142,9 @@ if (count($exam) > 0) {
 													print '
 											<div role="tabpanel" class="tab-pane fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
+                                             <p>نمره سوال: ' . $point . '
+                                             <input type="hidden" name="point' . $qno . '" value="' . $point . '"/>
+                                             </p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op1 . '"> ' . $op1 . '</p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op2 . '"> ' . $op2 . '</p>
 											 <p><input type="radio" name="an' . $qno . '"  class="form-control" value="' . $op3 . '"> ' . $op3 . '</p>
@@ -153,8 +159,6 @@ if (count($exam) > 0) {
 											}
 
 										}
-									} else {
-
 									}
 
 									?>

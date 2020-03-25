@@ -88,7 +88,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">3</th>
 											<td>نمره</td>
-											<td><?php echo "$score"; ?>%</td>
+											<td><?php echo "$score"; ?></td>
 										</tr>
 
 

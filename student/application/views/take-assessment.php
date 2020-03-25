@@ -22,8 +22,8 @@ if (count($result) > 0) {
 		$terms = $row->exam_terms;
 		$status = $row->exam_status;
 		$today_date = date('Y/m/d');
-		$next_retake = date('m/d/Y', strtotime($today_date . ' + ' . $reexam . ' days'));
-		$dcv = date_format(date_create_from_format('m/d/Y', $deadline), 'Y/m/d');
+		$next_retake = date('Y/m/d', strtotime($today_date . ' + ' . $reexam . ' days'));
+		$dcv = date_format(date_create_from_format('Y/m/d', $deadline), 'Y/m/d');
 
 		if ($status == '0') {
 			header("location:./");
@@ -54,7 +54,7 @@ if (count($result) > 0) {
 		$take_date = $row->take_date;
 		$retake_date = $row->retake_date;
 		$today_date = date('Y/m/d');
-		$retakeconv = date_format(date_create_from_format('m/d/Y', $retake_date), 'Y/m/d');
+		$retakeconv = date_format(date_create_from_format('Y/m/d', $retake_date), 'Y/m/d');
 		$tc = strtotime($today_date);
 		$rc = strtotime($retakeconv);
 		$dc = strtotime($dcv);
@@ -149,7 +149,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">5</th>
 											<td>نمره قبولی</td>
-											<td><?php echo "$passmark"; ?>%</td>
+											<td><?php echo "$passmark"; ?></td>
 										</tr>
 
 										<tr>
@@ -217,7 +217,7 @@ if (count($result) > 0) {
 									print '
 								<div class="alert alert-warning" role="alert">
                                 تاریخ امتحان مجدد:  
-                                ' . convert_date($retake_date) . '
+                                ' . convert_gregorian_to_jalali($retake_date) . '
                                 </div>';
 								}
 

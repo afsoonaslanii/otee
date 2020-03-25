@@ -86,6 +86,7 @@ class Exam extends CI_Controller
     }
 
     function submit_assessment(){
+
         if (isset($_SESSION['user_id'])) {
             $score = 0;
             $total_question = $_POST['totalquestion']; //tedad soal
@@ -95,28 +96,23 @@ class Exam extends CI_Controller
             $class_id = $_POST['classid'];
             $retake_date = $_POST['retake'];
 
-            // $this->load->model('exam_answer_model');
             for ($i = 1; $i <= $total_question; $i++) {
-//            $answer = array(
-//               'exam_id'=>$exam_id,
-//               'student_id'=>$student_id,
-//                'question_id'=>$_POST['questionid'],
-//                'answer'=>$_POST['an'.$i],
-//            );
-//            $this->exam_answer_model->insert_exam_an($answer);
 
                 $right_answer = base64_decode($_POST['ran' . $i]);
+                $point = $_POST['point' . $i];
 
                 if ($right_answer == $_POST['an' . $i]) {
-                    $score += 5;
+                    $score += $point;
                 }
             }
 
-            if (($passmark / 2) <= $score) {
+
+            if ($score >= $passmark) {
                 $status = 'PASS';
             } else {
                 $status = 'FAIL';
             }
+
             $st_record = array(
                 'class_id' => $class_id,
                 'exam_id' => $exam_id,

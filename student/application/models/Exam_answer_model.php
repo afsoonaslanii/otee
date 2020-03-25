@@ -19,5 +19,3 @@ class Exam_answer_model extends CI_Model{
         return $q;
     }
 }
-
-?>
