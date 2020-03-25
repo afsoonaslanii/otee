@@ -137,7 +137,7 @@ if (count($result) > 0) {
 											<tr>
 												<th scope="row">5</th>
 												<td>امتیاز</td>
-												<td><?php echo "$expassmark"; ?>%</td>
+												<td><?php echo "$expassmark"; ?></td>
 											</tr>
 
 

@@ -82,6 +82,7 @@ if (count($result) > 0) {
 										$op2 = $row->option2;
 										$op3 = $row->option3;
 										$op4 = $row->option4;
+										$point = $row->point;
 										if ($type == "FB") {
 											if ($qno == "1") {
 												print '
@@ -132,6 +133,9 @@ if (count($result) > 0) {
 												print '
 											<div role="tabpanel" class="tab-pane active fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
+                                             <p>نمره سوال: ' . $point . '
+                                             <input type="hidden" name="point' . $qno . '" value="' . $point . '"/>
+                                             </p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op1 . '> ' . $op1 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op2 . '> ' . $op2 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op3 . '> ' . $op3 . '</p>
@@ -145,6 +149,9 @@ if (count($result) > 0) {
 												print '
 											<div role="tabpanel" class="tab-pane fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
+                                             <p>نمره سوال: ' . $point . '
+                                             <input type="hidden" name="point' . $qno . '" value="' . $point . '"/>
+                                             </p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op1 . '> ' . $op1 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op2 . '> ' . $op2 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op3 . '> ' . $op3 . '</p>

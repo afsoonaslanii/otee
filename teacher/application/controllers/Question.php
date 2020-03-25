@@ -36,6 +36,7 @@ class Question extends CI_Controller
             'option3'=>$_POST['opt3'],
             'option4'=>$_POST['opt4'],
             'answer'=>$_POST['answer'],
+            'point'=>$_POST['point'],
         );
 
         $this->load->model('question_model');

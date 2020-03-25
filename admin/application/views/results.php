@@ -111,7 +111,7 @@ $description = $description;
 												<td>' . $row->class_id . '</td>
                                                 <td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
 												<td>' . $row->exam_duration . '<b> دقیقه.</b></td>
-												<td>' . $row->passmark . '<b>%</b></td>
+												<td>' . $row->passmark . '</td>
 												<td>' . $row->re_exam . '<b> روز</b></td>
 												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">

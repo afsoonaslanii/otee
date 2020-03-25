@@ -99,6 +99,19 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
 														>
                                                     </div>
 
+													<div class="form-group">
+														<label for="point">نمره سوال</label>
+														<input
+															required
+															type="text"
+															class="form-control"
+															placeholder="نمره سوال را بصورت عدد وارد کنید"
+															name="point"
+															id="point"
+															autocomplete="off"
+														>
+													</div>
+
                                                     <table class="table table-bordered">
                                                         <thead>
                                                         <tr>

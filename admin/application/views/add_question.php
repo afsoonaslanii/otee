@@ -101,6 +101,19 @@ if (count($result) > 0) {
 														/>
 													</div>
 
+													<div class="form-group">
+														<label for="point">نمره سوال</label>
+														<input
+															required
+															type="text"
+															class="form-control"
+															placeholder="نمره سوال را بصورت عدد وارد کنید"
+															name="point"
+															id="point"
+															autocomplete="off"
+														>
+													</div>
+
 													<table class="table table-bordered">
 														<thead>
 														<tr>
