@@ -16,7 +16,7 @@ $description = $description;
 <html>
 
 <head>
-	<title>او تی | امتحانات من</title>
+	<title>او تی | امتحان ها من</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -49,7 +49,7 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>امتحانات من</h3>
+			<h3>امتحان های من</h3>
 
 
 		</div>

@@ -53,10 +53,10 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>نتایج امتحانات</h3>
+			<h3>نتایج امتحان ها</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحانات</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحان ها</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>

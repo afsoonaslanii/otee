@@ -56,7 +56,7 @@ if (count($result) > 0) {
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
 					<li><a href="./">خانه</a></li>
-					<li><a href="examinations.php">امتحانات</a></li>
+					<li><a href="examinations.php">امتحان ها</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>

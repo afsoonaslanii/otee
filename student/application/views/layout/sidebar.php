@@ -40,7 +40,7 @@
 			<li class="<?php echo $active_sidebar_item === 'result' ? 'active' : 'not-active' ?>">
 				<a href="<?php echo base_url(); ?>index.php/result" class="waves-effect waves-button">
 					<span class="menu-icon glyphicon glyphicon-certificate"></span>
-					<p>نتایج امتحانات</p>
+					<p>نتایج امتحان ها</p>
 				</a>
 			</li>
 		</ul>

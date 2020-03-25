@@ -47,7 +47,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>مدیریت امتحانات</h3>
+			<h3>مدیریت امتحان ها</h3>
 
 		</div>
 		<div id="main-wrapper">
@@ -63,7 +63,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										<ul class="nav nav-tabs" role="tablist">
 											<li role="presentation" class="active">
 												<a href="#tab1" role="tab" data-toggle="tab">
-													درس
+													درس ها
 												</a>
 											</li>
 											<li role="presentation">
@@ -74,7 +74,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 											<li role="presentation">
 												<a href="#tab5" role="tab" data-toggle="tab">
-													امتحانات
+													امتحان ها
 												</a>
 											</li>
 											<li role="presentation">

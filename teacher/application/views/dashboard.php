@@ -103,7 +103,7 @@ $std_fails = '22';
 						<div class="panel-body">
 							<div class="info-box-stats">
 								<p><span class="counter"><?php echo number_format($examination); ?></span></p>
-								<span class="info-box-title">امتحانات</span>
+								<span class="info-box-title">امتحان ها</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-book-open"></i>

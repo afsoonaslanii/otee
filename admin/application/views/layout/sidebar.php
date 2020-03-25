@@ -45,7 +45,7 @@
 			<li class="<?php echo $active_sidebar_item === 'exam' ? 'active' : 'not-active' ?>">
 				<a href="<?php echo base_url(); ?>index.php/exam" class="waves-effect waves-button">
 					<span class="menu-icon glyphicon glyphicon-book"></span>
-					<p>امتحانات</p>
+					<p>امتحان ها</p>
 				</a>
 			</li>
 			<li class="<?php echo $active_sidebar_item === 'question' ? 'active' : 'not-active' ?>">

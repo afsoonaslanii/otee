@@ -103,7 +103,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($passed_exam); ?></p>
-                                <span class="info-box-title">امتحانات قبول شده</span>
+                                <span class="info-box-title">امتحان های قبول شده</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-like"></i>
@@ -144,7 +144,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($locked_exams); ?></p>
-                                <span class="info-box-title">امتحانات قفل شده</span>
+                                <span class="info-box-title">امتحان های قفل شده</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-lock"></i>
@@ -158,7 +158,7 @@ $notice = '44';
                         <div class="panel-body">
                             <div class="info-box-stats">
                                 <p class="counter"><?php echo number_format($attended_exams); ?></p>
-                                <span class="info-box-title">امتحانات مهم</span>
+                                <span class="info-box-title">امتحان های مهم</span>
                             </div>
                             <div class="info-box-icon">
                                 <i class="icon-check"></i>

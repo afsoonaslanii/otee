@@ -16,7 +16,7 @@ $description = $description;
 
 <head>
 
-	<title>او تی | نتایج امتحانات</title>
+	<title>او تی | نتایج امتحان ها</title>
 
 	<?php require('shared/links.php'); ?>
 

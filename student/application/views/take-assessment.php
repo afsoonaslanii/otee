@@ -191,7 +191,7 @@ if (count($result) > 0) {
 									if ($dcc > 1) {
 										print '
 								<div class="alert alert-warning" role="alert">
-                                امتحان قبلاً منقضی شده است.
+                                این امتحان قبلاً منقضی شده است.
                                 </div>';
 									} else {
 										$_SESSION['current_examid'] = $exam_id;

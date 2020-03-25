@@ -37,7 +37,7 @@ if (count($exam) > 0) {
 <html>
 
 <head>
-	<title>اوتی | امتحانات</title>
+	<title>اوتی | امتحان ها</title>
 
 	<?php require('shared/links.php'); ?>
 
@@ -62,11 +62,11 @@ if (count($exam) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>امتحانات</h3>
+			<h3>امتحان ها</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
 					<li><a href="./">خانه</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحانات</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحان ها</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>
