@@ -420,7 +420,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														<input
 															type="number"
 															class="form-control"
-															placeholder="امتحان مجدد پی از چند روز فعال شود؟"
+															placeholder="امتحان مجدد پس از چند روز فعال شود؟"
 															id="reexam"
 															name="reexam"
 															required
@@ -450,8 +450,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															name="terms"
 															required
 															autocomplete="off"
-														>
-														</textarea>
+														></textarea>
 													</div>
 													<button type="submit" class="btn btn-primary">ثبت</button>
 

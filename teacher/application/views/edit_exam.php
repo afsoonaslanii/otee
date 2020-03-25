@@ -132,7 +132,7 @@ if (count($result) > 0) {
 											<input
 												type="number"
 												class="form-control" value="<?php echo "$reexam"; ?>"
-												placeholder="امتحان مجدد پی از چند روز فعال شود؟"
+												placeholder="امتحان مجدد پس از چند روز فعال شود؟"
 												id="reexam"
 												name="reexam"
 												required
