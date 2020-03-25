@@ -181,10 +181,7 @@ if (count($exam) > 0) {
 
 											$qno = $qno + 1;
 										}
-									} else {
-
 									}
-
 									?>
 									<input type="hidden" name="totalquestion" value="<?php echo "$total_questions"; ?>">
 									<input type="hidden" name="examid" value="<?php echo "$exam_id"; ?>">
@@ -201,7 +198,7 @@ if (count($exam) > 0) {
 							onclick="return confirm('آیا مطمئن هستید که می خواهید آزمون خود را ثبت کنید؟')"
 							class="btn btn-success"
 							type="submit"
-							value="ثبت آزمون"
+							value="اتمام آزمون"
 						>
 						</form>
 					</div>
