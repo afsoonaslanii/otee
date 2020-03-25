@@ -118,10 +118,12 @@ class Exam extends CI_Controller
     }
 
     function add_exam(){
-        $data = array(
+		require_once(APPPATH.'utils/convert_jalai_to_gregorian.php');
+
+		$data = array(
             'class_id'=>$_POST['class_name'],
             'exam_title'=> $_POST['title'],
-            'exam_date'=> $_POST['date'],
+            'exam_date'=> convert_jalai_to_gregorian($_POST['date']),
             'exam_duration'=> $_POST['duration'],
             'passmark'=> $_POST['passmark'],
             're_exam'=>$_POST['reexam'],
@@ -160,6 +162,8 @@ class Exam extends CI_Controller
     }
 
     function update_exam(){
+		require_once(APPPATH.'utils/convert_jalai_to_gregorian.php');
+
         if (isset($_SESSION['user_id'])) {
             $exam_id = $_POST['exam_id'];
             $data = array(
@@ -167,7 +171,7 @@ class Exam extends CI_Controller
                 'exam_duration'=>$_POST['duration'],
                 'passmark'=>$_POST['passmark'],
                 're_exam'=>$_POST['reexam'],
-                'exam_date'=>$_POST['date'],
+                'exam_date'=>  convert_jalai_to_gregorian($_POST['date']),
             );
             $this->load->model('exam_model');
             $this->exam_model->update_exam($exam_id,$data);
