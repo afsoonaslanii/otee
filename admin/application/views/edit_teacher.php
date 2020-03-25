@@ -3,9 +3,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 $result = $query;
@@ -13,15 +13,15 @@ $result = $query;
 if (count($result) > 0) {
 
 	foreach ($result as $row) {
-		$teacher_id = $row->teacher_id;
 		$user_id = $row->user_id;
-		$sdfname = $row->teacher_fname;
-		$sdlname = $row->teacher_lname;
+		$user_id = $row->user_id;
+		$sdfname = $row->firstname;
+		$sdlname = $row->lastname;
 		$sdgender = $row->gender;
 		$sdemail = $row->email;
 		$sdphone = $row->phone;
-		$sdavatar = $row->teacher_picture;
-		$sdstat = $row->acc_stat;
+		$sdavatar = $row->picture;
+		$sdstat = $row->status;
 	}
 } else {
 	header("location:./");
@@ -149,7 +149,7 @@ if (count($result) > 0) {
 												autocomplete="off"
 											/>
 										</div>
-										<input type="hidden" name="teacher_id" value="<?php echo "$teacher_id"; ?>">
+										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<button type="submit" class="btn btn-primary">
 											به روزرسانی <?php echo "$sdfname"; ?>

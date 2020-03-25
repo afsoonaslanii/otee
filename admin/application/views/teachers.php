@@ -3,9 +3,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 ?>
@@ -101,7 +101,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                         <tbody>';
 														foreach ($result as $row) {
 
-															$status = $row->acc_stat;
+															$status = $row->status;
 															if ($status == "1") {
 																$st = '<p class="text-success">فعال</p>';
 																$stl = '
@@ -117,7 +117,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															}
 															print '
 										       <tr>
-                                                <td>' . $row->teacher_fname . ' ' . $row->teacher_lname . '</td>
+                                                <td>' . $row->firstname . ' ' . $row->lastname . '</td>
 												<td>' . $row->gender . '</td>
                                                 <td>' . $row->username . '</td>
                                                 <td>' . $st . '</td>
@@ -140,12 +140,12 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													</li>
 													
 													<li>
-													<a href="' . base_url() . 'index.php/teachers/view_teacher/' . $row->user_id . '/' . $row->teacher_id . '">
+													<a href="' . base_url() . 'index.php/teachers/view_teacher/' . $row->user_id . '/' . $row->user_id . '">
 													مشاهده آموزگار
 													</a>
 													</li>
                                                     <li>
-                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/teachers/drop_t/' . $row->user_id . '">
+                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->firstname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/teachers/drop_t/' . $row->user_id . '">
  														حذف آموزگار
 													 </a></li>
                                                 </ul>

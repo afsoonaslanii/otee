@@ -1,9 +1,9 @@
 <?php
 $url = 'http://otee.ir';
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 $ms = $ms;
@@ -100,7 +100,7 @@ $description = $description;
                                         <tbody>';
 											foreach ($result as $row) {
 
-												$status = $row->acc_stat;
+												$status = $row->status;
 												if ($status == "1") {
 													$st = '<p class="text-success">فعال</p>';
 													$stl = '
@@ -116,13 +116,13 @@ $description = $description;
 												}
 												print '
 										       <tr>
-                                                <td>' . $row->student_fname . ' ' . $row->student_lname . '</td>
+                                                <td>' . $row->firstname . ' ' . $row->lastname . '</td>
 												<td>' . $row->gender . '</td>
                                                 <td>' . $row->username . '</td>
                                                 <td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                  <ul class="dropdown-menu" role="menu">
@@ -135,13 +135,13 @@ $description = $description;
 													</li>
 													
 													<li>
-													<a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->student_id . '">
+													<a href="' . base_url() . 'index.php/students/view_student/' . $row->user_id . '/' . $row->user_id . '">
 													اطلاعات دانش آموز
 													</a>
 													</li>
 													
                                                     <li>
-                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->student_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">
+                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->firstname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/students/drop_sd/' . $row->user_id . '">
  													حذف دانش آموز
  													</a>
 													</li>

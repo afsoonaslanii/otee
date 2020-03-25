@@ -3,9 +3,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 $result = $query;
@@ -13,15 +13,15 @@ $result = $query;
 if (count($result) > 0) {
 
 	foreach ($result as $row) {
-		$student_id = $row->student_id;
-		$sdfname = $row->student_fname;
-		$sdlname = $row->student_lname;
+		$user_id = $row->user_id;
+		$sdfname = $row->firstname;
+		$sdlname = $row->lastname;
 		$sdgender = $row->gender;
 		$sdemail = $row->email;
 		$sdphone = $row->phone;
-		$sdavatar = $row->student_picture;
-		$sdstat = $row->acc_stat;
-		// $qrcodetxt = 'ID:'.$student_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
+		$sdavatar = $row->picture;
+		$sdstat = $row->status;
+		// $qrcodetxt = 'ID:'.$user_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
 
 	}
 } else {
@@ -94,7 +94,7 @@ if (count($result) > 0) {
 									<tr>
 										<th scope="row">1</th>
 										<td>شناسه</td>
-										<td><b><?php echo "$student_id"; ?></b></td>
+										<td><b><?php echo "$user_id"; ?></b></td>
 
 									</tr>
 									<tr>

@@ -7,8 +7,8 @@ class Question extends CI_Controller
     function index()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('admin_model');
-            $data['query1'] = $this->admin_model->get_admin_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
             $this->load->model('exam_model');
             $data['exam'] = $this->exam_model->select_exam();
@@ -63,8 +63,8 @@ class Question extends CI_Controller
 
     function view_question($exam_id){
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('admin_model');
-            $data['query1'] = $this->admin_model->get_admin_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
             $this->load->model('exam_model');
             $data['exam'] = $this->exam_model->select_exam_by_id($exam_id);

@@ -52,7 +52,7 @@ class Login extends CI_Controller{
                $username_sess = $sql[0]->username;
                $fname = $sql[0]->firstname;
                $lname = $sql[0]->lastname;
-               $rol = $sql[0]->user_type;
+               $rol = $sql[0]->role;
 
                $data_session = array(
                    'user_id'=>$user_id,

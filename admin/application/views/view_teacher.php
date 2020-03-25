@@ -3,9 +3,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 $result = $query;
@@ -13,15 +13,15 @@ $result = $query;
 if (count($result) > 0) {
 
 	foreach ($result as $row) {
-		$teacher_id = $row->teacher_id;
-		$tchfname = $row->teacher_fname;
-		$tchlname = $row->teacher_lname;
+		$user_id = $row->user_id;
+		$tchfname = $row->firstname;
+		$tchlname = $row->lastname;
 		$tchgender = $row->gender;
 		$tchemail = $row->email;
 		$tchphone = $row->phone;
 
-		$tchavatar = $row->teacher_picture;
-		$tchstat = $row->acc_stat;
+		$tchavatar = $row->picture;
+		$tchstat = $row->status;
 
 	}
 }
@@ -93,7 +93,7 @@ else {
 									<tr>
 										<th scope="row">1</th>
 										<td>شناسه آموزگار</td>
-										<td><b><?php echo "$teacher_id"; ?></b></td>
+										<td><b><?php echo "$user_id"; ?></b></td>
 
 									</tr>
 									<tr>

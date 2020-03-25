@@ -6,11 +6,10 @@ class Students extends CI_Controller{
     function index()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('admin_model');
-            $data['query1'] = $this->admin_model->get_admin_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-            $this->load->model('students_model');
-            $data['query2'] = $this->students_model->select_students();
+            $data['query2'] = $this->user_model->select_students();
 
             if(isset($_SESSION['ms'])){
                 $data['ms']=$_SESSION['ms'];
@@ -40,8 +39,8 @@ class Students extends CI_Controller{
     }
 
     function drop_sd($sid){
-        $this->load->model('students_model');
-        $query = $this->students_model->delete_student($sid);
+        $this->load->model('user_model');
+        $query = $this->user_model->delete_user($sid);
 //        if ($query == '1'){
             $this->session->set_flashdata('ms', '1');
             $this->session->set_flashdata('description', 'delete student');
@@ -52,8 +51,8 @@ class Students extends CI_Controller{
         function addStudent()
         {
             //search for username
-            $this->load->model('students_model');
-            $out = $this->students_model->select_st_by_username($_POST['username']);
+            $this->load->model('user_model');
+            $out = $this->user_model->select_student_by_username($_POST['username']);
 
             if (count($out) == 0) {
                 $pointer = $this->generate_pointer();
@@ -63,34 +62,12 @@ class Students extends CI_Controller{
                     'lastname' => $_POST['lname'],
                     'password' => $_POST['phone'],
 					'phone' => $_POST['phone'],
-                    'user_type' => 'student',
+                    'role' => 'student',
                     'pointer' => $pointer,
                 );
 
-                // set tbl_user
                 $this->load->model('user_model');
                 $this->user_model->insert_user($userdata);
-
-
-                //get user_id from table user
-                $this->load->model('user_model');
-                $query = $this->user_model->select_by_pointer($pointer);
-                $user_id = $query[0]->user_id;
-
-                $stdata = array(
-                    'student_fname' => $_POST['fname'],
-                    'student_lname' => $_POST['lname'],
-                    'gender' => $_POST['gender'],
-                    'email' => $_POST['email'],
-                    'phone' => $_POST['phone'],
-                    'username' => $_POST['username'],
-                    'user_id' => $user_id,
-
-                );
-
-                // set tbl_student
-                $this->load->model('students_model');
-                $this->students_model->insert_student($stdata);
 
                 $this->session->set_flashdata('ms', '1');
                 $this->session->set_flashdata('description', 'student added');
@@ -105,10 +82,10 @@ class Students extends CI_Controller{
 
         function inactive_st($user_id){
             $data = array(
-                'acc_stat'=>0,
+                'status'=>0,
             );
-            $this->load->model('students_model');
-            $query = $this->students_model->update_student($user_id,$data);
+            $this->load->model('user_model');
+            $query = $this->user_model->update_user($user_id,$data);
             if ($query == '1') {
                 $this->session->set_flashdata('ms', '1');
                 $this->session->set_flashdata('description', 'inactive student');
@@ -122,10 +99,10 @@ class Students extends CI_Controller{
 
     function active_st($user_id){
         $data = array(
-            'acc_stat'=>1,
+            'status'=>1,
         );
-        $this->load->model('students_model');
-        $query = $this->students_model->update_student($user_id,$data);
+        $this->load->model('user_model');
+        $query = $this->user_model->update_user($user_id,$data);
         if ($query == '1') {
             $this->session->set_flashdata('ms', '1');
             $this->session->set_flashdata('description', 'active student');
@@ -138,11 +115,10 @@ class Students extends CI_Controller{
 
 
     function view_student($user_id,$student_id){
-        $this->load->model('admin_model');
-        $data['query1'] = $this->admin_model->get_admin_inf($_SESSION['username'], $_SESSION['user_id']);
+        $this->load->model('user_model');
+        $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-        $this->load->model('students_model');
-        $data['query'] = $this->students_model->select_st($user_id);
+        $data['query'] = $this->user_model->select_student_by_id($user_id);
 
         $this->load->model('joined_model');
         $data['class'] = $this->joined_model->get_exam_inf_st($student_id);
@@ -160,11 +136,10 @@ class Students extends CI_Controller{
 
     function edit_student($user_id){
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('admin_model');
-            $data['query1'] = $this->admin_model->get_admin_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-            $this->load->model('students_model');
-            $data['query'] = $this->students_model->select_st($user_id);
+            $data['query'] = $this->user_model->select_student_by_id($user_id);
 
             if(isset($_SESSION['ms'])){
                 $data['ms']=$_SESSION['ms'];
@@ -183,23 +158,16 @@ class Students extends CI_Controller{
     function update_student(){
         $user_id = $_POST['user_id'];
         $data = array(
-            'student_fname'=>$_POST['fname'],
-            'student_lname'=>$_POST['lname'],
+			'firstname'=>$_POST['fname'],
+			'lastname'=>$_POST['lname'],
             'gender'=>$_POST['gender'],
             'email'=>$_POST['email'],
             'phone'=>$_POST['phone'],
         );
-        //update in tbl_student
-        $this->load->model('students_model');
-        $req = $this->students_model->update_student($user_id,$data);
 
-        $data2 = array(
-            'firstname'=>$_POST['fname'],
-            'lastname'=>$_POST['lname'],
-        );
         //update in tbl_user
         $this->load->model('user_model');
-        $this->user_model->update_user($user_id,$data2);
+		$req = $this->user_model->update_user($user_id,$data);
 
         if ($req == '1'){
             $this->session->set_flashdata('ms', '1');

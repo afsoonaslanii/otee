@@ -24,14 +24,14 @@ class Profile extends CI_Controller{
 
     function updateProfile(){
         $data = array(
-            'admin_fname' => $_POST['fname'],
-            'admin_lname' => $_POST['lname'],
+            'firstname' => $_POST['fname'],
+            'lastname' => $_POST['lname'],
             'gender' => $_POST['gender'],
             'email' => $_POST['email'],
             'phone' => $_POST['phone'],
         );
-        $this->load->model('admin_model');
-        $this->admin_model->update_user_profile($data , $_SESSION['user_id']);
+        $this->load->model('user_model');
+        $this->user_model->update_user($data , $_SESSION['user_id']);
 
         $this->session->set_flashdata('ms', '1');
         $this->session->set_flashdata('description', 'update your profile secsesful');
@@ -46,10 +46,10 @@ class Profile extends CI_Controller{
             $s=move_uploaded_file($_FILES['image']['tmp_name'],$uploadFilePath);
             if ($s == true){
                 $data = array(
-                    'admin_picture'=> $_FILES['image']['name'] ,
+                    'picture'=> $_FILES['image']['name'] ,
                 );
-                $this->load->model('admin_model');
-                $this->admin_model->update_user_profile($data , $_SESSION['user_id']);
+                $this->load->model('user_model');
+                $this->user_model->update_user($data , $_SESSION['user_id']);
 
                 $this->session->set_flashdata('ms', '1');
                 $this->session->set_flashdata('description', 'update your picture sucsesful');
