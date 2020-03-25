@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $ms = $ms;
@@ -8,7 +9,6 @@ $myavatar = (count($query1) > 0 ? $query1[0]->admin_picture : NULL);
 $myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
 $mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
-
 
 ?>
 <!DOCTYPE html>
@@ -35,16 +35,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -291,7 +283,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															print '
 										       <tr>
                                                 <td>' . $row->exam_title . '</td>
-												<td>' . $row->exam_date . '</td>
+												<td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
                                                 <td>' . $row->exam_duration . ' دقیقه' . '</td>
                                                 <td>' . $row->passmark . '</td>
 												<td>' . $row->re_exam . '</td>
@@ -324,7 +316,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													</a>
 													</li>
                                                     <li>
-                                                    <a'; ?> onclick = "return confirm('Drop <?php echo $row->exam_title; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_exam/' . $row->exam_id . '">
+                                                    <a'; ?> onclick = "return confirm('حذف آزمون <?php echo $row->exam_title; ?> ?')" <?php print ' href="' . base_url() . 'index.php/exam/drop_exam/' . $row->exam_id . '">
  												    حذف آزمون
  													</a>
  													</li>
@@ -419,7 +411,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														<input
 															type="number"
 															class="form-control"
-															placeholder="امتحان مجدد پی از چند روز فعال شود؟"
+															placeholder="امتحان مجدد پس از چند روز فعال شود؟"
 															id="reexam"
 															name="reexam"
 															required
@@ -430,7 +422,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														<label for="date">تاریخ پایان</label>
 														<input
 															type="text"
-															class="form-control date-picker"
+															class="form-control persian-date-picker"
 															id="date"
 															name="date"
 															required
@@ -449,8 +441,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															name="terms"
 															required
 															autocomplete="off"
-														>
-														</textarea>
+														></textarea>
 													</div>
 													<button type="submit" class="btn btn-primary">ثبت</button>
 
@@ -495,7 +486,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <script src="<?php echo $url; ?>/assets/plugins/moment/moment.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/datatables/js/jquery.datatables.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
-<script src="<?php echo $url; ?>/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<!--<script src="--><?php //echo $url; ?><!--/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
 <script src="<?php echo $url; ?>/assets/js/modern.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/table-data.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/select2/js/select2.min.js"></script>
@@ -505,6 +496,21 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
 
+<script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".persian-date-picker").pDatepicker({
+			initialValue : false,
+            format : 'YYYY/M/D',
+            calendar:{
+                persian: {
+                    locale: 'en'
+                }
+            }
+        });
+    });
+</script>
 
 <script>
     function myFunction() {

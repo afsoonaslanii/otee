@@ -133,10 +133,16 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															<th scope="row">1</th>
 															<td>
 																<div class="form-group">
-																	<label for="exampleInputEmail1">Option 1</label>
-																	<input type="text" class="form-control"
-																		   placeholder="Enter option 1" name="opt1"
-																		   required autocomplete="off">
+																	<label for="opt1">گزینه 1</label>
+																	<input
+																		type="text"
+																		class="form-control"
+																		placeholder="گزینه اول را وارد کنید"
+																		id="opt1"
+																		name="opt1"
+																		required
+																		autocomplete="off"
+																	/>
 																</div>
 															</td>
 

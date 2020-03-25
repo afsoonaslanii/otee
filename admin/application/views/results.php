@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->admin_picture : NULL);
@@ -14,7 +15,7 @@ $description = $description;
 
 <head>
 
-	<title>OES | Manage Results</title>
+	<title>او تی | مدیریت نتایج آزمون</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -34,15 +35,8 @@ $description = $description;
 
 <?php require('layout/profile-menu.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
+<?php require('layout/search-form.php') ?>
+
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -55,10 +49,9 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Manage Results</h3>
-
-
+			<h3>مدیریت نتایج آزمون</h3>
 		</div>
+
 		<div id="main-wrapper">
 			<div class="row">
 				<div class="col-md-12">
@@ -75,26 +68,26 @@ $description = $description;
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-												<th>Class id</th>
-                                                <th>Date</th>
-                                                <th>Duration</th>
-												<th>Passmark</th>
-												<th>RE Exam</th>
-												<th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>شناسه کلاس</th>
+                                                <th>تاریخ</th>
+                                                <th>مدت زمان</th>
+												<th>امتیاز</th>
+												<th>آزمون مجدد</th>
+												<th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-												<th>Class id</th>
-                                                <th>Date</th>
-                                                <th>Duration</th>
-												<th>Passmark</th>
-												<th>RE Exam</th>
-												<th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>شناسه کلاس</th>
+                                                <th>تاریخ</th>
+                                                <th>مدت زمان</th>
+												<th>امتیاز</th>
+												<th>آزمون مجدد</th>
+												<th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -102,30 +95,49 @@ $description = $description;
 											foreach ($result as $row) {
 												$status = $row->exam_status;
 												if ($status == '1') {
-													$st = '<p class="text-success">ACTIVE</p>';
-													$stl = '<a href="pages/make_ex_in.php?id=' . $row->exam_id . '">Make Inactive</a>';
+													$st = '<p class="text-success">فعال</p>';
+													$stl = '
+													<a href="pages/make_ex_in.php?id=' . $row->exam_id . '">
+													غیرفعال کردن
+													</a>';
 												} else {
-													$st = '<p class="text-danger">INACTIVE</p>';
-													$stl = '<a href="pages/make_ex_ac.php?id=' . $row->exam_id . '">Make Active</a>';
+													$st = '<p class="text-danger">غیرفعال</p>';
+													$stl = '
+													<a href="pages/make_ex_ac.php?id=' . $row->exam_id . '">
+                                                    	فعال کردن
+													</a>';
 												}
 												print '
 										       <tr>
                                                 <td>' . $row->exam_title . '</td>
 												<td>' . $row->class_id . '</td>
-                                                <td>' . $row->exam_date . '</td>
-												<td>' . $row->exam_duration . '<b> min.</b></td>
+                                                <td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
+												<td>' . $row->exam_duration . '<b> دقیقه.</b></td>
 												<td>' . $row->passmark . '<b>%</b></td>
-												<td>' . $row->re_exam . '<b> day(s)</b></td>
+												<td>' . $row->re_exam . '<b> روز</b></td>
 												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                <button 
+                                                type="button"
+                                                 class="btn btn-default dropdown-toggle" 
+                                                 data-toggle="dropdown" 
+                                                 aria-expanded="false"
+                                                 >
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                   
-													<li><a href="' . base_url() . 'index.php/results/view_results/' . $row->exam_id . '">View Results</a></li>
-									                <li><a href="' . base_url() . 'index.php/results/summary/' . $row->exam_id . '">Short Summary</a></li>
+													<li>
+													<a href="' . base_url() . 'index.php/results/view_results/' . $row->exam_id . '">
+													نمایش نتیجه
+													</a>
+													</li>
+									                <li>
+									                <a href="' . base_url() . 'index.php/results/summary/' . $row->exam_id . '">
+									                خلاصه وضعیت
+									                </a>
+									                </li>
 													
                                                 </ul>
                                             </div></td>
@@ -139,9 +151,8 @@ $description = $description;
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی پیدا نشد.
                                     </div>';
-
 										}
 										?>
 									</div>
@@ -164,8 +175,6 @@ $description = $description;
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 
