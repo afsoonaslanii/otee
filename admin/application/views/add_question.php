@@ -9,7 +9,6 @@ $myfname = (count($query1) > 0 ? $query1[0]->admin_fname : "");
 $mylname = (count($query1) > 0 ? $query1[0]->admin_lname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
-//  $sql = "SELECT * FROM tbl_examinations WHERE exam_id = '$exam_id'";
 $result = $query;
 
 if (count($result) > 0) {
@@ -28,7 +27,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Add Questions</title>
+	<title>او تی | افزودن سوال</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -51,16 +50,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -73,7 +64,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Add Questions - <?php echo "$exam_name"; ?></h3>
+			<h3>اضافه کردن سوال - <?php echo "$exam_name"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -117,7 +108,7 @@ if (count($result) > 0) {
 														<tr>
 															<th width="100">شماره</th>
 															<th>گزینه</th>
-															<th  width="100" >جواب</th>
+															<th width="100">جواب</th>
 														</tr>
 														</thead>
 														<tbody>
@@ -143,7 +134,8 @@ if (count($result) > 0) {
 																	name="answer"
 																	value="option1"
 																	required
-																/>															</td>
+																/>
+															</td>
 
 														</tr>
 														<tr>

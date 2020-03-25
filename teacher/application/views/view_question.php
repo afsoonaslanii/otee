@@ -52,7 +52,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>View Examination</h3>
+			<h3>مشاهده سوال</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
 					<li><a href="./">خانه</a></li>

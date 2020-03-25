@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $ms = $ms;
@@ -17,7 +18,7 @@ if (count($result) > 0) {
 	foreach ($result as $row) {
 		$exam_id = $row->exam_id;
 		$exname = $row->exam_title;
-		$exdate = $row->exam_date;
+		$exdate = convert_gregorian_to_jalali($row->exam_date);
 		$exduration = $row->exam_duration;
 		$passmark = $row->passmark;
 		$reexam = $row->re_exam;
@@ -32,7 +33,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Edit Exam</title>
+	<title>او تی | ویرایش آزمون</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -50,16 +51,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -72,9 +65,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Edit Exam - <?php echo "$exname"; ?></h3>
-
-
+			<h3>ویرایش آزمون - <?php echo "$exname"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -86,40 +77,76 @@ if (count($result) > 0) {
 								<div class="panel-body">
 									<form action="<?php echo base_url(); ?>index.php/exam/update_exam" method="POST">
 										<div class="form-group">
-											<label for="exampleInputEmail1">Exam Name</label>
-											<input type="text" class="form-control" value="<?php echo "$exname"; ?>"
-												   placeholder="Enter exam name" name="examtitle" required
-												   autocomplete="off">
+											<label for="examtitle">نام آزمون</label>
+											<input
+												type="text"
+												class="form-control"
+												value="<?php echo "$exname"; ?>"
+												placeholder="نام آزمون را وارد کنید"
+												id="examtitle"
+												name="examtitle"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Exam Duration (Minutes)</label>
-											<input type="number" class="form-control"
-												   value="<?php echo "$exduration"; ?>"
-												   placeholder="Enter exam duration" name="duration" required
-												   autocomplete="off">
+											<label for="duration">زمان آزمون (دقیقه)</label>
+											<input
+												type="number"
+												class="form-control"
+												value="<?php echo "$exduration"; ?>"
+												placeholder="مدت زمان آزمون (دقیقه)"
+												id="duration"
+												name="duration"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Passmark (%)</label>
-											<input type="number" class="form-control" value="<?php echo "$passmark"; ?>"
-												   placeholder="Enter passmark" name="passmark" required
-												   autocomplete="off">
+											<label for="passmark">امتیاز قبولی (%)</label>
+											<input
+												type="number"
+												class="form-control"
+												value="<?php echo "$passmark"; ?>"
+												placeholder="امتیاز قبولی را وارد کنید"
+												id="passmark"
+												name="passmark"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">RE exam (if you take exam then show it again
-												after some days)</label>
-											<input type="number" class="form-control" value="<?php echo "$reexam"; ?>"
-												   placeholder="Enter days to attempt" name="reexam" required
-												   autocomplete="off">
+											<label for="reexam">
+												امتحان مجدد ( فعال شدن امتحان در روز های آینده)
+											</label>
+											<input
+												type="number"
+												class="form-control" value="<?php echo "$reexam"; ?>"
+												placeholder="امتحان مجدد پس از چند روز فعال شود؟"
+												id="reexam"
+												name="reexam"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label>Deadline</label>
-											<input type="text" class="form-control date-picker"
-												   value="<?php echo "$exdate"; ?>" name="date" required
-												   autocomplete="off" placeholder="Select deadline">
+											<div class="form-group">
+												<label for="date">تاریخ پایان</label>
+												<input
+													type="text"
+													class="form-control persian-date-picker"
+													value="<?php echo $exdate; ?>"
+													id="date"
+													name="date"
+													required
+													autocomplete="off"
+													placeholder="تاریخ پایان را انتخاب کنید"
+												/>
+											</div>
 										</div>
 										<input type="hidden" name="examid" value="<?php echo "$exam_id"; ?>">
 
-										<button type="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" class="btn btn-primary">ثبت</button>
 									</form>
 								</div>
 							</div>
@@ -163,7 +190,7 @@ if (count($result) > 0) {
 <script src="<?php echo $url; ?>/assets/plugins/moment/moment.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/datatables/js/jquery.datatables.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
-<script src="<?php echo $url; ?>/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<!--<script src="--><?php //echo $url; ?><!--/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
 <script src="<?php echo $url; ?>/assets/js/modern.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/table-data.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/select2/js/select2.min.js"></script>
@@ -173,6 +200,21 @@ if (count($result) > 0) {
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
 
+<script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".persian-date-picker").pDatepicker({
+            initialValue : false,
+            format : 'YYYY/M/D',
+            calendar:{
+                persian: {
+                    locale: 'en'
+                }
+            }
+        });
+    });
+</script>
 
 <script>
     function myFunction() {

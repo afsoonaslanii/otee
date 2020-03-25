@@ -10,10 +10,6 @@ $myfname = (count($query1)>0 ? $query1[0]->teacher_fname : "");
 $mylname = (count($query1)>0 ? $query1[0]->teacher_lname : "");
 $mygender = (count($query1)>0 ? $query1[0]->gender : null);
 
-
-
-
-  //  $sql = "SELECT * FROM tbl_examinations WHERE exam_id = '$exam_id'";
     $result = $query;
 
     if (count($result) > 0) {
@@ -98,6 +94,7 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
 															class="form-control"
 															placeholder="سوال مورد نظر خود را وارد کنید"
 															name="question"
+															id="question"
 															autocomplete="off"
 														>
                                                     </div>
@@ -113,7 +110,6 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
                                                         <tbody>
                                                         <tr>
                                                             <th scope="row" >1</th>
-
                                                             <td>
                                                                 <div class="form-group">
                                                                     <label for="opt1">گزینه 1</label>

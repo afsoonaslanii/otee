@@ -33,7 +33,6 @@ if (count($result) > 0) {
 $stdpass = 0;
 $stdfail = 0;
 
-//"SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
 $result = $query2;
 
 if (count($result) > 0) {
@@ -48,7 +47,6 @@ if (count($result) > 0) {
 		}
 	}
 }
-
 ?>
 <!DOCTYPE html>
 <html>

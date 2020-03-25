@@ -18,7 +18,7 @@ $description = $description;
 
 <head>
 
-	<title>OES | Admin Profile</title>
+	<title>او تی | پروفایل ادمین</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -40,16 +40,8 @@ $description = $description;
 <body>
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -62,11 +54,11 @@ $description = $description;
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Admin Profile</h3>
+			<h3>پروفایل ادمین</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="./">Home</a></li>
-					<li class="active">Admin Profile</li>
+					<li><a href="./">خانه</a></li>
+					<li class="active">پروفایل ادمین</li>
 				</ol>
 			</div>
 		</div>
@@ -99,35 +91,51 @@ $description = $description;
 
 										<tr>
 											<th scope="row">1</th>
-											<td>First Name</td>
+											<td>نام</td>
 											<td>
-												<input type="text" value="<?php echo "$myfname"; ?>"
-													   class="form-control" name="fname" placeholder="Enter first name"
-													   required autocomplete="off">
+												<input
+													type="text"
+													value="<?php echo "$myfname"; ?>"
+													class="form-control"
+													placeholder="نام خود را وارد کنید"
+													id="fname"
+													name="fname"
+													required
+													autocomplete="off"
+												/>
 											</td>
 
 										</tr>
 										<tr>
 											<th scope="row">2</th>
-											<td>Last Name</td>
-											<td><input type="text" value="<?php echo "$mylname"; ?>"
-													   class="form-control" name="lname" placeholder="Enter last name"
-													   required autocomplete="off"></td>
+											<td>نام خانوادگی</td>
+											<td>
+												<input
+													type="text"
+													value="<?php echo "$mylname"; ?>"
+													class="form-control"
+													placeholder="نام خانوادگی خودرا وارد کنید"
+													id="lname"
+													name="lname"
+													required
+													autocomplete="off"
+												/>
+											</td>
 
 										</tr>
 										<tr>
-											<th scope="row">4</th>
+											<th scope="row">3</th>
 											<td>Gender</td>
 											<td>
 												<select name="gender" required class="form-control">
-													<option selected disbaled value="">-Select gender-</option>
+													<option selected disbaled value="">-انتخاب جنسیت-</option>
 													<option <?php if ($mygender == "Male") {
 														print ' selected ';
-													} ?> value="Male">Male
+													} ?> value="Male">مرد
 													</option>
 													<option <?php if ($mygender == "Female") {
 														print ' selected ';
-													} ?>value="Female">Female
+													} ?>value="Female">زن
 													</option>
 												</select>
 											</td>
@@ -135,29 +143,43 @@ $description = $description;
 										</tr>
 
 										<tr>
-											<th scope="row">6</th>
-											<td>Email Address</td>
-											<td><input type="email" value="<?php echo "$myemail"; ?>"
-													   class="form-control" name="email"
-													   placeholder="Enter email address" required autocomplete="off">
+											<th scope="row">4</th>
+											<td>آدرس ایمیل</td>
+											<td>
+												<input
+													type="email"
+													value="<?php echo "$myemail"; ?>"
+													class="form-control"
+													placeholder="ایمیل خودرا وارد کنید"
+													id="email"
+													name="email"
+													autocomplete="off"
+												/>
 											</td>
 
 										</tr>
 										<tr>
-											<th scope="row">7</th>
-											<td>Phone Number</td>
-											<td><input type="text" value="<?php echo "$myphone"; ?>"
-													   class="form-control" name="phone"
-													   placeholder="Enter phone number" required autocomplete="off">
+											<th scope="row">5</th>
+											<td>نلفن همراه</td>
+											<td>
+												<input
+													type="text"
+													value="<?php echo "$myphone"; ?>"
+													class="form-control"
+													placeholder="تلفن همراه خودرا وارد کنید"
+													id="phone"
+													name="phone"
+													required
+													autocomplete="off"
+												/>
 											</td>
 
 										</tr>
 										<tr>
 											<th scope="row"></th>
 											<td colspan="2">
-												<button type="submit" class="btn btn-primary">Save Changes</button>
+												<button type="submit" class="btn btn-primary">دخیره تغییرات</button>
 											</td>
-
 
 										</tr>
 									</form>
@@ -171,22 +193,28 @@ $description = $description;
 
 							<div class="panel panel-white">
 								<div class="panel-body">
-									<h3>Update display picture</h3>
-									<form action="<?php echo base_url(); ?>index.php/profile/updatePicture"
-										  method="POST" enctype="multipart/form-data">
+									<h3>تفییر تصویر پروفایل</h3>
+									<form
+										action="<?php echo base_url(); ?>index.php/profile/updatePicture"
+										method="POST" enctype="multipart/form-data"
+									>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Select image to upload</label>
-											<input type="file" name="image" accept="image/*" required
-												   autocomplete="off">
+											<label for="image">انتخاب عکس</label>
+											<input
+												type="file"
+												name="image"
+												accept="image/*"
+												required
+												autocomplete="off"
+											>
 										</div>
-										<button type="submit" class="btn btn-primary">Upload</button>
+										<button type="submit" class="btn btn-primary">بارگذاری</button>
 										<?php
 										if ($myavatar == NULL) {
 
 										} else {
-											print '<a'; ?> onclick="return confirm('Delete image ?')" <?php print ' class="btn btn-danger" href="pages/drop_dp.php">Delete Image</a>';
+											print '<a'; ?> onclick="return confirm('عکس حذف شود؟')" <?php print ' class="btn btn-danger" href="pages/drop_dp.php">Delete Image</a>';
 										}
-
 										?>
 									</form>
 
@@ -199,28 +227,40 @@ $description = $description;
 
 							<div class="panel panel-white">
 								<div class="panel-body">
-									<h3>Update login password</h3>
+									<h3>تغییر پسورد</h3>
 									<form action="<?php echo base_url(); ?>index.php/profile/new_password"
 										  method="POST">
 										<div class="form-group">
-											<label for="exampleInputEmail1">Enter new password</label>
-											<input type="password" id="password" class="form-control" name="pass1"
-												   required placeholder="Enter new password">
+											<label for="password">پسورد جدید را وارد کنید</label>
+											<input
+												type="password"
+												id="password"
+												class="form-control"
+												name="pass1"
+												required
+												placeholder="پسورد جدید"
+											>
 										</div>
 
 										<div class="form-group">
-											<label for="exampleInputEmail1">Confirm new password</label>
-											<input type="password" id="confirm_password" class="form-control"
-												   name="pass2" required placeholder="Confirm new password">
+											<label for="confirm_password">تایید پسورد جدید</label>
+											<input
+												type="password"
+												id="confirm_password"
+												class="form-control"
+												name="pass2"
+												required
+												placeholder="تایید پسورد جدید"
+											>
 										</div>
-										<button type="submit" class="btn btn-primary">Change Password</button>
+										<button type="submit" class="btn btn-primary">تغییر پسورد</button>
 										<script>
                                             var password = document.getElementById("password")
                                                 , confirm_password = document.getElementById("confirm_password");
 
                                             function validatePassword() {
                                                 if (password.value != confirm_password.value) {
-                                                    confirm_password.setCustomValidity("Passwords Don't Match");
+                                                    confirm_password.setCustomValidity("کلمات عبور مطابقت ندارند");
                                                 } else {
                                                     confirm_password.setCustomValidity('');
                                                 }

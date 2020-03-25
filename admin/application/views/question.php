@@ -39,16 +39,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -61,7 +53,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Add Questions</h3>
+			<h3>افزودن سوال</h3>
 
 
 		</div>

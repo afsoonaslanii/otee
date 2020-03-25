@@ -34,16 +34,8 @@ $description = $description;
 <body>
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -244,8 +236,8 @@ $description = $description;
 															autocomplete="off"
 														/>
 													</div>
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Department</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Department</label>-->
 														<!--                                                        <select class="form-control" name="department" required>-->
 														<!--                                                            <option value="" selected disabled>-Select department-</option>-->
 														<!--                                                            --><?php
@@ -265,10 +257,10 @@ $description = $description;
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Category</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Category</label>-->
 														<!--                                                        <select class="form-control" name="category" required>-->
 														<!--                                                            <option value="" selected disabled>-Select category-</option>-->
 														<!--                                                            --><?php
@@ -288,7 +280,7 @@ $description = $description;
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
 													<div class="form-group">
 														<label for="username">نام کاربری</label>

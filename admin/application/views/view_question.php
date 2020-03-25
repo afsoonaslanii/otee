@@ -26,9 +26,7 @@ if (count($result) > 0) {
 <html>
 
 <head>
-
-
-	<title>OES | View Exam</title>
+	<title>او تی | نمایش سوال</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -44,16 +42,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed page-horizontal-bar">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap container">
 
 	<?php require('layout/navbar.php'); ?>
@@ -66,11 +56,11 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>View Examination</h3>
+			<h3>مشاهده سوال</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="./">Home</a></li>
-					<li><a href="examinations.php">Examinations</a></li>
+					<li><a href="./">خانه</a></li>
+					<li><a href="examinations.php">امتحانات</a></li>
 					<li class="active"><?php echo "$exam_name"; ?></li>
 				</ol>
 			</div>
@@ -101,10 +91,22 @@ if (count($result) > 0) {
 												print '
 											<div role="tabpanel" class="tab-pane active fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
-											 <p><input type="text" name="' . $qno . '"  class="form-control" placeholder="Enter your answer">
+											 <p>
+											 <input 
+											 type="text" 
+											 name="' . $qno . '"  
+											 class="form-control" 
+											 placeholder="جواب خود را وارد کنید"
+											 >
 											 <hr>
-											 <a  class="btn btn-twitter m-b-xs"href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a  
+											 class="btn btn-twitter m-b-xs" 
+											 href="edit-question.php?id=' . $row->question_id . '">
+											 <i class="fa fa-pencil"></i>
+											 </a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '">
+												<i class="fa fa-trash-o"></i>
+											 </a>
 											 
                                              </div>
 											';
@@ -112,10 +114,16 @@ if (count($result) > 0) {
 												print '
 											<div role="tabpanel" class="tab-pane fade in" id="tab' . $qno . '">
                                              <p><b>' . $qno . '.</b> ' . $qs . '</p>
-											 <p><input type="text" name="' . $qno . '"  class="form-control" placeholder="Enter your answer">
+											 <p>
+											 <input 
+											 type="text" 
+											 name="' . $qno . '" 
+											 class="form-control"
+											 placeholder="جواب خود را وارد کنید"
+											  >
 											 <hr>
-											 <a  class="btn btn-twitter m-b-xs"href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a  class="btn btn-twitter m-b-xs" href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											}
@@ -134,7 +142,7 @@ if (count($result) > 0) {
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op4 . '> ' . $op4 . '</p>
 											 <hr>
 											 <a  class="btn btn-twitter m-b-xs"href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $row->question_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $row->question_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											} else {
@@ -147,25 +155,17 @@ if (count($result) > 0) {
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op4 . '> ' . $op4 . '</p>
 											 <hr>
 											 <a  class="btn btn-twitter m-b-xs"href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('Drop this question ?')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											}
-
 											$qno = $qno + 1;
-
-
 										}
-
 									}
-								} else {
-
 								}
-
 								?>
 
 							</div>
-
 
 							<ul class="nav nav-tabs" role="tablist">
 								<?php
@@ -183,12 +183,8 @@ if (count($result) > 0) {
 
 										$qno = $qno + 1;
 									}
-								} else {
-
 								}
-
 								?>
-
 							</ul>
 						</div>
 					</div>

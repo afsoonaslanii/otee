@@ -32,7 +32,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Edit teacher</title>
+	<title>او تی | ویرایش آموزگار</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -51,17 +51,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search teacher..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -74,9 +65,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Edit teacher - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
-
-
+			<h3>ویرایش اطلاعات - <?php echo "$sdfname"; ?> <?php echo "$sdlname"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -90,42 +79,83 @@ if (count($result) > 0) {
 										  method="POST">
 
 										<div class="form-group">
-											<label for="exampleInputEmail1">First Name</label>
-											<input type="text" value="<?php echo "$sdfname"; ?>" class="form-control"
-												   placeholder="Enter first name" name="fname" required
-												   autocomplete="off">
+											<label for="fname">نام</label>
+											<input
+												type="text"
+												value="<?php echo "$sdfname"; ?>"
+												class="form-control"
+												placeholder="نام خود را وارد کنید"
+												id="fname"
+												name="fname"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Last Name</label>
-											<input type="text" value="<?php echo "$sdlname"; ?>" class="form-control"
-												   placeholder="Enter last name" name="lname" required
-												   autocomplete="off">
+											<label for="lname">نام خانوادگی</label>
+											<input
+												type="text"
+												value="<?php echo "$sdlname"; ?>"
+												class="form-control"
+												placeholder="نام خانوادگی خودرا وارد کنید"
+												id="lname"
+												name="lname"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Male</label>
-											<input type="radio" <?php if ($sdgender == "Male") {
+											<label for="male">مرد</label>
+											<input
+												type="radio" <?php if ($sdgender == "Male") {
 												print ' checked ';
-											} ?> name="gender" value="Male" required>
-											<label for="exampleInputEmail1">Female</label>
-											<input type="radio" <?php if ($sdgender == "Female") {
+											} ?>
+												id="male"
+												name="gender"
+												value="Male"
+												required
+											/>
+											<label for="Female">زن</label>
+											<input
+												type="radio" <?php if ($sdgender == "Female") {
 												print ' checked ';
-											} ?> name="gender" value="Female" required>
+											} ?>
+												name="gender"
+												id="Female"
+												value="Female"
+												required
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Email Address</label>
-											<input type="email" value="<?php echo "$sdemail"; ?>" class="form-control"
-												   placeholder="Enter email address" name="email"
-												   autocomplete="off">
+											<label for="email">آدرس ایمیل</label>
+											<input
+												type="email"
+												value="<?php echo "$sdemail"; ?>"
+												class="form-control"
+												placeholder="ایمیل خودرا وارد کنید"
+												id="email"
+												name="email"
+												autocomplete="off"
+											/>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Phone</label>
-											<input type="text" value="<?php echo "$sdphone"; ?>" class="form-control"
-												   placeholder="Enter phone" name="phone" required autocomplete="off">
+											<label for="phone">نلفن همراه</label>
+											<input
+												type="text"
+												value="<?php echo "$sdphone"; ?>"
+												class="form-control"
+												placeholder="تلفن همراه خودرا وارد کنید"
+												id="phone"
+												name="phone"
+												required
+												autocomplete="off"
+											/>
 										</div>
 										<input type="hidden" name="teacher_id" value="<?php echo "$teacher_id"; ?>">
 										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<button type="submit" class="btn btn-primary">
-											Update <?php echo "$sdfname"; ?></button>
+											به روزرسانی <?php echo "$sdfname"; ?>
+										</button>
 									</form>
 								</div>
 							</div>
@@ -146,8 +176,6 @@ if (count($result) > 0) {
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 

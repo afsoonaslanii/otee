@@ -14,7 +14,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 <head>
 
-	<title>OES | Manage Teachers</title>
+	<title>او تی | مدیریت آموزگاران</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -34,16 +34,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <body>
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -56,9 +48,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Manage teachers</h3>
-
-
+			<h3>مدیریت آموزگاران</h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -71,14 +61,16 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									<div role="tabpanel">
 
 										<ul class="nav nav-tabs" role="tablist">
-
-											<li role="presentation" class="active"><a href="#tab5" role="tab"
-																					  data-toggle="tab">Teachers</a>
+											<li role="presentation" class="active">
+												<a href="#tab5" role="tab" data-toggle="tab">
+													آموزگاران
+												</a>
 											</li>
-											<li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Add
-													Teachers</a></li>
-
-
+											<li role="presentation">
+												<a href="#tab6" role="tab" data-toggle="tab">
+													افزودن آموزگار جدید
+												</a>
+											</li>
 										</ul>
 
 										<div class="tab-content">
@@ -92,33 +84,38 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-												<th>Gender</th>
-												<th>Username</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>نام</th>
+												<th>جنسیت</th>
+												<th>نام کاربری</th>
+                                                <th>وضعیت</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
-
 														foreach ($result as $row) {
 
 															$status = $row->acc_stat;
 															if ($status == "1") {
-																$st = '<p class="text-success">ACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/teachers/inactive_te/' . $row->user_id . '">Make Inactive</a>';
+																$st = '<p class="text-success">فعال</p>';
+																$stl = '
+													<a href="' . base_url() . 'index.php/teachers/inactive_te/' . $row->user_id . '">
+													غیرفعال کردن
+													</a>';
 															} else {
-																$st = '<p class="text-danger">INACTIVE</p>';
-																$stl = '<a href="' . base_url() . 'index.php/teachers/active_te/' . $row->user_id . '">Make Active</a>';
+																$st = '<p class="text-danger">غیرفعال</p>';
+																$stl = '
+													<a href="' . base_url() . 'index.php/teachers/active_te/' . $row->user_id . '">
+													فعال کردن
+													</a>';
 															}
 															print '
 										       <tr>
@@ -126,16 +123,33 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 												<td>' . $row->gender . '</td>
                                                 <td>' . $row->username . '</td>
                                                 <td>' . $st . '</td>
-                                                <td><div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                <td>
+                                                <div class="btn-group" role="group">
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-default dropdown-toggle" 
+                                                data-toggle="dropdown" 
+                                                aria-expanded="false">
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>' . $stl . '</li>
-													<li><a href="' . base_url() . 'index.php/teachers/edit_teacher/' . $row->user_id . '">Edit Teacher</a></li>
-													<li><a href="' . base_url() . 'index.php/teachers/view_teacher/' . $row->user_id . '/' . $row->teacher_id . '">View Teacher</a></li>
-                                                    <li><a'; ?> onclick = "return confirm('Drop <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/teachers/drop_t/' . $row->user_id . '">Drop Teacher</a></li>
+													<li>
+													<a href="' . base_url() . 'index.php/teachers/edit_teacher/' . $row->user_id . '">
+													ویرایش آموزگار
+													</a>
+													</li>
+													
+													<li>
+													<a href="' . base_url() . 'index.php/teachers/view_teacher/' . $row->user_id . '/' . $row->teacher_id . '">
+													مشاهده آموزگار
+													</a>
+													</li>
+                                                    <li>
+                                                    <a'; ?> onclick = "return confirm('حذف <?php echo $row->teacher_fname; ?> ?')" <?php print ' href="' . base_url() . 'index.php/teachers/drop_t/' . $row->user_id . '">
+ 														حذف آموزگار
+													 </a></li>
                                                 </ul>
                                             </div></td>
           
@@ -148,52 +162,86 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													} else {
 														print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی برای نمایش وجود ندارد.
                                     </div>';
-
 													}
-
-
 													?>
 
 												</div>
 
 											</div>
 											<div role="tabpanel" class="tab-pane fade" id="tab6">
-												<form action="<?php echo base_url(); ?>index.php/teachers/add_teacher"
-													  method="POST">
+												<form
+													action="<?php echo base_url(); ?>index.php/teachers/add_teacher"
+													method="POST"
+												>
 													<div class="form-group">
-														<label for="exampleInputEmail1">First Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter first name" name="fname" required
-															   autocomplete="off">
+														<label for="fname">نام</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خود را وارد کنید"
+															id="fname"
+															name="fname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Last Name</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter last name" name="lname" required
-															   autocomplete="off">
+														<label for="lname">نام خانوادگی</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="نام خانوادگی خودرا وارد کنید"
+															id="lname"
+															name="lname"
+															required
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Male</label>
-														<input type="radio" name="gender" value="Male" required>
-														<label for="exampleInputEmail1">Female</label>
-														<input type="radio" name="gender" value="Female" required>
+														<label for="Male">مرد</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Male"
+															value="Male"
+															required
+														/>
+														<label for="Female">زن</label>
+														<input
+															type="radio"
+															name="gender"
+															id="Female"
+															value="Female"
+															required
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Email Address</label>
-														<input type="email" class="form-control"
-															   placeholder="Enter email address" name="email"
-															   autocomplete="off">
+														<label for="email">آدرس ایمیل</label>
+														<input
+															type="email"
+															class="form-control"
+															placeholder="ایمیل خودرا وارد کنید"
+															id="email"
+															name="email"
+															autocomplete="off"
+														/>
 													</div>
 													<div class="form-group">
-														<label for="exampleInputEmail1">Phone</label>
-														<input type="text" class="form-control"
-															   placeholder="Enter phone" name="phone" required
-															   autocomplete="off">
+														<label for="phone">نلفن همراه</label>
+														<input
+															type="text"
+															class="form-control"
+															placeholder="تلفن همراه خودرا وارد کنید"
+															id="phone"
+															name="phone"
+															required
+															autocomplete="off"
+														/>
 													</div>
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Department</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Department</label>-->
 														<!--                                                        <select class="form-control" name="department" required>-->
 														<!--                                                            <option value="" selected disabled>-Select department-</option>-->
 														<!--                                                            --><?php
@@ -213,10 +261,10 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Category</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Category</label>-->
 														<!--                                                        <select class="form-control" name="category" required>-->
 														<!--                                                            <option value="" selected disabled>-Select category-</option>-->
 														<!--                                                            --><?php
@@ -236,16 +284,23 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
 													<div class="form-group">
-														<label>Username</label>
-														<input type="text" class="form-control " name="username"
-															   required autocomplete="off" placeholder="Set username">
+														<label for="username">نام کاربری</label>
+														<input
+															type="text"
+															class="form-control "
+															id="username"
+															name="username"
+															required
+															autocomplete="off"
+															placeholder="نام کاربری (یکتا)"
+														>
 													</div>
 
 
-													<button type="submit" class="btn btn-primary">Submit</button>
+													<button type="submit" class="btn btn-primary">ثبت</button>
 												</form>
 											</div>
 
@@ -253,11 +308,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -270,8 +322,6 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 
@@ -302,7 +352,6 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
-
 
 <script>
     function myFunction() {

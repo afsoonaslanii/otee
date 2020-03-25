@@ -159,8 +159,6 @@ if (count($result) > 0) {
 												autocomplete="off"
 											/>
 										</div>
-										<!--                                        <input type="hidden" name="student_id" value="-->
-										<?php //echo "$student_id"; ?><!--">-->
 										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<button type="submit" class="btn btn-primary">
 											به روزرسانی <?php echo "$sdfname"; ?>

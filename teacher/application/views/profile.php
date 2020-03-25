@@ -295,8 +295,6 @@ $description = $description;
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 <div class="cd-overlay"></div>

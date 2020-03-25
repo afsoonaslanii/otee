@@ -22,10 +22,9 @@ if (count($result) > 0) {
 
 		$tchavatar = $row->teacher_picture;
 		$tchstat = $row->acc_stat;
-		// $qrcodetxt = 'ID:'.$teacher_id.', NAME: '.$tchfname.' '.$tchlname.', GENDER: '.$tchgender.', DEPARTMENT : '.$tchdepartment.', CATEGORY : '.$tchcategory.'';
 
 	}
-} //
+}
 else {
 	header("location:./");
 }
@@ -35,7 +34,7 @@ else {
 
 <head>
 
-	<title>OES | View Teacher</title>
+	<title>او تی | مشاهده آموزگار</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -55,16 +54,8 @@ else {
 <body>
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -77,7 +68,7 @@ else {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>View teacher - <?php echo "$tchfname"; ?> <?php echo "$tchlname"; ?></h3>
+			<h3>مشاهده آموزگار - <?php echo "$tchfname"; ?> <?php echo "$tchlname"; ?></h3>
 
 		</div>
 		<div id="main-wrapper">
@@ -98,47 +89,43 @@ else {
 
 										?>
 									</div>
-									<!--                                    <div class="col-md-6">-->
-									<!--                                        --><?php //print '<img width="150" src="../assets/qrcode/qr_img.php?d='.$qrcodetxt.'">'; ?>
-									<!--                                    </div>-->
-
 								</div>
 								<table class="table">
 									<tbody>
 									<tr>
 										<th scope="row">1</th>
-										<td>teacher ID</td>
+										<td>شناسه آموزگار</td>
 										<td><b><?php echo "$teacher_id"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">2</th>
-										<td>First Name</td>
+										<td>نام</td>
 										<td><b><?php echo "$tchfname"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">3</th>
-										<td>Last Name</td>
+										<td>نام خانوادگی</td>
 										<td><b><?php echo "$tchlname"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">4</th>
-										<td>Gender</td>
+										<td>جنسیت</td>
 										<td><b><?php echo "$tchgender"; ?></b></td>
 
 									</tr>
 
 									<tr>
 										<th scope="row">7</th>
-										<td>Email Address</td>
+										<td>آدرس ایمیل</td>
 										<td><b><?php echo "$tchemail"; ?></b></td>
 
 									</tr>
 									<tr>
 										<th scope="row">8</th>
-										<td>Phone Number</td>
+										<td>تلفن همراه</td>
 										<td><b><?php echo "$tchphone"; ?></b></td>
 
 									</tr>
@@ -152,7 +139,7 @@ else {
 
 							<div class="panel panel-white">
 								<div class="panel-body">
-									<h3>دروس ارايه شده توسط استاد <?php echo " $tchlname"; ?></h3>
+									<h3>دروس ارايه شده توسط <?php echo " $tchlname"; ?></h3>
 									<div class="table-responsive">
 										<?php
 
@@ -163,18 +150,18 @@ else {
                                     									   <table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>class code</th>
-                                                                                    <th>class name</th>
-                                                                                    <th>exam</th>
-                                                                                    <th>Status</th>
+                                                                                    <th>کد درس</th>
+                                                                                    <th>نام درس</th>
+                                                                                    <th>امتحان</th>
+                                                                                    <th>وضعیت</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tfoot>
                                                                                 <tr>
-                                                                                    <th>class code</th>
-                                                                                    <th>class name</th>
-                                                                                    <th>exam</th>
-                                                                                    <th>Status</th>
+                                                                                    <th>کد درس</th>
+                                                                                    <th>نام درس</th>
+                                                                                    <th>امتحان</th>
+                                                                                    <th>وضعیت</th>
                                                                                 </tr>
                                                                             </tfoot>
                                                                             <tbody>';
@@ -194,7 +181,7 @@ else {
 										} else {
 											print '
                                     												<div class="alert alert-info" role="alert">
-                                                                            Nothing was found in database.
+                                                                            اطلاعاتی برای نمایش پیدا نشد.
                                                                         </div>';
 										}
 
@@ -217,8 +204,6 @@ else {
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 
@@ -249,7 +234,6 @@ else {
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="<?php echo $url; ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo $url; ?>/assets/js/pages/form-elements.js"></script>
-
 
 <script>
     function myFunction() {

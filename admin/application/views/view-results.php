@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH . 'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->admin_picture : NULL);
@@ -9,15 +10,7 @@ $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 $ms = $ms;
 $description = $description;
 
-//$sql = "SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
-//    $result = $query1;
-//
-//    if (count($result) > 0) {
-//
-//        foreach ($result as $row) {
-//            $exam_name = $row->exam_title;
-//        }
-//    }
+
 $exam_name = "test"
 ?>
 <!DOCTYPE html>
@@ -25,13 +18,14 @@ $exam_name = "test"
 
 <head>
 
-	<title>OES | <?php echo "$exam_name" ?> Results</title>
+	<title>او تی | <?php echo "$exam_name" ?> نتیجه</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
 	<?php require('shared/links.php') ?>
 
-	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
+		  type="text/css"/>
 
 	<link href="<?php echo $url; ?>/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css"/>
 
@@ -43,16 +37,8 @@ $exam_name = "test"
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -65,9 +51,7 @@ $exam_name = "test"
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3><?php echo "$exam_name" ?> Results</h3>
-
-
+			<h3><?php echo "$exam_name" ?> نتیجه</h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -79,8 +63,6 @@ $exam_name = "test"
 								<div class="panel-body">
 									<div class="table-responsive">
 										<?php
-
-										//$sql = "SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
 										$result = $query1;
 
 										if (count($result) > 0) {
@@ -88,26 +70,26 @@ $exam_name = "test"
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>Student Name</th>
-												<th>Student ID</th>
-												<th>Exam Name</th>
-                                                <th>Score</th>
-                                                <th>Status</th>
-												<th>Date</th>
-												<th>RE Exam</th>
-                                                <th>Action</th>
+                                                <th>نام دانش آموز</th>
+												<th>شناسه دانش آموز</th>
+												<th>نام آزمون</th>
+                                                <th>امتیاز</th>
+                                                <th>وضعیت</th>
+												<th>تاریخ</th>
+												<th>تاریخ آزمون مجدد</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Student Name</th>
-												<th>Student ID</th>
-												<th>Exam Name</th>
-                                                <th>Score</th>
-                                                <th>Status</th>
-												<th>Date</th>
-												<th>RE Exam</th>
-                                                <th>Action</th>
+                                                <th>نام دانش آموز</th>
+												<th>شناسه دانش آموز</th>
+												<th>نام آزمون</th>
+                                                <th>امتیاز</th>
+                                                <th>وضعیت</th>
+												<th>تاریخ</th>
+												<th>تاریخ آزمون مجدد</th>
+                                                <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
@@ -120,16 +102,21 @@ $exam_name = "test"
                                                 <td>' . $row->exam_title . '</td>
                                                 <td><b>' . $row->score . '%</b></td>
 												<td>' . $row->status_student . '</td>
-												<td>' . $row->take_date . '</td>
-												<td>' . $row->retake_date . '</td>
+												<td>' . convert_gregorian_to_jalali($row->take_date) . '</td>
+												<td>' . convert_gregorian_to_jalali($row->retake_date) . '</td>
 												<td><div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    Select Action
+                                                <button 
+                                                type="button"
+                                                 class="btn btn-default dropdown-toggle" 
+                                                 data-toggle="dropdown"
+                                                  aria-expanded="false"
+                                                  >
+                                                    انتخاب
                                                     <span class="caret"></span>
                                                 </button>
                                                <ul class="dropdown-menu" role="menu">
                                                   
-                          <li><a onclick = "return confirm(\'Reactivate exam for ' . $row->student_fname . '?\')"  href="pages/re-activate.php/">Re-activate</a></li>
+                          <li><a onclick = "return confirm(\'فعال سازی مجدد آزمون برای ' . $row->student_fname . '?\')"  href="pages/re-activate.php/">Re-activate</a></li>
                                   
                                                 </ul>
                                             </div></td>
@@ -143,7 +130,7 @@ $exam_name = "test"
 										} else {
 											print '
 												<div class="alert alert-info" role="alert">
-                                        Nothing was found in database.
+                                        اطلاعاتی برای نمایش وجود ندارد.
                                     </div>';
 
 										}
@@ -151,11 +138,8 @@ $exam_name = "test"
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
@@ -168,8 +152,6 @@ $exam_name = "test"
 <?php if ($ms == "1") {
 	?>
 	<div class="alert alert-success" id="snackbar"><?php echo "$description"; ?></div> <?php
-} else {
-
 }
 ?>
 

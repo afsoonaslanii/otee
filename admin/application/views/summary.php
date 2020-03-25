@@ -1,4 +1,5 @@
 <?php
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->admin_picture : NULL);
@@ -19,7 +20,7 @@ if (count($result) > 0) {
 		$excate = "";
 		$exsubject = "";
 		$exname = $row->exam_title;
-		$exdate = $row->exam_date;
+		$exdate = convert_gregorian_to_jalali($row->exam_date);
 		$exduration = $row->exam_duration;
 		$expassmark = $row->passmark;
 		$exreex = $row->re_exam;
@@ -32,7 +33,6 @@ if (count($result) > 0) {
 $stdpass = 0;
 $stdfail = 0;
 
-//"SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
 $result = $query2;
 
 if (count($result) > 0) {
@@ -54,7 +54,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Short Summary</title>
+	<title>او تی | خلاصه وضعیت</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -73,16 +73,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -95,9 +87,7 @@ if (count($result) > 0) {
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3>Results Summary - <?php echo "$exname"; ?></h3>
-
-
+			<h3>خلاصه وضعیت - <?php echo "$exname"; ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -112,30 +102,30 @@ if (count($result) > 0) {
 											<tbody>
 											<tr>
 												<th scope="row">1</th>
-												<td>Exam Name</td>
+												<td>نام آزمون</td>
 												<td><?php echo "$exname"; ?></td>
 											</tr>
 											<tr>
 												<th scope="row">2</th>
-												<td>Subject</td>
+												<td>موضوع</td>
 												<td><?php echo "$exsubject"; ?></td>
 											</tr>
 											<tr>
 												<th scope="row">3</th>
-												<td>Deadline</td>
+												<td>تاریخ پایان</td>
 												<td><?php echo "$exdate"; ?></td>
 											</tr>
 
 											<tr>
 												<th scope="row">4</th>
-												<td>Duration</td>
+												<td>مدت زمان</td>
 												<td><?php echo "$exduration"; ?> <b>min.</b></td>
 											</tr>
 
 
 											<tr>
 												<th scope="row">5</th>
-												<td>Passmark</td>
+												<td>امتیاز</td>
 												<td><?php echo "$expassmark"; ?>%</td>
 											</tr>
 
@@ -144,7 +134,7 @@ if (count($result) > 0) {
 										</table>
 									</div>
 									<div class="col-md-8">
-										<div id="chartContainer" style="height: 370px;"></div>
+										<div id="chartContainer" style="height: 370px; direction: ltr;"></div>
 									</div>
 								</div>
 							</div>

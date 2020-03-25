@@ -38,7 +38,7 @@ if (count($result) > 0) {
 
 <head>
 
-	<title>OES | Edit Student</title>
+	<title>او تی | ویرایش دانش آموز</title>
 
 	<?php require('shared/meta-tag.php') ?>
 
@@ -57,17 +57,8 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
+<?php require_once 'layout/search-form.php' ?>
 
-
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
@@ -167,8 +158,6 @@ if (count($result) > 0) {
 												autocomplete="off"
 											/>
 										</div>
-										<!--                                        <input type="hidden" name="student_id" value="-->
-										<?php //echo "$student_id"; ?><!--">-->
 										<input type="hidden" name="user_id" value="<?php echo "$user_id"; ?>">
 										<button type="submit" class="btn btn-primary">
 											به روزرسانی <?php echo "$sdfname"; ?>
