@@ -1,11 +1,13 @@
 <?php
-require_once 'jdf.php';
 
-function convert_date($date, $separator = '/')
+require_once(APPPATH.'utils/lib/jdf.php');
+
+function convert_gregorian_to_jalali($date, $separator = '/')
 {
-	$date = strtotime($date);
-	$timestamp = date('Y/m/d', $date);
+	$gdate = strtotime($date);
+	$timestamp = date('Y/m/d', $gdate);
 	$arr_parts = explode('/', $timestamp);
+
 	$gYear = $arr_parts[0];
 	$gMonth = $arr_parts[1];
 	$gDay = $arr_parts[2];
