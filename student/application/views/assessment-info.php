@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -95,7 +95,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">4</th>
 											<td>زمان آزمون مجدد</td>
-											<td><?php echo convert_date($next_retake); ?></td>
+											<td><?php echo convert_gregorian_to_jalali($next_retake); ?></td>
 										</tr>
 
 										</tbody>

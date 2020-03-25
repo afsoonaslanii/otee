@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -105,7 +105,7 @@ $description = $description;
 										        <td>' . $row->course_code . '</td>
                                                 <td>' . $row->exam_title . '</td>
 												<td>' . $row->teacher_fname . ' ' . $row->teacher_lname . '</td>
-                                                <td>' . convert_date($row->exam_date) . '</td>
+                                                <td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
                                                 <td>' . $st . '</td>
 												<td>' . $stl . '</td>
 

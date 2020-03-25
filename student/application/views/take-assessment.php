@@ -1,5 +1,5 @@
 <?php
-require_once 'shared/convert_date.php';
+require_once(APPPATH.'utils\convert_gregorian_to_jalali.php');
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
@@ -124,7 +124,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">2</th>
 											<td>تاریخ</td>
-											<td><?php echo convert_date($deadline); ?></td>
+											<td><?php echo convert_gregorian_to_jalali($deadline); ?></td>
 										</tr>
 
 										<tr>
@@ -138,9 +138,9 @@ if (count($result) > 0) {
 											<td>زمان آزمون مجدد</td>
 											<td><?php
 												if ($record_found == "1") {
-													echo convert_date($retake_date);
+													echo convert_gregorian_to_jalali($retake_date);
 												} else {
-													echo convert_date($next_retake);
+													echo convert_gregorian_to_jalali($next_retake);
 												}
 
 												?></td>
@@ -258,7 +258,7 @@ if (count($result) > 0) {
 								print '
                                 <div class="alert alert-info" role="alert">
 							    	شما این امتحان را در تاریخ
-                                    <strong>' . convert_date($take_date) . '</strong>
+                                    <strong>' . convert_gregorian_to_jalali($take_date) . '</strong>
                                     با امتیاز 
                                     <strong>' . $score . '%</strong>
                                     گذرانده اید.
