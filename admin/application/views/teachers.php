@@ -16,8 +16,6 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 	<title>او تی | مدیریت آموزگاران</title>
 
-	<?php require('shared/meta-tag.php') ?>
-
 	<?php require('shared/links.php') ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"

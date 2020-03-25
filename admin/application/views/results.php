@@ -17,8 +17,6 @@ $description = $description;
 
 	<title>او تی | مدیریت نتایج آزمون</title>
 
-	<?php require('shared/meta-tag.php') ?>
-
 	<?php require('shared/links.php') ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"

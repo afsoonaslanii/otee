@@ -20,8 +20,6 @@ $description = $description;
 
 	<title>او تی | پروفایل ادمین</title>
 
-	<?php require('shared/meta-tag.php') ?>
-
 	<?php require('shared/links.php') ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
@@ -30,8 +28,6 @@ $description = $description;
 		  type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/metrojs/MetroJs.min.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo $url; ?>/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
-
-	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/index.css"/>
 
 </head>
 <body <?php if ($ms == "1") {

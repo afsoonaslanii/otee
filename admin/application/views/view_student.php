@@ -35,8 +35,6 @@ if (count($result) > 0) {
 
 	<title>او تی | مشاهده اطلاعات دانش آموز</title>
 
-	<?php require('shared/meta-tag.php') ?>
-
 	<?php require('shared/links.php') ?>
 
 	<link href="<?php echo $url; ?>/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet"
@@ -53,16 +51,8 @@ if (count($result) > 0) {
 <body>
 
 <?php require('layout/profile-menu.php') ?>
+<?php require('layout/search-form.php') ?>
 
-<form class="search-form" action="search.php" method="GET">
-	<div class="input-group">
-		<input type="text" name="keyword" class="form-control search-input" placeholder="Search student..." required>
-		<span class="input-group-btn">
-                    <button class="btn btn-default close-search waves-effect waves-button waves-classic"
-							type="button"><i class="fa fa-times"></i></button>
-                </span>
-	</div>
-</form>
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>
