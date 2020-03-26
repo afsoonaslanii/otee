@@ -7,17 +7,17 @@ class Exam extends CI_Controller
 	function index()
 	{
 		if (isset($_SESSION['user_id'])) {
-			$this->load->model('teacher_model');
-			$data['query1'] = $this->teacher_model->get_teacher_inf($_SESSION['username'], $_SESSION['user_id']);
+			$this->load->model('user_model');
+			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
 			$this->load->model('joined_model');
-			$data['query'] = $this->joined_model->teacher_exam_result($_SESSION['teacher_id']);
+			$data['query'] = $this->joined_model->teacher_exam_result($_SESSION['user_id']);
 
-			$data['showClass'] = $this->joined_model->get_all_class_info($_SESSION['teacher_id']);
-			$data['showActiveClass'] = $this->joined_model->get_active_class_info($_SESSION['teacher_id']);
+			$data['showClass'] = $this->joined_model->get_all_class_info($_SESSION['user_id']);
+			$data['showActiveClass'] = $this->joined_model->get_active_class_info($_SESSION['user_id']);
 
-//            $this->load->model('teacher_model');
-//            $data['teachers']= $this->teacher_model->select_active_teachers();
+//            $this->load->model('user_model');
+//            $data['teachers']= $this->user_model->select_active_teachers();
 
 			if (isset($_SESSION['ms'])) {
 				$data['ms'] = $_SESSION['ms'];
@@ -42,7 +42,7 @@ class Exam extends CI_Controller
 		);
 		$data_class = array(
 			'course_code' => $_POST['coursecode'],
-			'teacher_id' => $_SESSION['teacher_id'],
+			'teacher_id' => $_SESSION['user_id'],
 		);
 		$this->load->model('course_class_model');
 		$this->course_class_model->add_course_class($data_course, $data_class);
@@ -152,8 +152,8 @@ class Exam extends CI_Controller
 	{
 
 		if (isset($_SESSION['user_id'])) {
-			$this->load->model('teacher_model');
-			$data['query1'] = $this->teacher_model->get_teacher_inf($_SESSION['username'], $_SESSION['user_id']);
+			$this->load->model('user_model');
+			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
 			$this->load->model('exam_model');
 			$data['query'] = $this->exam_model->select_exam_by_id($exam_id);
@@ -198,8 +198,8 @@ class Exam extends CI_Controller
 	function question($exam_id)
 	{
 		if (isset($_SESSION['user_id'])) {
-			$this->load->model('teacher_model');
-			$data['query1'] = $this->teacher_model->get_teacher_inf($_SESSION['username'], $_SESSION['user_id']);
+			$this->load->model('user_model');
+			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
 			$this->load->model('exam_model');
 			$data['query'] = $this->exam_model->select_exam_by_id($exam_id);

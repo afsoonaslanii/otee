@@ -7,13 +7,24 @@ class User_model extends CI_Model
 		parent::__construct();
 	}
 
+	function get_user_info($username, $user_id)
+	{
+		$this->db->select('*');
+		$where = "username='$username' OR phone='$username' AND user_id='$user_id' AND role='teacher' AND status='1' ";
+		$this->db->where($where);
+		$this->db->from('tbl_user');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function select_valid_user($username, $password)
 	{
 		$this->db->select('*');
 		$this->db->where('username', "$username");
 		$this->db->or_where('phone', "$username");
 		$this->db->where('password', "$password");
-		$this->db->where('user_type', "teacher");
+		$this->db->where('role', "teacher");
 		$this->db->from('tbl_user');
 
 		$query = $this->db->get();
@@ -47,5 +58,64 @@ class User_model extends CI_Model
 	{
 		$this->db->where('user_id', $user_id);
 		$this->db->update('tbl_user', $data);
+	}
+
+
+	/*********************/
+	/* teacher functions */
+	/*********************/
+
+	function select_active_teachers()
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_user');
+		$this->db->where('status', '1');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	/*********************/
+	/* student functions */
+	/*********************/
+
+	function select_students()
+	{
+		$this->db->select('*');
+		$this->db->where('role', 'student');
+		$this->db->from('tbl_user');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	function delete_student($sid)
+	{
+		$this->db->where('user_id', $sid);
+		$this->db->where('role', 'student');
+		$query = $this->db->delete('tbl_user');
+		return $query;
+	}
+
+	function select_student_by_id($id)
+	{
+		$this->db->select('*');
+		$this->db->where('user_id', $id);
+		$this->db->where('role', 'student');
+		$this->db->from('tbl_user');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	//select_st_by_username : select_student_by_username
+	function select_st_by_username($username)
+	{
+		$this->db->select('*');
+		$this->db->where('username', $username);
+		$this->db->where('role', 'student');
+		$this->db->from('tbl_user');
+
+		$query = $this->db->get();
+		return $query->result();
 	}
 }

@@ -2,9 +2,9 @@
 require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
-$myavatar = (count($query) > 0 ? $query[0]->teacher_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->teacher_fname : "");
-$mylname = (count($query) > 0 ? $query[0]->teacher_lname : "");
+$myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->firstname : "");
+$mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
 

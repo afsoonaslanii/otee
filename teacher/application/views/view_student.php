@@ -3,9 +3,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->teacher_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->teacher_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->teacher_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : NULL);
 
 $result = $query;
@@ -13,14 +13,14 @@ $result = $query;
 if (count($result) > 0) {
 
 	foreach ($result as $row) {
-		$student_id = $row->student_id;
-		$sdfname = $row->student_fname;
-		$sdlname = $row->student_lname;
+		$student_id = $row->user_id;
+		$sdfname = $row->firstname;
+		$sdlname = $row->lastname;
 		$sdgender = $row->gender;
 		$sdemail = $row->email;
 		$sdphone = $row->phone;
-		$sdavatar = $row->student_picture;
-		$sdstat = $row->acc_stat;
+		$sdavatar = $row->picture;
+		$sdstat = $row->status;
 		// $qrcodetxt = 'ID:'.$student_id.', NAME: '.$sdfname.' '.$sdlname.', GENDER: '.$sdgender.', DEPARTMENT : '.$sddepartment.', CATEGORY : '.$sdcategory.'';
 
 	}

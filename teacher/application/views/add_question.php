@@ -5,9 +5,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1)>0 ? $query1[0]->teacher_picture : NULL);
-$myfname = (count($query1)>0 ? $query1[0]->teacher_fname : "");
-$mylname = (count($query1)>0 ? $query1[0]->teacher_lname : "");
+$myavatar = (count($query1)>0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1)>0 ? $query1[0]->firstname : "");
+$mylname = (count($query1)>0 ? $query1[0]->lastname : "");
 $mygender = (count($query1)>0 ? $query1[0]->gender : null);
 
     $result = $query;

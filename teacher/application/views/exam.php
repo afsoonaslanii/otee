@@ -5,9 +5,9 @@ $url = 'http://otee.ir';
 $ms = $ms;
 $description = $description;
 
-$myavatar = (count($query1) > 0 ? $query1[0]->teacher_picture : NULL);
-$myfname = (count($query1) > 0 ? $query1[0]->teacher_fname : "");
-$mylname = (count($query1) > 0 ? $query1[0]->teacher_lname : "");
+$myavatar = (count($query1) > 0 ? $query1[0]->picture : NULL);
+$myfname = (count($query1) > 0 ? $query1[0]->firstname : "");
+$mylname = (count($query1) > 0 ? $query1[0]->lastname : "");
 $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 
 
@@ -153,8 +153,8 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 										       <tr>
                                                 <td>' . $row->course_name . '</td>
 												<td>' . $row->course_code . '</td>
-                                                <td>' . $row->teacher_fname . " " . $row->teacher_lname . '</td>
-                                                <td>' . $row->teacher_id . '</td>
+                                                <td>' . $row->firstname . " " . $row->lastname . '</td>
+                                                <td>' . $row->user_id . '</td>
 												<td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
                                                 <button 
@@ -232,7 +232,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 													//                                                            if (count($result) > 0) {
 													//
 													//                                                                foreach($result as $row) {
-													//                                                                    print '<option value="'.$row->teacher_id.'">'.$row->teacher_fname.' '.$row->teacher_lname.'</option>';
+													//                                                                    print '<option value="'.$row->user_id.'">'.$row->firstname.' '.$row->lastname.'</option>';
 													//                                                                }
 													//                                                            } else {
 													//
@@ -404,12 +404,12 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 														/>
 													</div>
 													<div class="form-group">
-														<label for="passmark">امتیاز قبولی (%)</label>
+														<label for="passmark">امتیاز قبولی</label>
 														<input
 															id="passmark"
 															type="number"
 															class="form-control"
-															placeholder="Enter passmark"
+															placeholder="حداقل نمره برای قبولی"
 															name="passmark"
 															required
 															autocomplete="off"
@@ -447,7 +447,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 															style="resize: none;"
 															rows="6"
 															class="form-control"
-															placeholder="Enter Terms and conditions"
+															placeholder="قوانین و مققرات امتحان را وارد کنید"
 															id="terms"
 															name="terms"
 															required

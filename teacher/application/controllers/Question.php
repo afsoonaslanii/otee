@@ -7,11 +7,11 @@ class Question extends CI_Controller
     function index()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('teacher_model');
-            $data['query1'] = $this->teacher_model->get_teacher_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
             $this->load->model('joined_model');
-            $data['exam'] = $this->joined_model->teacher_exam_result($_SESSION['teacher_id']);
+            $data['exam'] = $this->joined_model->teacher_exam_result($_SESSION['user_id']);
 
             if (isset($_SESSION['ms'])) {
                 $data['ms'] = $_SESSION['ms'];
@@ -63,8 +63,8 @@ class Question extends CI_Controller
 
     function view_question($exam_id){
         if (isset($_SESSION['user_id'])) {
-            $this->load->model('teacher_model');
-            $data['query1'] = $this->teacher_model->get_teacher_inf($_SESSION['username'], $_SESSION['user_id']);
+            $this->load->model('user_model');
+            $data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
             $this->load->model('exam_model');
             $data['exam'] = $this->exam_model->select_exam_by_id($exam_id);

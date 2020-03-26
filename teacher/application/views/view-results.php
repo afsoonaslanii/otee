@@ -2,9 +2,9 @@
 require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
-$myavatar = (count($query) > 0 ? $query[0]->teacher_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->teacher_fname : "");
-$mylname = (count($query) > 0 ? $query[0]->teacher_lname : "");
+$myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->firstname : "");
+$mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
 $ms = $ms;
@@ -114,8 +114,8 @@ $exam_name = "test"
 											foreach ($result as $row) {
 												print '
 										       <tr>
-                                                <td>' . $row->student_fname . '</td>
-												<td>' . $row->student_id . '</td>
+                                                <td>' . $row->firstname . '</td>
+												<td>' . $row->user_id . '</td>
                                                 <td>' . $row->exam_title . '</td>
                                                 <td><b>' . $row->score . '%</b></td>
 												<td>' . $row->status_student . '</td>
@@ -134,7 +134,7 @@ $exam_name = "test"
                                                <ul class="dropdown-menu" role="menu">
                                                   
                           <li>
-                          <a onclick = "return confirm(\'فعال سازی مجدد آزمون برای ' . $row->student_fname . '?\')"  href="pages/re-activate.php/">فعال سازی مجدد</a></li>
+                          <a onclick = "return confirm(\'فعال سازی مجدد آزمون برای ' . $row->firstname . '?\')"  href="pages/re-activate.php/">فعال سازی مجدد</a></li>
                                   
                                                 </ul>
                                             </div></td>
