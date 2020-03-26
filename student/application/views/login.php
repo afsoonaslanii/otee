@@ -12,7 +12,7 @@ $description = $description;
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>او تی | صفحه ورود</title>
+	<title>او تی | صفحه ورود دانش آموز</title>
 
     <link href="<?php echo $url; ?>/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
     <link href="<?php echo $url; ?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -29,6 +29,7 @@ $description = $description;
             <div class="row">
                 <div class="col-md-4 center">
                     <h2>او - تی</h2>
+					<h5>پنل دانش آموز</h5>
                     <h5>سیستم آزمون انلاین</h5>
 
                     <?php

@@ -18,7 +18,7 @@ $description = $description;
 	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/snack.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/rtl.css"/>
 
-	<title>او تی | صفحه ورود</title>
+	<title>او تی | صفحه ورود ادمین</title>
 </head>
 <body <?php if ($ms == "1") {
 	print 'onload="myFunction()"';
@@ -30,6 +30,7 @@ $description = $description;
 			<div class="row">
 				<div class="col-md-4 center">
 					<h2>او تی</h2>
+					<h5>پنل ادمین</h5>
 					<h5>سیستم آزمون آنلاین</h5>
 
 					<?php
