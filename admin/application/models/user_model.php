@@ -20,11 +20,9 @@ class User_model extends CI_Model
 
 	function select_valid_user($username, $password)
 	{
-
 		$this->db->select('*');
-		$this->db->where('username', "$username");
-		$this->db->where('password', "$password");
-		$this->db->where('role', "admin");
+		$where = "(username='$username' OR phone='$username') AND password='$password' AND role='admin' AND status='1' ";
+		$this->db->where($where);
 		$this->db->from('tbl_user');
 
 		$query = $this->db->get();
@@ -91,7 +89,6 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-	//from select_active_tch to select_active_teachers
 	function select_active_teachers()
 	{
 		$this->db->select('*');
@@ -103,15 +100,6 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-
-//	function update_teacher($user_id , $data){
-//		$this->db->where('user_id', $user_id);
-//		$this->db->where('role', 'teacher');
-//		$this->db->update('tbl_user', $data);
-//	}
-
-
-// from select_tch to select_teacher_by_id
 	function select_teacher_by_id($user_id)
 	{
 		$this->db->select('*');
@@ -123,7 +111,6 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-	// select_inactive_tch : select_inactive_teachers
 	function select_inactive_teachers()
 	{
 		$this->db->select('*');
@@ -149,12 +136,6 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-//	function update_student($user_id , $data){
-//		$query = $this->db->update('tbl_user', $data,"user_id = $user_id");
-//		return $query;
-//	}
-
-//select_st: select_student_by_id
 	function select_student_by_id($id)
 	{
 		$this->db->select('*');
@@ -166,7 +147,6 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-//select_st_by_username : select_student_by_username
 	function select_student_by_username($username)
 	{
 		$this->db->select('*');

@@ -54,15 +54,14 @@ class Joined_model extends CI_Model
     }
 
     function select_record_st($exam_id){
-        $this->db->select('*');
-        $this->db->from('tbl_st_class');
-        $this->db->join('tbl_user','tbl_user.user_id = tbl_st_class.student_id');
+		$this->db->select('*');
+		$this->db->from('tbl_st_class');
+		$this->db->where('tbl_st_class.exam_id',$exam_id);
+		$this->db->join('tbl_user','tbl_user.user_id = tbl_st_class.student_id');
+		$this->db->join('tbl_exam','tbl_exam.exam_id = tbl_st_class.exam_id');
+		$this->db->join('tbl_class','tbl_class.class_id = tbl_exam.class_id');
+		$this->db->join('tbl_course','tbl_course.course_code = tbl_class.course_code');
 
-        $this->db->join('tbl_exam','tbl_exam.exam_id = tbl_st_class.exam_id');
-        $this->db->join('tbl_class','tbl_class.class_id = tbl_exam.class_id');
-        $this->db->join('tbl_user','tbl_user.user_id = tbl_class.teacher_id');
-        $this->db->join('tbl_course','tbl_course.course_code = tbl_class.course_code');
-        $this->db->where('tbl_st_class.exam_id',$exam_id);
         $query = $this->db->get();
         return $query->result();
     }
