@@ -2,9 +2,9 @@
 require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
-$myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->student_fname : " ");
-$mylname = (count($query) > 0 ? $query[0]->student_lname : "");
+$myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->firstname : " ");
+$mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
 $ms = $ms;
@@ -96,8 +96,8 @@ $description = $description;
 										       <tr>
 										        <td>' . $row->exam_id . '</td>
                                                 <td>' . $row->exam_title . '</td>
-											    <td>' . $row->teacher_fname . ' ' . $row->teacher_lname . '</td>
-												<td>' . $row->score . '%</td>
+											    <td>' . $row->firstname . ' ' . $row->lastname . '</td>
+												<td>' . $row->score . '</td>
                                                 <td>' . convert_gregorian_to_jalali($row->take_date) . '</td>
 												<td>' . $row->status_student . '</td>
                                                 <td>' . convert_gregorian_to_jalali($row->retake_date) . '</td>

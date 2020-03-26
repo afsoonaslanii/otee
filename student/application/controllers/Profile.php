@@ -7,8 +7,8 @@ class Profile extends CI_Controller
         if (isset($_SESSION['user_id'])) {
             $user_id = $_SESSION['user_id'];
             $username = $_SESSION['username'];
-            $this->load->model('student_model');
-            $data['query'] = $this->student_model->select_st_by_user_id($user_id, $username);
+            $this->load->model('user_model');
+            $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
             if (isset($_SESSION['ms'])) {
                 $data['ms'] = $_SESSION['ms'];

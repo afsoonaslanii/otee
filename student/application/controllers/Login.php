@@ -27,7 +27,7 @@ class Login extends CI_Controller
             $username_sess = $query[0]->username;
             $fname = $query[0]->firstname;
             $lname = $query[0]->lastname;
-            $rol = $query[0]->user_type;
+            $rol = $query[0]->role;
 
             $data_session = array(
                 'user_id'=>$user_id,

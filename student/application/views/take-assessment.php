@@ -2,9 +2,9 @@
 require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
-$myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->student_fname : " ");
-$mylname = (count($query) > 0 ? $query[0]->student_lname : "");
+$myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->firstname : " ");
+$mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
 $record_found = 0;
@@ -123,7 +123,7 @@ if (count($result) > 0) {
 
 										<tr>
 											<th scope="row">2</th>
-											<td>تاریخ</td>
+											<td>تاریخ انقضا</td>
 											<td><?php echo convert_gregorian_to_jalali($deadline); ?></td>
 										</tr>
 
@@ -142,8 +142,8 @@ if (count($result) > 0) {
 												} else {
 													echo convert_gregorian_to_jalali($next_retake);
 												}
-
-												?></td>
+												?>
+											</td>
 										</tr>
 
 										<tr>
@@ -260,7 +260,7 @@ if (count($result) > 0) {
 							    	شما این امتحان را در تاریخ
                                     <strong>' . convert_gregorian_to_jalali($take_date) . '</strong>
                                     با امتیاز 
-                                    <strong>' . $score . '%</strong>
+                                    <strong>' . $score . '</strong>
                                     گذرانده اید.
 								</div>
                                     ';

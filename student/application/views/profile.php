@@ -3,10 +3,10 @@
 //$qrcodetxt = 'ID:'.$myid.', NAME: '.$myfname.' '.$mylname.', GENDER: '.$mygender.', DEPARTMENT : '.$mydepartment.', CATEGORY : '.$mycategory.'';
 $url = 'http://otee.ir';
 $qrcodetxt = '';
-$myid = (count($query)>0 ? $query[0]->student_id : "");
-$myavatar = (count($query)>0 ? $query[0]->student_picture : NULL);
-$myfname = (count($query)>0 ? $query[0]->student_fname : "");
-$mylname = (count($query)>0 ? $query[0]->student_lname : "");
+$myid = (count($query)>0 ? $query[0]->user_id : "");
+$myavatar = (count($query)>0 ? $query[0]->picture : NULL);
+$myfname = (count($query)>0 ? $query[0]->firstname : "");
+$mylname = (count($query)>0 ? $query[0]->lastname : "");
 $mygender = (count($query)>0 ? $query[0]->gender : NULL);
 $myemail = (count($query)>0 ? $query[0]->email : "");
 $myphone = (count($query)>0 ? $query[0]->phone: "");

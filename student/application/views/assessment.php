@@ -3,11 +3,11 @@ date_default_timezone_set('Asia/Tehran');
 
 $url = 'http://otee.ir';
 
-$myavatar = (count($query) > 0 ? $query[0]->student_picture : NULL);
-$myfname = (count($query) > 0 ? $query[0]->student_fname : " ");
-$mylname = (count($query) > 0 ? $query[0]->student_lname : "");
+$myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
+$myfname = (count($query) > 0 ? $query[0]->firstname : " ");
+$mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
-$student_id = $query[0]->student_id;
+$student_id = $query[0]->user_id;
 
 $exam_id = $_SESSION['current_examid'];
 $retake_status = $_SESSION['student_retake'];
@@ -185,7 +185,7 @@ if (count($exam) > 0) {
 									?>
 									<input type="hidden" name="totalquestion" value="<?php echo "$total_questions"; ?>">
 									<input type="hidden" name="examid" value="<?php echo "$exam_id"; ?>">
-									<input type="hidden" name="studentid" value="<?php echo "$student_id"; ?>">
+									<input type="hidden" name="studentid" value="<?php echo "$student_id "; ?>">
 									<input type="hidden" name="classid" value="<?php echo "$class_id"; ?>">
 									<input type="hidden" name="passmark" value="<?php echo "$passmark"; ?>">
 									<input type="hidden" name="retake" value="<?php echo "$next_retake"; ?>">

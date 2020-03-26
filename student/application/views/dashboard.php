@@ -1,9 +1,9 @@
 <?php
 $url = 'http://otee.ir';
 
-$myavatar = (count($query)>0 ? $query[0]->student_picture : NULL);
-$myfname = (count($query)>0 ? $query[0]->student_fname : " ");
-$mylname = (count($query)>0 ? $query[0]->student_lname : "");
+$myavatar = (count($query)>0 ? $query[0]->picture : NULL);
+$myfname = (count($query)>0 ? $query[0]->firstname : " ");
+$mylname = (count($query)>0 ? $query[0]->lastname : "");
 $mygender = (count($query)>0 ? $query[0]->gender : NULL);
 
 $students_in_my_class = '44';

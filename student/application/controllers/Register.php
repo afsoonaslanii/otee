@@ -41,7 +41,7 @@ class Register extends CI_Controller
                 $data = array(
                    'username'=>$username,
                    'password'=>$password,
-                    'user_type'=>'student',
+                    'role'=>'student',
                 );
                 $this->load->model('user_model');
                 $sql = $this->user_model->insert_user($data);

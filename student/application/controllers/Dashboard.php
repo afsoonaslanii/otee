@@ -8,23 +8,22 @@ class Dashboard extends CI_Controller
             $user_id = $_SESSION['user_id'];
             $username = $_SESSION['username'];
 
-            $this->load->model('student_model');
-            $data['query'] = $this->student_model->select_st_by_user_id($user_id, $username);
+            $this->load->model('user_model');
+            $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
-            $data_session = array(
-                'student_id'=>$data['query'][0]->student_id,
-            );
-            $this->session->set_userdata($data_session);
+//            $data_session = array(
+//                'student_id'=>$data['query'][0]->student_id,
+//            );
+//            $this->session->set_userdata($data_session);
 
-            $student_id = $_SESSION['student_id'];
 
             $this->load->model('exam_model');
             $data['active_exam'] = $this->exam_model->select_active_exam();
             $data['inactive_exam'] = $this->exam_model->select_inactive_exam();
 
             $this->load->model('st_class_model');
-            $data['pass'] = $this->st_class_model->select_pass_record($student_id);
-            $data['fail'] = $this->st_class_model->select_fail_record($student_id);
+            $data['pass'] = $this->st_class_model->select_pass_record($user_id);
+            $data['fail'] = $this->st_class_model->select_fail_record($user_id);
 
 
             if (isset($_SESSION['ms'])) {

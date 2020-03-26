@@ -7,8 +7,9 @@ class Exam extends CI_Controller
         if (isset($_SESSION['user_id'])){
             $user_id = $_SESSION['user_id'];
             $username = $_SESSION['username'];
-            $this->load->model('student_model');
-            $data['query'] = $this->student_model->select_st_by_user_id($user_id,$username);
+
+            $this->load->model('user_model');
+            $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
             $this->load->model('joined_model');
             $data['exam'] = $this->joined_model-> select_exam_detail();
@@ -32,8 +33,8 @@ class Exam extends CI_Controller
             $user_id = $_SESSION['user_id'];
             $username = $_SESSION['username'];
 
-            $this->load->model('student_model');
-            $data['query'] = $this->student_model->select_st_by_user_id($user_id, $username);
+            $this->load->model('user_model');
+            $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
             $this->load->model('exam_model');
             $data['exam'] = $this->exam_model->select_exam_by_id($exam_id);
@@ -42,7 +43,7 @@ class Exam extends CI_Controller
             $data['question'] = $this->questions_model->select_question_by_id($exam_id);
 
             $this->load->model('joined_model');
-            $data['st_record'] = $this->joined_model->select_record_class($student_id, $exam_id);
+            $data['st_record'] = $this->joined_model->select_record_class($user_id, $exam_id);
 
             $this->load->view('take-assessment', $data);
         }else{
@@ -54,16 +55,15 @@ class Exam extends CI_Controller
         if (isset($_SESSION['user_id'])) {
             $user_id = $_SESSION['user_id'];
             $username = $_SESSION['username'];
-            $student_id = $_SESSION['student_id'];
             $retake_status = $_SESSION['student_retake'];
 
-            $this->load->model('student_model');
-            $data['query'] = $this->student_model->select_st_by_user_id($user_id, $username);
+            $this->load->model('user_model');
+            $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
             if ($retake_status == '0') {
                 //ag record bud pak she
                 $this->load->model('st_class_model');
-                $this->st_class_model->delete_st_record($student_id, $exam_id);
+                $this->st_class_model->delete_st_record($user_id, $exam_id);
             }
             $this->load->model('exam_model');
             $data['exam'] = $this->exam_model->select_exam_by_id($exam_id);
