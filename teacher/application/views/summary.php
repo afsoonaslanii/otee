@@ -10,7 +10,6 @@ $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 $ms = $ms;
 $description = $description;
 
-// "SELECT * FROM tbl_examinations WHERE exam_id = '$exam_id'";
 $result = $query1;
 
 if (count($result) > 0) {
@@ -116,26 +115,26 @@ if (count($result) > 0) {
 												<td>نام آزمون</td>
 												<td><?php echo "$exname"; ?></td>
 											</tr>
+<!--											<tr>-->
+<!--												<th scope="row">2</th>-->
+<!--												<td>موضوع</td>-->
+<!--												<td>--><?php //echo "$exsubject"; ?><!--</td>-->
+<!--											</tr>-->
 											<tr>
 												<th scope="row">2</th>
-												<td>موضوع</td>
-												<td><?php echo "$exsubject"; ?></td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
 												<td>تاریخ پایان</td>
 												<td><?php echo convert_gregorian_to_jalali($exdate); ?></td>
 											</tr>
 
 											<tr>
-												<th scope="row">4</th>
+												<th scope="row">3</th>
 												<td>مدت زمان</td>
 												<td><?php echo "$exduration"; ?> <b>دقیقه.</b></td>
 											</tr>
 
 
 											<tr>
-												<th scope="row">5</th>
+												<th scope="row">4</th>
 												<td>امتیاز</td>
 												<td><?php echo "$expassmark"; ?></td>
 											</tr>

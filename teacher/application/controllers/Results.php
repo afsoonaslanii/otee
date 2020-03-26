@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Results extends CI_Controller{
 
     function index(){
-
         if (isset($_SESSION['user_id'])) {
             $this->load->model('user_model');
             $data['query'] = $this->user_model->get_user_info($_SESSION['username'] , $_SESSION['user_id']);
@@ -35,6 +34,7 @@ class Results extends CI_Controller{
 
             $this->load->model('joined_model');
             $data['query1'] = $this->joined_model->select_record_st($exam_id);
+			$data['exam_name'] = $data['query1'][0]->exam_title;
 
             if(isset($_SESSION['ms'])){
                 $data['ms']=$_SESSION['ms'];

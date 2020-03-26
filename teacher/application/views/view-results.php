@@ -10,23 +10,14 @@ $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 $ms = $ms;
 $description = $description;
 
-//$sql = "SELECT * FROM tbl_assessment_records WHERE exam_id = '$exam_id'";
-//    $result = $query1;
-//
-//    if (count($result) > 0) {
-//
-//        foreach ($result as $row) {
-//            $exam_name = $row->exam_title;
-//        }
-//    }
-$exam_name = "test"
+$exam_name = $exam_name
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
 
-	<title>او تی | <?php echo "$exam_name" ?> نتیجه</title>
+	<title>او تی | <?php echo "$exam_name" ?> نتیجه آزمون</title>
 
 	<?php require_once 'shared/links.php' ?>
 
@@ -69,7 +60,7 @@ $exam_name = "test"
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3><?php echo "$exam_name" ?> نتیجه</h3>
+			<h3><?php echo "$exam_name" ?> نتیجه آزمون</h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
@@ -112,12 +103,13 @@ $exam_name = "test"
                                         <tbody>';
 
 											foreach ($result as $row) {
+
 												print '
 										       <tr>
                                                 <td>' . $row->firstname . '</td>
 												<td>' . $row->user_id . '</td>
                                                 <td>' . $row->exam_title . '</td>
-                                                <td><b>' . $row->score . '%</b></td>
+                                                <td><b>' . $row->score . '</b></td>
 												<td>' . $row->status_student . '</td>
 												<td>' . convert_gregorian_to_jalali($row->take_date) . '</td>
 												<td>' . convert_gregorian_to_jalali($row->retake_date) . '</td>

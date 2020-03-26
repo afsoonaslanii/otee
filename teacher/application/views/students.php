@@ -236,8 +236,8 @@ $description = $description;
 															autocomplete="off"
 														/>
 													</div>
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Department</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Department</label>-->
 														<!--                                                        <select class="form-control" name="department" required>-->
 														<!--                                                            <option value="" selected disabled>-Select department-</option>-->
 														<!--                                                            --><?php
@@ -257,10 +257,10 @@ $description = $description;
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
-													<div class="form-group">
-														<label for="exampleInputEmail1">Select Category</label>
+<!--													<div class="form-group">-->
+<!--														<label for="exampleInputEmail1">Select Category</label>-->
 														<!--                                                        <select class="form-control" name="category" required>-->
 														<!--                                                            <option value="" selected disabled>-Select category-</option>-->
 														<!--                                                            --><?php
@@ -280,7 +280,7 @@ $description = $description;
 														//                                                            ?>
 														<!---->
 														<!--                                                        </select>-->
-													</div>
+<!--													</div>-->
 
 													<div class="form-group">
 														<label for="username">نام کاربری</label>

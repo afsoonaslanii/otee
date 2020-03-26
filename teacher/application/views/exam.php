@@ -265,7 +265,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
                                         <tfoot>
                                             <tr>
                                                 <th>نام</th>
-												<th>تاریخ آزمون</th>
+												<th>تاریخ پایان آزمون</th>
 												<th>زمان آزمون (دقیقه)</th>
                                                 <th>نمره قبولی</th>
                                                 <th>امتحان مجدد (روز)</th>

@@ -10,7 +10,7 @@ class User_model extends CI_Model
 	function get_user_info($username, $user_id)
 	{
 		$this->db->select('*');
-		$where = "username='$username' OR phone='$username' AND user_id='$user_id' AND role='teacher' AND status='1' ";
+		$where = "(username='$username' OR phone='$username') AND user_id='$user_id' AND role='teacher' AND status='1' ";
 		$this->db->where($where);
 		$this->db->from('tbl_user');
 
@@ -21,10 +21,8 @@ class User_model extends CI_Model
 	function select_valid_user($username, $password)
 	{
 		$this->db->select('*');
-		$this->db->where('username', "$username");
-		$this->db->or_where('phone', "$username");
-		$this->db->where('password', "$password");
-		$this->db->where('role', "teacher");
+		$where = "(username='$username' OR phone='$username') AND password='$password' AND role='teacher' AND status='1' ";
+		$this->db->where($where);
 		$this->db->from('tbl_user');
 
 		$query = $this->db->get();
@@ -107,8 +105,7 @@ class User_model extends CI_Model
 		return $query->result();
 	}
 
-	//select_st_by_username : select_student_by_username
-	function select_st_by_username($username)
+	function select_student_by_username($username)
 	{
 		$this->db->select('*');
 		$this->db->where('username', $username);
