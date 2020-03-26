@@ -10,7 +10,9 @@ class Students extends CI_Controller
 			$this->load->model('user_model');
 			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-			$data['query2'] = $this->user_model->select_students();
+			$data['query2'] = $this->user_model->select_students_teacher();
+
+			$data['active_teachers'] = $this->user_model->select_active_teachers();
 
 			if (isset($_SESSION['ms'])) {
 				$data['ms'] = $_SESSION['ms'];
@@ -41,8 +43,8 @@ class Students extends CI_Controller
 
 	function drop_sd($sid)
 	{
-		$this->load->model('user_model');
-		$query = $this->user_model->delete_user($sid);
+		$this->load->model('joined_model');
+		$query = $this->joined_model->delete_student($sid);
 		$this->session->set_flashdata('ms', '1');
 		$this->session->set_flashdata('description', 'delete student');
 		redirect('students');
@@ -68,8 +70,21 @@ class Students extends CI_Controller
 				'pointer' => $pointer,
 			);
 
-			$this->load->model('user_model');
 			$this->user_model->insert_user($data);
+
+			//get user_id from table user
+			$this->load->model('user_model');
+			$query = $this->user_model->select_by_pointer($pointer);
+			$new_user_id = $query[0]->user_id;
+
+			$teacher_student_data = array(
+				'student_id' => $new_user_id,
+				'teacher_id' =>  $_POST['teacher_id'],
+			);
+
+			// set tbl_teacher_students
+			$this->load->model('teacher_students_model');
+			$this->teacher_students_model->insert_teacher_student($teacher_student_data);
 
 			$this->session->set_flashdata('ms', '1');
 			$this->session->set_flashdata('description', 'student added');

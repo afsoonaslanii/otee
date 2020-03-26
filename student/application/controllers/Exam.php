@@ -12,7 +12,7 @@ class Exam extends CI_Controller
             $data['query'] = $this->user_model->get_user_info($username, $user_id);
 
             $this->load->model('joined_model');
-            $data['exam'] = $this->joined_model-> select_exam_detail();
+            $data['exam'] = $this->joined_model-> select_teacher_exam_details($user_id);
 
             if(isset($_SESSION['ms'])){
                 $data['ms']=$_SESSION['ms'];

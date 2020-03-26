@@ -84,6 +84,7 @@ $description = $description;
                                                 <th>نام</th>
 												<th>جنسیت</th>
 												<th>نام کاربری</th>
+												<th>شناسه آموزگار</th>
                                                 <th>وضعیت</th>
                                                 <th>عملیات</th>
                                             </tr>
@@ -93,32 +94,34 @@ $description = $description;
                                                 <th>نام</th>
 												<th>جنسیت</th>
 												<th>نام کاربری</th>
+												<th>شناسه آموزگار</th>
                                                 <th>وضعیت</th>
                                                 <th>عملیات</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>';
-											foreach ($result as $row) {
+														foreach ($result as $row) {
 
-												$status = $row->status;
-												if ($status == "1") {
-													$st = '<p class="text-success">فعال</p>';
-													$stl = '
+															$status = $row->status;
+															if ($status == "1") {
+																$st = '<p class="text-success">فعال</p>';
+																$stl = '
 													<a href="' . base_url() . 'index.php/students/inactive_st/' . $row->user_id . '">
 														غیرفعال کردن
 													</a>';
-												} else {
-													$st = '<p class="text-danger">غیرفعال</p>';
-													$stl = '
+															} else {
+																$st = '<p class="text-danger">غیرفعال</p>';
+																$stl = '
 													<a href="' . base_url() . 'index.php/students/active_st/' . $row->user_id . '">
 													فعال کردن
 													</a>';
-												}
-												print '
+															}
+															print '
 										       <tr>
                                                 <td>' . $row->firstname . ' ' . $row->lastname . '</td>
 												<td>' . $row->gender . '</td>
                                                 <td>' . $row->username . '</td>
+                                                <td>' . $row->teacher_id .'</td>
                                                 <td>' . $st . '</td>
                                                 <td><div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -169,6 +172,22 @@ $description = $description;
 													action="<?php echo base_url(); ?>index.php/students/addStudent"
 													method="POST"
 												>
+													<label for="teacher">آموزگار مربوط به دانش آموز</label>
+													<select class="form-control" name="teacher_id" id="teacher" required>
+														<option value="" selected disabled>-- انتخاب آموزگار --</option>
+														<?php
+														$active_teachers = $active_teachers;
+														if (count($active_teachers) > 0) {
+
+															foreach ($active_teachers as $row) {
+																print '
+																	<option value="' . $row->user_id . '">
+																	' . $row->firstname . ' ' . $row->lastname . '
+																	</option>';
+															}
+														}
+														?>
+													</select>
 													<div class="form-group">
 														<label for="fname">نام</label>
 														<input
@@ -234,51 +253,51 @@ $description = $description;
 															autocomplete="off"
 														/>
 													</div>
-<!--													<div class="form-group">-->
-<!--														<label for="exampleInputEmail1">Select Department</label>-->
-														<!--                                                        <select class="form-control" name="department" required>-->
-														<!--                                                            <option value="" selected disabled>-Select department-</option>-->
-														<!--                                                            --><?php
-														//                                                            include '../database/config.php';
-														//                                                            $sql = "SELECT * FROM tbl_departments WHERE status = 'Active' ORDER BY name";
-														//                                                            $result = $conn->query($sql);
-														//
-														//                                                            if ($result->num_rows > 0) {
-														//
-														//                                                                while($row = $result->fetch_assoc()) {
-														//                                                                    print '<option value="'.$row['name'].'">'.$row['name'].'</option>';
-														//                                                                }
-														//                                                            } else {
-														//
-														//                                                            }
-														//                                                            $conn->close();
-														//                                                            ?>
-														<!---->
-														<!--                                                        </select>-->
-<!--													</div>-->
+													<!--													<div class="form-group">-->
+													<!--														<label for="exampleInputEmail1">Select Department</label>-->
+													<!--                                                        <select class="form-control" name="department" required>-->
+													<!--                                                            <option value="" selected disabled>-Select department-</option>-->
+													<!--                                                            --><?php
+													//                                                            include '../database/config.php';
+													//                                                            $sql = "SELECT * FROM tbl_departments WHERE status = 'Active' ORDER BY name";
+													//                                                            $result = $conn->query($sql);
+													//
+													//                                                            if ($result->num_rows > 0) {
+													//
+													//                                                                while($row = $result->fetch_assoc()) {
+													//                                                                    print '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+													//                                                                }
+													//                                                            } else {
+													//
+													//                                                            }
+													//                                                            $conn->close();
+													//                                                            ?>
+													<!---->
+													<!--                                                        </select>-->
+													<!--													</div>-->
 
-<!--													<div class="form-group">-->
-<!--														<label for="exampleInputEmail1">Select Category</label>-->
-														<!--                                                        <select class="form-control" name="category" required>-->
-														<!--                                                            <option value="" selected disabled>-Select category-</option>-->
-														<!--                                                            --><?php
-														//                                                            include '../database/config.php';
-														//                                                            $sql = "SELECT * FROM tbl_categories WHERE status = 'Active' ORDER BY name";
-														//                                                            $result = $conn->query($sql);
-														//
-														//                                                            if ($result->num_rows > 0) {
-														//
-														//                                                                while($row = $result->fetch_assoc()) {
-														//                                                                    print '<option value="'.$row['name'].'">'.$row['name'].'</option>';
-														//                                                                }
-														//                                                            } else {
-														//
-														//                                                            }
-														//                                                            $conn->close();
-														//                                                            ?>
-														<!---->
-														<!--                                                        </select>-->
-<!--													</div>-->
+													<!--													<div class="form-group">-->
+													<!--														<label for="exampleInputEmail1">Select Category</label>-->
+													<!--                                                        <select class="form-control" name="category" required>-->
+													<!--                                                            <option value="" selected disabled>-Select category-</option>-->
+													<!--                                                            --><?php
+													//                                                            include '../database/config.php';
+													//                                                            $sql = "SELECT * FROM tbl_categories WHERE status = 'Active' ORDER BY name";
+													//                                                            $result = $conn->query($sql);
+													//
+													//                                                            if ($result->num_rows > 0) {
+													//
+													//                                                                while($row = $result->fetch_assoc()) {
+													//                                                                    print '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+													//                                                                }
+													//                                                            } else {
+													//
+													//                                                            }
+													//                                                            $conn->close();
+													//                                                            ?>
+													<!---->
+													<!--                                                        </select>-->
+													<!--													</div>-->
 
 													<div class="form-group">
 														<label for="username">نام کاربری</label>

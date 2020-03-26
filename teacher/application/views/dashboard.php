@@ -6,29 +6,13 @@ $myfname = (count($query) > 0 ? $query[0]->firstname : "");
 $mylname = (count($query) > 0 ? $query[0]->lastname : "");
 $mygender = (count($query) > 0 ? $query[0]->gender : NULL);
 
+$students_count = $students_count;
+$exam_count = $exam_count;
+$pass_exam_count = $pass_exam_count;
+$fail_exam_count = $fail_exam_count;
+$teacher_class_count = $teacher_class_count;
+$active_class_count = $active_class_count;
 
-//$teacher = $query_te;
-//$students = $query_st;
-//$examination = $exam_cont;
-//$active_teacher = $active_tech;
-//$inactive_teacher = $inactive_tech;
-
-$teacher = '22';
-$students = '22';
-$examination = '22';
-$active_teacher = '22';
-$inactive_teacher = '22';
-$fp = "fp";
-$pp = "pp";
-$notice = 66;
-$questions = 77;
-$banned_students = 88;
-
-//$std_pass = $pass_st;
-//$std_fails = $fail_st;
-
-$std_pass = '22';
-$std_fails = '22';
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,12 +55,12 @@ $std_fails = '22';
 		</div>
 		<div id="main-wrapper">
 			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($teacher); ?></p>
-								<span class="info-box-title">آموزگاران</span>
+								<p class="counter"><?php echo number_format($students_count); ?></p>
+								<span class="info-box-title">دانش آموزان</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-user"></i>
@@ -84,12 +68,12 @@ $std_fails = '22';
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($students); ?></p>
-								<span class="info-box-title">دانش آموزان</span>
+								<p><span class="counter"><?php echo number_format($exam_count); ?></span></p>
+								<span class="info-box-title">امتحان ها</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-graduation"></i>
@@ -98,12 +82,12 @@ $std_fails = '22';
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p><span class="counter"><?php echo number_format($examination); ?></span></p>
-								<span class="info-box-title">امتحان ها</span>
+								<p><span class="counter"><?php echo number_format($pass_exam_count); ?></span></p>
+								<span class="info-box-title">آزمون های قبولی</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-book-open"></i>
@@ -112,12 +96,12 @@ $std_fails = '22';
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($active_teacher); ?></p>
-								<span class="info-box-title">آموزگاران فعال</span>
+								<p class="counter"><?php echo number_format($fail_exam_count); ?></p>
+								<span class="info-box-title">آزمون های مردود</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-docs"></i>
@@ -126,12 +110,12 @@ $std_fails = '22';
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($inactive_teacher); ?></p>
-								<span class="info-box-title">آموزگاران غیرفعال</span>
+								<p class="counter"><?php echo number_format($teacher_class_count); ?></p>
+								<span class="info-box-title">دروس</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-tag"></i>
@@ -139,12 +123,12 @@ $std_fails = '22';
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel info-box panel-white">
 						<div class="panel-body">
 							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($notice); ?></p>
-								<span class="info-box-title">اطلاعیه ها</span>
+								<p class="counter"><?php echo number_format($active_class_count); ?></p>
+								<span class="info-box-title">دروس فعال</span>
 							</div>
 							<div class="info-box-icon">
 								<i class="icon-list"></i>
@@ -153,33 +137,7 @@ $std_fails = '22';
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel info-box panel-white">
-						<div class="panel-body">
-							<div class="info-box-stats">
-								<p><span class="counter"><?php echo number_format($questions); ?></span></p>
-								<span class="info-box-title">سوالات</span>
-							</div>
-							<div class="info-box-icon">
-								<i class="icon-question"></i>
-							</div>
 
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel info-box panel-white">
-						<div class="panel-body">
-							<div class="info-box-stats">
-								<p class="counter"><?php echo number_format($banned_students); ?></p>
-								<span class="info-box-title">دانش آموزان غیرمجاز</span>
-							</div>
-							<div class="info-box-icon">
-								<i class="icon-lock"></i>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
@@ -258,9 +216,8 @@ $std_fails = '22';
                 indexLabelFontSize: 14,
                 indexLabel: "{label} - {y}",
                 dataPoints: [
-                    {y: <?php echo "$std_pass"; ?>, label: "دانش آموزان قبول شده"},
-                    {y: <?php echo "$std_fails"; ?>, label: "دانش آموزان مردود شده"}
-
+                    {y: <?php echo "$pass_exam_count"; ?>, label: "قبول شده"},
+                    {y: <?php echo "$fail_exam_count"; ?>, label: "مردود شده"}
                 ]
             }]
         });

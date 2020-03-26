@@ -52,4 +52,18 @@ class Joined_model extends CI_Model
         return $query->result();
     }
 
+    function select_teacher_exam_details($student_id){
+		$this->db->select('*');
+		$this->db->from('tbl_teacher_students');
+		$this->db->where('student_id', $student_id);
+		$this->db->join('tbl_class','tbl_class.teacher_id = tbl_teacher_students.teacher_id'); //class_id
+		$this->db->join('tbl_exam', 'tbl_exam.class_id = tbl_class.class_id AND tbl_class.class_id = tbl_exam.class_id'); //exam_id
+//		$this->db->join('tbl_class','tbl_class.class_id = tbl_exam.class_id');
+		$this->db->join('tbl_course','tbl_course.course_code = tbl_class.course_code');
+		$this->db->join('tbl_user','tbl_user.user_id = tbl_class.teacher_id');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 }

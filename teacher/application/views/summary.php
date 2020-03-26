@@ -29,23 +29,10 @@ if (count($result) > 0) {
 	header("location:./");
 }
 
-$stdpass = 0;
-$stdfail = 0;
+$pass_student = $pass_student;
+$fail_student = $fail_student;
+$all_student_in_exam= $all_in_exam_count;
 
-$result = $query2;
-
-if (count($result) > 0) {
-
-	foreach ($result as $row) {
-		$status = $row->status_student;
-		if ($status == "PASS") {
-			$stdpass++;
-		} else {
-			$stdfail++;
-
-		}
-	}
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -139,6 +126,11 @@ if (count($result) > 0) {
 												<td><?php echo "$expassmark"; ?></td>
 											</tr>
 
+											<tr>
+												<th scope="row">5</th>
+												<td>تعداد دانش آموزان شرکت کرده</td>
+												<td><?php echo "$all_student_in_exam"; ?></td>
+											</tr>
 
 											</tbody>
 										</table>
@@ -181,8 +173,8 @@ if (count($result) > 0) {
                 legendText: "{label}",
                 indexLabel: "{label} - {y}",
                 dataPoints: [
-                    {y: <?php echo "$stdpass"; ?>, label: "قبول شده"},
-                    {y: <?php echo "$stdfail"; ?>, label: "مردود شده"},
+                    {y: <?php echo "$pass_student"; ?>, label: "قبول شده"},
+                    {y: <?php echo "$fail_student"; ?>, label: "مردود شده"}
                 ]
             }]
         });

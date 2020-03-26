@@ -15,7 +15,7 @@ $mygender = (count($query1)>0 ? $query1[0]->gender : null);
 
 <head>
 
-    <title>OES | Add Questions</title>
+    <title>او تی | افزودن سوالات آزمون</title>
 
 	<?php require_once 'shared/links.php'?>
 

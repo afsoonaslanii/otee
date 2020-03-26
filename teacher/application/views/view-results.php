@@ -1,5 +1,5 @@
 <?php
-require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
+require_once(APPPATH . 'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
@@ -106,7 +106,7 @@ $exam_name = $exam_name
 
 												print '
 										       <tr>
-                                                <td>' . $row->firstname . '</td>
+                                                <td>' . $row->firstname . ' ' . $row->lastname . '</td>
 												<td>' . $row->user_id . '</td>
                                                 <td>' . $row->exam_title . '</td>
                                                 <td><b>' . $row->score . '</b></td>

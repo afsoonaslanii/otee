@@ -1,31 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller{
+class Dashboard extends CI_Controller
+{
 
-    function index(){
+	function index()
+	{
 
-        if (isset($_SESSION['user_id'])) {
-            $this->load->model('user_model');
-            $data['query'] = $this->user_model->get_user_info($_SESSION['username'] , $_SESSION['user_id']);
+		if (isset($_SESSION['user_id'])) {
+			$this->load->model('user_model');
+			$data['query'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-//            $data['query_te'] = count( $this->user_model->select_teachers());
-//            $data['active_tech'] = count( $this->user_model->select_active_tch());
-//            $data['inactive_tech'] = count( $this->user_model->select_inactive_tch());
+			$this->load->model('joined_model');
 
-//            $this->load->model('exam_model');
-//            $data['exam_cont'] = count( $this->exam_model->select_exam());
-//
-//            $this->load->model('st_class_model');
-//            $data['pass_st'] = count($this->st_class_model->pass_st());
-//
-//            $this->load->model('st_class_model');
-//            $data['fail_st'] = count($this->st_class_model->fail_st());
+			$data['students_count'] = count($this->joined_model->select_teacher_students($_SESSION['user_id']));
+			$data['exam_count'] = count($this->joined_model->teacher_exam_result($_SESSION['user_id']));
+			$data['active_class_count'] = count($this->joined_model->get_active_class_info($_SESSION['user_id']));
+			$data['teacher_class_count'] = count($this->joined_model->get_all_class_info($_SESSION['user_id']));
 
-            $this->load->view('dashboard',$data);
+			$this->load->model('st_class_model');
+			$data['pass_exam_count'] = count($this->st_class_model->pass_st());
+			$data['fail_exam_count'] = count($this->st_class_model->fail_st());
 
-        }else{
-            redirect('login');
-        }
-    }
+			$this->load->view('dashboard', $data);
+
+		} else {
+			redirect('login');
+		}
+	}
 }

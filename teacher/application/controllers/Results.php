@@ -60,7 +60,9 @@ class Results extends CI_Controller{
             $data['query1'] = $this->exam_model->select_exam_by_id($exam_id);
 
             $this->load->model('st_class_model');
-            $data['query2'] = $this->st_class_model->select_exam_record($exam_id);
+            $data['all_in_exam_count'] = count($this->st_class_model->select_exam_record($exam_id));
+            $data['pass_student'] = count($this->st_class_model->pass_student_by_exam_id($exam_id));
+            $data['fail_student'] = count($this->st_class_model->fail_student_by_exam_id($exam_id));
 
             if(isset($_SESSION['ms'])){
                 $data['ms']=$_SESSION['ms'];
