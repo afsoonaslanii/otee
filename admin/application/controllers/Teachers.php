@@ -58,12 +58,13 @@ class Teachers extends CI_Controller{
             'username'=>$_POST['username'],
             'firstname'=>$_POST['fname'],
             'lastname'=>$_POST['lname'],
-            'password'=>$_POST['phone'],
+			'gender'=>$_POST['gender'],
+			'password'=>$_POST['phone'],
 			'phone'=>$_POST['phone'],
+			'email'=>$_POST['email'],
             'role'=>'teacher',
             'pointer'=>$pointer,
         );
-        // set tbl_user
         $this->load->model('user_model');
         $this->user_model->insert_user($userdata);
 
