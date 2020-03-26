@@ -76,23 +76,13 @@ class User_model extends CI_Model
 	/* student functions */
 	/*********************/
 
-	function select_students()
-	{
-		$this->db->select('*');
-		$this->db->where('role', 'student');
-		$this->db->from('tbl_user');
-
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	function delete_student($sid)
-	{
-		$this->db->where('user_id', $sid);
-		$this->db->where('role', 'student');
-		$query = $this->db->delete('tbl_user');
-		return $query;
-	}
+//	function delete_student($sid)
+//	{
+//		$this->db->where('user_id', $sid);
+//		$this->db->where('role', 'student');
+//		$query = $this->db->delete('tbl_user');
+//		return $query;
+//	}
 
 	function select_student_by_id($id)
 	{

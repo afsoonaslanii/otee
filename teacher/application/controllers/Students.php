@@ -10,7 +10,8 @@ class Students extends CI_Controller
 			$this->load->model('user_model');
 			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
 
-			$data['query2'] = $this->user_model->select_students();
+			$this->load->model('joined_model');
+			$data['query2'] = $this->joined_model->select_teacher_students($_SESSION['user_id']);
 
 			if (isset($_SESSION['ms'])) {
 				$data['ms'] = $_SESSION['ms'];
@@ -41,45 +42,63 @@ class Students extends CI_Controller
 
 	function drop_sd($sid)
 	{
-		$this->load->model('user_model');
-		$query = $this->user_model->delete_student($sid);
-//        if ($query == '1'){
+		$this->load->model('joined_model');
+		$this->joined_model->delete_student($sid);
+
 		$this->session->set_flashdata('ms', '1');
 		$this->session->set_flashdata('description', 'delete student');
 		redirect('students');
-//        }
 	}
 
 	function addStudent()
 	{
-		//search for username
-		$this->load->model('user_model');
-		$out = $this->user_model->select_student_by_username($_POST['username']);
+		if (isset($_SESSION['user_id'])) {
 
-		if (count($out) == 0) {
-			$pointer = $this->generate_pointer();
-			$data = array(
-				'username' => $_POST['username'],
-				'firstname' => $_POST['fname'],
-				'lastname' => $_POST['lname'],
-				'gender' => $_POST['gender'],
-				'password' => $_POST['phone'],
-				'phone' => $_POST['phone'],
-				'email' => $_POST['email'],
-				'role' => 'student',
-				'pointer' => $pointer,
-			);
+			//search for exist user name
+			$this->load->model('user_model');
+			$out = $this->user_model->select_student_by_username($_POST['username']);
 
-			$this->user_model->insert_user($data);
+			if (count($out) == 0) {
+				$pointer = $this->generate_pointer();
+				$data = array(
+					'username' => $_POST['username'],
+					'firstname' => $_POST['fname'],
+					'lastname' => $_POST['lname'],
+					'gender' => $_POST['gender'],
+					'password' => $_POST['phone'],
+					'phone' => $_POST['phone'],
+					'email' => $_POST['email'],
+					'role' => 'student',
+					'pointer' => $pointer,
+				);
 
-			$this->session->set_flashdata('ms', '1');
-			$this->session->set_flashdata('description', 'student added');
-			redirect('students');
+				$this->user_model->insert_user($data);
+
+				//get user_id from table user
+				$this->load->model('user_model');
+				$query = $this->user_model->select_by_pointer($pointer);
+				$user_id = $query[0]->user_id;
+
+				$teacher_student_data = array(
+					'student_id' => $user_id,
+					'teacher_id' => $_SESSION['user_id'],
+				);
+
+				// set tbl_teacher_students
+				$this->load->model('teacher_students_model');
+				$this->teacher_students_model->insert_teacher_student($teacher_student_data);
+
+				$this->session->set_flashdata('ms', '1');
+				$this->session->set_flashdata('description', 'student added');
+				redirect('students');
+			} else {
+				//send error username is taken
+				$this->session->set_flashdata('ms', '1');
+				$this->session->set_flashdata('description', 'invalid username');
+				redirect('students');
+			}
 		} else {
-			//send error username is taken
-			$this->session->set_flashdata('ms', '1');
-			$this->session->set_flashdata('description', 'invalid username');
-			redirect('students');
+			redirect('login');
 		}
 	}
 
