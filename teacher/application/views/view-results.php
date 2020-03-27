@@ -60,7 +60,7 @@ $exam_name = $exam_name
 
 	<div class="page-inner">
 		<div class="page-title">
-			<h3><?php echo "$exam_name" ?> نتیجه آزمون</h3>
+			<h3> نتیجه آزمون <?php echo "$exam_name" ?></h3>
 		</div>
 		<div id="main-wrapper">
 			<div class="row">

@@ -223,7 +223,7 @@ if (count($result) > 0) {
 	 								 	<a
 											onclick="return confirm(\'برای شروع آزمون اماده اید؟\')"
 											class="btn btn-success"
-											href="<?php echo base_url() ?>index.php/exam/Assessment/<?php echo $row->exam_id ?>"
+											href="'.base_url().'index.php/exam/Assessment/'.$row->exam_id .'"
 										>
 										شروع آزمون
 										</a>
