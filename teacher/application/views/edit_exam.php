@@ -155,7 +155,7 @@ if (count($result) > 0) {
 												placeholder="تاریخ پایان را انتخاب کنید"
 											/>
 										</div>
-										<input type="hidden" name="examid" value="<?php echo "$exam_id"; ?>">
+										<input type="hidden" name="exam_id" value="<?php echo "$exam_id"; ?>">
 
 										<button type="submit" class="btn btn-primary">ثبت</button>
 									</form>
