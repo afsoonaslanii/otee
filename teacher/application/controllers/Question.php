@@ -51,13 +51,13 @@ class Question extends CI_Controller
         }
     }
 
-    function drop_question($question_id){
+    function drop_question($question_id, $exam_id){
         $this->load->model('question_model');
         $query = $this->question_model->delete_question($question_id);
         if ($query == '1'){
             $this->session->set_flashdata('ms', '1');
             $this->session->set_flashdata('description', 'delete question');
-            redirect('view_question');
+			$this->view_question($exam_id);
         }
     }
 

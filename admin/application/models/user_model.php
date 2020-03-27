@@ -157,4 +157,14 @@ class User_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+
+	//////////////////////////
+	function select_students_teacher(){
+		$this->db->select('*');
+		$this->db->from('tbl_teacher_students');
+		$this->db->join('tbl_user', 'tbl_user.user_id = tbl_teacher_students.student_id');
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

@@ -204,6 +204,7 @@ if (count($result) > 0) {
     $(document).ready(function() {
         $(".persian-date-picker").pDatepicker({
             initialValue : false,
+            initialValueType:'persian',
             format : 'YYYY/M/D',
             calendar:{
                 persian: {

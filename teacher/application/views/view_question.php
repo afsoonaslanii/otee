@@ -76,6 +76,7 @@ if (count($result) > 0) {
 									$qno = 1;
 									foreach ($result as $row) {
 										$exam_id = $row->exam_id;
+										$question_id =$row->question_id;
 										$qs = $row->question;
 										$type = 'MC';
 										$op1 = $row->option1;
@@ -98,10 +99,10 @@ if (count($result) > 0) {
 											 <hr>
 											 <a  
 											 class="btn btn-twitter m-b-xs" 
-											 href="edit-question.php?id=' . $row->question_id . '">
+											 href="' . base_url() . 'index.php/question/edit_question/' . $question_id . '">
 											 <i class="fa fa-pencil"></i>
 											 </a>
-											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '">
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $question_id . '/' . $exam_id . '">
 												<i class="fa fa-trash-o"></i>
 											 </a>
 											 
@@ -119,8 +120,8 @@ if (count($result) > 0) {
 											 placeholder="جواب خود را وارد کنید"
 											  >
 											 <hr>
-											 <a  class="btn btn-twitter m-b-xs" href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a  class="btn btn-twitter m-b-xs" href="' . base_url() . 'index.php/question/edit_question/' . $question_id . '"><i class="fa fa-pencil"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $question_id . '/' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											}
@@ -141,8 +142,8 @@ if (count($result) > 0) {
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op3 . '> ' . $op3 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op4 . '> ' . $op4 . '</p>
 											 <hr>
-											 <a  class="btn btn-twitter m-b-xs" href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $row->question_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a  class="btn btn-twitter m-b-xs" href="' . base_url() . 'index.php/question/edit_question/' . $question_id . '"><i class="fa fa-pencil"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $question_id . '/' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											} else {
@@ -157,8 +158,8 @@ if (count($result) > 0) {
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op3 . '> ' . $op3 . '</p>
 											 <p><input type="radio" name="' . $qno . '"  class="form-control" value=' . $op4 . '> ' . $op4 . '</p>
 											 <hr>
-											 <a  class="btn btn-twitter m-b-xs" href="edit-question.php?id=' . $row->question_id . '"><i class="fa fa-pencil"></i></a>
-											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="pages/drop_question.php?id=' . $row->question_id . '&eid=' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
+											 <a  class="btn btn-twitter m-b-xs" href="' . base_url() . 'index.php/question/edit_question/' . $question_id . '"><i class="fa fa-pencil"></i></a>
+											 <a'; ?> onclick = "return confirm('از حذف سوال اطمینان دارید؟')" <?php print 'class="btn btn-youtube m-b-xs"href="' . base_url() . 'index.php/question/drop_question/' . $question_id . '/' . $exam_id . '"><i class="fa fa-trash-o"></i></a>
                                              </div>
 											';
 											}

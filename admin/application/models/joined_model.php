@@ -66,4 +66,16 @@ class Joined_model extends CI_Model
         return $query->result();
     }
 
+	function delete_student($student_id)
+	{
+		$this->db->where('user_id', $student_id);
+		$this->db->where('role', 'student');
+		$query = $this->db->delete('tbl_user');
+
+		$this->db->where('student_id', $student_id);
+		$query2 = $this->db->delete(' tbl_teacher_students');
+
+		return $query;
+	}
+
 }
