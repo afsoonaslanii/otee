@@ -1,5 +1,5 @@
 <?php
-require_once(APPPATH.'utils/convert_gregorian_to_jalali.php');;
+require_once(APPPATH . 'utils/convert_gregorian_to_jalali.php');;
 $url = 'http://otee.ir';
 
 $myavatar = (count($query) > 0 ? $query[0]->picture : NULL);
@@ -32,15 +32,7 @@ if (count($result) > 0) {
 } else {
 	header("location:./");
 }
-$quest = 0;
-$sql = $question;
-
-if (count($sql) > 0) {
-
-	foreach ($sql as $row) {
-		$quest++;
-	}
-}
+$question_count = count($question);
 
 //ag ghablan em dade bashe
 $result = $st_record;
@@ -155,7 +147,7 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">6</th>
 											<td>سوالات</td>
-											<td><b><?php echo "$quest"; ?></b></td>
+											<td><b><?php echo $question_count; ?></b></td>
 										</tr>
 
 										</tbody>
@@ -224,22 +216,26 @@ if (count($result) > 0) {
 							} else {
 								$_SESSION['current_examid'] = $exam_id;
 								$_SESSION['student_retake'] = 0;
-								print '
-                                 <div 
-                                 class="alert alert-success" 
-                                 role="alert"
-                                 >
-                                  موفق باشید
-                                    </div>
+
+								if ($question_count > 0) {
+									print '
+	 								 <div  class="alert alert-success"  role="alert"> موفق باشید </div>
+	 								 	<a
+											onclick="return confirm(\'برای شروع آزمون اماده اید؟\')"
+											class="btn btn-success"
+											href="<?php echo base_url() ?>index.php/exam/Assessment/<?php echo $row->exam_id ?>"
+										>
+										شروع آزمون
+										</a>
 									';
+								} else {
+									print '
+									<div  class="alert alert-success"  role="alert"> برای این آزمون سوالی ثبت نشده است. لطفا در روزهای آینده بررسی کنید. </div>
+								';
+								}
+
 								?>
-								<a
-									onclick="return confirm('برای شروع آزمون اماده اید؟')"
-									class="btn btn-success"
-									href="<?php echo base_url() ?>index.php/exam/Assessment/<?php echo $row->exam_id ?>"
-								>
-									شروع آزمون
-								</a>
+
 								<?php
 							}
 							?>
@@ -259,7 +255,7 @@ if (count($result) > 0) {
                                 <div class="alert alert-info" role="alert">
 							    	شما این امتحان را در تاریخ
                                     <strong>' . convert_gregorian_to_jalali($take_date) . '</strong>
-                                    با امتیاز 
+                                    با نمره 
                                     <strong>' . $score . '</strong>
                                     گذرانده اید.
 								</div>

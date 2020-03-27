@@ -70,8 +70,9 @@ $description = $description;
 										<table id="example" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th>کد آزمون</th>
                                                 <th>نام آزمون</th>
+                                                <th>شناسه آزمون</th>
+                                                <th>درس</th>
 												<th>نام آموزگار</th>
 												<th>زمان پایان</th>
                                                 <th>وضعیت</th>
@@ -81,8 +82,9 @@ $description = $description;
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>کد آزمون</th>
                                                 <th>نام آزمون</th>
+                                                <th>شناسه آزمون</th>
+                                                <th>درس</th>
 												<th>نام آموزگار</th>
 												<th>زمان پایان</th>
                                                 <th>وضعیت</th>
@@ -95,15 +97,16 @@ $description = $description;
 												$status = $row->exam_status;
 												if ($status == '1') {
 													$st = '<p class="text-success">فعال</p>';
-													$stl = '<a class="btn btn-success" href="' . base_url() . 'index.php/exam/Take_Assessment/' . $row->exam_id . '/' . $student_id . '">شروع آزمون</a>';
+													$stl = '<a class="btn btn-success" href="' . base_url() . 'index.php/exam/take_Assessment/' . $row->exam_id . '/' . $student_id . '">شروع آزمون</a>';
 												} else {
 													$st = '<p class="text-danger">غیرفعال</p>';
 													$stl = '<a class="btn btn-danger disabled" href="#">شروع آزمون</a>';
 												}
 												print '
 										       <tr>
-										        <td>' . $row->course_code . '</td>
                                                 <td>' . $row->exam_title . '</td>
+                                                <td>' . $row->exam_id . '</td>
+										        <td>' . $row->course_name . '</td>
 												<td>' . $row->firstname . ' ' . $row->lastname . '</td>
                                                 <td>' . convert_gregorian_to_jalali($row->exam_date) . '</td>
                                                 <td>' . $st . '</td>

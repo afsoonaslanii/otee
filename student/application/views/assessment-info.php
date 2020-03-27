@@ -10,19 +10,6 @@ $student_id = $query[0]->user_id;
 
 $result = $record;
 
-if (count($result) > 0) {
-
-	foreach ($result as $row) {
-		$exam_name = $row->exam_title;
-		$score = $row->score;
-		$status = $row->status_student;
-		$next_retake = $row->retake_date;
-		$taking_date = $row->take_date;
-	}
-} else {
-	header("location:./");
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,16 +44,21 @@ if (count($result) > 0) {
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
 					<li><a href="<?php echo base_url(); ?>index.php/exam">امتحان ها</a></li>
-					<li class="active"><?php echo "$exam_name"; ?></li>
+<!--					<li class="active">--><?php //echo "$exam_name"; ?><!--</li>-->
 				</ol>
 			</div>
 		</div>
 		<div id="main-wrapper">
-			<div class="row col-md-12">
-				<div class="col-md-6">
+			<div class="row">
 
-					<div class="row">
-						<div class="panel panel-white">
+
+				<?php
+				if (count($result) > 0) {
+
+					foreach ($result as $row) {
+						print '
+						<div class="col-md-6">
+					<div class="panel panel-white">
 							<div class="panel-heading">
 								<h4 class="panel-title">اطلاعات آزمون</h4>
 							</div>
@@ -78,24 +70,61 @@ if (count($result) > 0) {
 										<tr>
 											<th scope="row">1</th>
 											<td>نام آزمون</td>
-											<td><?php echo "$exam_name"; ?></td>
+											<td>';
+												echo $row->exam_title;
+												print'
+											</td>
 										</tr>
 										<tr>
 											<th scope="row">2</th>
 											<td>نام دانش آموز</td>
-											<td><?php echo "$myfname $mylname"; ?></td>
+											<td>';
+												echo "$myfname $mylname";
+											print'
+											</td>
 										</tr>
 										<tr>
 											<th scope="row">3</th>
 											<td>نمره</td>
-											<td><?php echo "$score"; ?></td>
+											<td>';
+											echo $row->score;
+											print'</td>
 										</tr>
-
 
 										<tr>
 											<th scope="row">4</th>
+											<td>تاریخ</td>
+											<td>';
+											echo convert_gregorian_to_jalali($row->take_date);
+											print'</td>
+										</tr>
+
+										<tr>
+											<th scope="row">5</th>
 											<td>زمان آزمون مجدد</td>
-											<td><?php echo convert_gregorian_to_jalali($next_retake); ?></td>
+											<td>';
+											echo convert_gregorian_to_jalali($row->retake_date);
+											print'</td>
+										</tr>
+
+										<tr>
+											<th scope="row">6</th>
+											<td>وضعیت</td>
+											<td>';
+
+												if ($row->status_student == "PASS") {
+													print '
+                                <div class="alert alert-success" role="alert">
+                                   قبول
+                                </div>';
+												} else {
+													print '
+                                <div class="alert alert-danger" role="alert">
+                                  مردود
+                                </div>';
+												}
+											print '
+											</td>
 										</tr>
 
 										</tbody>
@@ -103,39 +132,21 @@ if (count($result) > 0) {
 								</div>
 							</div>
 						</div>
-
-					</div>
-
 				</div>
-
-				<div class="col-md-6">
-					<div class="panel panel-white">
-						<div class="panel-heading">
-							<h3 class="panel-title">وضعیت</h3>
-						</div>
-						<div class="panel-body">
-							<?php
-							if ($status == "PASS") {
-								print '
-                                <div class="alert alert-success" role="alert">
-                                   آفرین! شما این آزمون را گذرانده اید.
-                                </div>';
-							} else {
-								print '
-                                <div class="alert alert-danger" role="alert">
-                                  شما نمره کافی برای قبولی نیاورده اید.
-                                </div>';
-
-							}
-							?>
-						</div>
-					</div>
-				</div>
-
+						';
+					}
+				}else{
+					print '
+					<div class="alert alert-info" role="alert">
+                                       اطلاعاتی در پایگاه داده یافت نشد.
+                                    </div>
+					';
+				}
+				?>
 
 			</div>
-
 		</div>
+
 		<div class="page-footer">
 			<p class="no-s">
 				<?php echo date('Y'); ?> &copy; Developed by
