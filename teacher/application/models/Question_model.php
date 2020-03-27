@@ -21,7 +21,23 @@ class Question_model extends CI_Model
         $this->db->select('*');
         $this->db->where('exam_id',$exam_id);
         $this->db->from('tbl_question');
+
         $query = $this->db->get();
         return $query->result();
     }
+
+    function select_question_by_question_id($question_id){
+        $this->db->select('*');
+        $this->db->where('question_id',$question_id);
+        $this->db->from('tbl_question');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+	function update_question_data($question_id, $data)
+	{
+		$this->db->where('question_id', $question_id);
+		$this->db->update('tbl_question', $data);
+	}
 }

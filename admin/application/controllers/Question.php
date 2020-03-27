@@ -60,7 +60,7 @@ class Question extends CI_Controller
 			$this->session->set_flashdata('ms', '1');
 			$this->session->set_flashdata('description', 'delete question');
 			$this->view_question($exam_id);
-        }
+		}
 	}
 
 	function view_question($exam_id)
@@ -84,6 +84,60 @@ class Question extends CI_Controller
 			}
 
 			$this->load->view('view_question', $data);
+		} else {
+			redirect('login');
+		}
+	}
+
+	function edit_question($question_id)
+	{
+		if (isset($_SESSION['user_id'])) {
+			$this->load->model('user_model');
+			$data['query1'] = $this->user_model->get_user_info($_SESSION['username'], $_SESSION['user_id']);
+
+			$this->load->model('question_model');
+			$data['question'] = $this->question_model->select_question_by_question_id($question_id);
+
+
+			if (isset($_SESSION['ms'])) {
+				$data['ms'] = $_SESSION['ms'];
+				$data['description'] = $_SESSION['description'];
+			} else {
+				$data['ms'] = '0';
+				$data['description'] = '';
+			}
+
+
+			$this->load->view('edit_question', $data);
+		} else {
+			redirect('login');
+		}
+	}
+
+	function update_question($question_id)
+	{
+		if (isset($_SESSION['user_id'])) {
+			$data = array(
+				'exam_id' => $_POST['exam'],
+				'question' => $_POST['question'],
+				'option1' => $_POST['opt1'],
+				'option2' => $_POST['opt2'],
+				'option3' => $_POST['opt3'],
+				'option4' => $_POST['opt4'],
+				'answer' => $_POST['answer'],
+				'point' => $_POST['point'],
+			);
+
+
+			$this->load->model('question_model');
+			$this->question_model->update_question_data($question_id, $data);
+
+
+			$this->session->set_flashdata('ms', '1');
+			$this->session->set_flashdata('description', 'question update');
+
+			redirect('exam');
+
 		} else {
 			redirect('login');
 		}
