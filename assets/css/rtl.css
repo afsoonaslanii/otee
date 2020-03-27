@@ -64,7 +64,7 @@ body {
 }
 
 .page-sidebar {
-	float: right;
+	float: right !important;
 }
 
 .show-menu .content-wrap {
@@ -102,4 +102,20 @@ body {
 	position: absolute;
 	margin-right: -9px;
 	margin-top: 0;
+}
+
+/*responsive*/
+
+@media (max-width: 767px) {
+	.page-inner.sidebar-visible {
+		-webkit-transform: translate3d(-160px, 0, 0) !important;
+		transform: translate3d(-160px, 0, 0) !important;
+	}
+}
+
+@media (max-width: 767px) {
+	body:not(.small-sidebar) .sidebar.visible {
+		margin-left: -160px !important;
+		margin-right: 0 !important;
+	}
 }
