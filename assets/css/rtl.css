@@ -87,11 +87,19 @@ body {
 }
 
 /* step section */
-.breadcrumb{
+.breadcrumb {
 	width: 100%;
 }
 
 /* headers */
-.panel-title{
+.panel-title {
 	width: 100%;
+}
+
+
+/* fix radio */
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+	position: absolute;
+	margin-right: -9px;
+	margin-top: 0;
 }
