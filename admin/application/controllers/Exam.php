@@ -36,11 +36,11 @@ class Exam extends CI_Controller
     function add_course(){
         $data_course = array(
             'course_name' => $_POST['coursename'],
-            'course_code' => $_POST['coursecode'],
+            'course_code' => $_POST['coursecode'] . $_SESSION['user_id'],
             'course_status' => $_POST['1'],
         );
         $data_class = array(
-            'course_code' => $_POST['coursecode'],
+            'course_code' => $_POST['coursecode'] . $_SESSION['user_id'],
             'teacher_id' => $_POST['teacherid'],
         );
         $this->load->model('course_class_model');

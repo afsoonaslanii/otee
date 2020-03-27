@@ -37,11 +37,11 @@ class Exam extends CI_Controller
 	{
 		$data_course = array(
 			'course_name' => $_POST['coursename'],
-			'course_code' => $_POST['coursecode'],
+			'course_code' => $_POST['coursecode'] . $_SESSION['user_id'],
 			'course_status' => '1',
 		);
 		$data_class = array(
-			'course_code' => $_POST['coursecode'],
+			'course_code' => $_POST['coursecode'] . $_SESSION['user_id'],
 			'teacher_id' => $_SESSION['user_id'],
 		);
 		$this->load->model('course_class_model');
@@ -128,7 +128,7 @@ class Exam extends CI_Controller
 
 	function add_exam()
 	{
-		require_once(APPPATH.'utils/convert_jalai_to_gregorian.php');
+		require_once(APPPATH . 'utils/convert_jalai_to_gregorian.php');
 
 		$data = array(
 			'class_id' => $_POST['class_name'],
