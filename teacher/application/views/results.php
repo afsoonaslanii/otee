@@ -45,7 +45,7 @@ $description = $description;
 } ?> class="page-header-fixed">
 
 <?php require_once 'layout/profile-menu.php' ?>
-<?php require_once 'layout/search-form.php' ?>
+
 
 <main class="page-content content-wrap">
 

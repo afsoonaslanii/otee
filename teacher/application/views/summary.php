@@ -68,7 +68,7 @@ $all_student_in_exam= $all_in_exam_count;
 } ?> class="page-header-fixed">
 
 <?php require_once 'layout/profile-menu.php' ?>
-<?php require_once 'layout/search-form.php' ?>
+
 
 <main class="page-content content-wrap">
 

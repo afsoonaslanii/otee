@@ -40,7 +40,7 @@ if (count($result) > 0) {
 } ?> class="page-header-fixed page-horizontal-bar">
 
 <?php require('layout/profile-menu.php') ?>
-<?php require_once 'layout/search-form.php' ?>
+
 
 <main class="page-content content-wrap container">
 

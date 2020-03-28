@@ -52,8 +52,6 @@ if (count($result) > 0) {
 
 <?php require('layout/profile-menu.php') ?>
 
-<?php require('layout/search-form.php') ?>
-
 <main class="page-content content-wrap">
 
 	<?php require('layout/navbar.php'); ?>

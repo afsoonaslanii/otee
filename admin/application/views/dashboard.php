@@ -41,7 +41,7 @@ $std_fails = $fail_st;
 <body class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
-<?php require_once 'layout/search-form.php' ?>
+
 
 <main class="page-content content-wrap">
 

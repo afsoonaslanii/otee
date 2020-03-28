@@ -10,19 +10,19 @@
 				<span>او تی</span>
 			</a>
 		</div>
-		<div class="search-button">
-			<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">
-				<i class="fa fa-search"></i>
-			</a>
-		</div>
+		<!--		<div class="search-button">-->
+		<!--			<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">-->
+		<!--				<i class="fa fa-search"></i>-->
+		<!--			</a>-->
+		<!--		</div>-->
 		<div class="topmenu-outer">
 			<div class="top-menu">
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">
-							<i class="fa fa-search"></i>
-						</a>
-					</li>
+					<!--					<li>-->
+					<!--						<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search">-->
+					<!--							<i class="fa fa-search"></i>-->
+					<!--						</a>-->
+					<!--					</li>-->
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle waves-effect waves-button waves-classic"
@@ -57,7 +57,7 @@
 					<li>
 						<a
 							href="<?php echo base_url(); ?>index.php/logout"
-						   class="log-out waves-effect waves-button waves-classic"
+							class="log-out waves-effect waves-button waves-classic"
 						>
 							<span>
 								<i class="fa fa-sign-out m-r-xs"></i>

@@ -52,7 +52,7 @@ else {
 <body>
 
 <?php require('layout/profile-menu.php') ?>
-<?php require('layout/search-form.php') ?>
+
 
 <main class="page-content content-wrap">
 

@@ -33,7 +33,7 @@ $mygender = (count($query1) > 0 ? $query1[0]->gender : null);
 } ?> class="page-header-fixed">
 
 <?php require('layout/profile-menu.php') ?>
-<?php require('layout/search-form.php') ?>
+
 
 <main class="page-content content-wrap">
 
