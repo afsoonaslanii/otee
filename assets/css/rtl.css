@@ -104,18 +104,36 @@ body {
 	margin-top: 0;
 }
 
-/*responsive*/
-
+/*modern sidebar rtl*/
 @media (max-width: 767px) {
-	.page-inner.sidebar-visible {
-		-webkit-transform: translate3d(-160px, 0, 0) !important;
-		transform: translate3d(-160px, 0, 0) !important;
+
+	/*horizontal*/
+	.horizontal-bar {
+		float: right;
 	}
-}
 
-@media (max-width: 767px) {
+	.small-sidebar .sidebar.visible,
+	.page-horizontal-bar .sidebar.visible {
+		margin-left: -65px !important;
+		margin-right: 0 !important;
+	}
+
+	.small-sidebar .page-inner.sidebar-visible,
+	.page-horizontal-bar .page-inner.sidebar-visible {
+		-webkit-transform: translate3d(-65px, 0, 0) !important;
+		transform: translate3d(-65px, 0, 0) !important;
+	}
+
+
+	/*sidebar*/
 	body:not(.small-sidebar) .sidebar.visible {
 		margin-left: -160px !important;
 		margin-right: 0 !important;
 	}
+
+	.page-inner.sidebar-visible {
+		-webkit-transform: translate3d(-160px, 0, 0) !important;
+		transform: translate3d(-160px, 0, 0) !important;
+	}
+
 }
